@@ -1,0 +1,84 @@
+/* Existing styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+    
+      border-radius: 8px;
+      background-color: #fff;
+      width: 60%;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+    }
+
+    .header {
+      background-color: #90EE90;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      border-radius: 8px 8px 0 0;
+      font-size: 1.5em;
+    }
+
+    .content {
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .content ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .content li {
+      margin: 10px 0;
+    }
+
+    .content label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .content input[type="checkbox"] {
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .footer button {
+      background-color: #90EE90;
+      color: white;
+font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .footer button:hover {
+      background-color: #a00000;
+    }
+
+    .mandatory-info {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .mandatory-field {
+      color: red;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+  </style>

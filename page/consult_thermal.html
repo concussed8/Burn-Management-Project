@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adult Thermal Burn Management Checklist</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="/BurnManagemntProject/styles/consult_thermal.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">Adult Thermal Burn Management Checklist</div>
+  <div class="content">
+    <ul>
+      <li>
+        <label>
+          <span class="statement">
+            <strong><span class="mandatory-field">*</span> Does the patient have any % of FULL thickness burns?</strong>
+          </span>
+        </label>
+        <div>
+          <label><input type="checkbox" id="cbFullThicknessYes"> YES</label>
+          <label><input type="checkbox" id="cbFullThicknessNo"> NO</label>
+        </div>
+      </li>
+      <li>
+        <label>
+          <span class="statement">
+            <strong><span class="mandatory-field">*</span> Does the patient have PARTIAL thickness burns ≥ 10% TBSA?</strong>
+          </span>
+        </label>
+        <div>
+          <label><input type="checkbox" id="cbPartialThickness10Yes"> YES</label>
+          <label><input type="checkbox" id="cbPartialThickness10No"> NO</label>
+        </div>
+      </li>
+      <li>
+        <label>
+          <span class="statement">
+            <strong><span class="mandatory-field">*</span> Does the patient have deep partial thickness or full thickness burns involving the FACE, HANDS, GENITALIA, FEET, PERINEUM or over any JOINT?</strong>
+          </span>
+        </label>
+        <div>
+          <label><input type="checkbox" id="cbDeepPartialFullFaceYes"> YES</label>
+          <label><input type="checkbox" id="cbDeepPartialFullFaceNo"> NO</label>
+        </div>
+      </li>
+      <li>
+        <label>
+          <span class="statement">
+            <strong><span class="mandatory-field">*</span> Does the patient have INHALATION injury; with/without partial and/or full thickness burns ≥ 5% TBSA?</strong>
+          </span>
+        </label>
+        <div>
+          <label><input type="checkbox" id="cbInhalationInjuryYes"> YES</label>
+          <label><input type="checkbox" id="cbInhalationInjuryNo"> NO</label>
+        </div>
+      </li>
+    </ul>
+    <div>
+      <label><strong>Does the patient have any of the following high-risk considerations?</strong></label>
+      <ul>
+        <li><label><input type="checkbox" id="cbHighRiskAge"> ≥ 50 years of age</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskAnticoagulation"> Anticoagulation</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskImmunosuppression"> Immunosuppression</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskPregnancy"> Pregnancy</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskDiabetes"> Diabetes</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskSpecialCare"> Patients with burns requiring special social, emotional, or rehabilitation care</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskPhysicianAssessment"> Patients requiring more care based on the assessment of the ED Physician</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskMedicalProblems"> Significant medical problems</label></li>
+        <li><label><input type="checkbox" id="cbHighRiskNone"> None</label></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer">
+    <button id="continueBtn">Continue</button>
+    <p class="mandatory-info">* denotes mandatory checkbox</p>
+  </div>
+</div>
+<script src="/BurnManagemntProject/scripts/consult_thermal.js"></script>
+</body>
+</html>
