@@ -7,19 +7,13 @@
 
     <!-- Preload CSS for better performance -->
     <link rel="preload" href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Fallback for users with JavaScript disabled -->
     <noscript>
-        <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}">
+        <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/main.css">
     </noscript>
-
-    <!-- Fallback script to dynamically load CSS (if necessary) -->
-    <script>
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = `https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}`;
-        document.head.appendChild(link);
-    </script>
 </head>
 <body>
+    <!-- Your content here -->
     <h1>Burn Management Checklist</h1>
     <!-- Arrow Section -->
     <div class="arrow">
