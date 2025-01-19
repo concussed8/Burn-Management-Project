@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thermal Burn Management Checklist</title>
+    <!-- Preload CSS for better performance -->
+    <link rel="preload" href="https://concussed8.github.io/Burn-Management-Project/styles/page2thermal.css?ts=${Date.now()}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/page2thermal.css?ts=${Date.now()}">
+    </noscript>
     <!-- Dynamically load CSS with a timestamp -->
     <script>
         const link = document.createElement('link');
@@ -40,6 +45,7 @@
     <script>
     const script = document.createElement('script');
     script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/page2thermal.js?ts=${Date.now()}`;
+     script.defer = true; // Ensures the script executes after parsing
     document.head.appendChild(script);
 </script>
 
