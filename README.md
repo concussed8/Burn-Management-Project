@@ -15,7 +15,7 @@ add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address 
 </body>
 </html>
 
-<!-- For WP to use most up to date css-->
+<!-- For WP to use most up to date css but has to be structured this way in the html-->
 add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
 <script>
     const link = document.createElement('link');
