@@ -22,17 +22,17 @@ function loadPage(type) {
     // Dynamically update the CSS for the page
     const existingCSS = document.getElementById('dynamic-css');
     if (existingCSS) {
-        existingCSS.href = `../styles/page2${type}.css`; // Update the CSS file path
+        existingCSS.href = `./styles/page2${type}.css`; // Update the CSS file path
     } else {
         const cssLink = document.createElement('link');
         cssLink.id = 'dynamic-css';
         cssLink.rel = 'stylesheet';
-        cssLink.href = `../styles/page2${type}.css`; // Add the CSS file path
+        cssLink.href = `./styles/page2${type}.css`; // Add the CSS file path
         document.head.appendChild(cssLink);
     }
 
     // Redirect to the appropriate page
-    location.href = `../page/page2${type}.html`; // Redirect to the corresponding HTML file
+    location.href = `./page/page2${type}.html`; // Redirect to the corresponding HTML file
 }
 
 // Event listeners for the icons
