@@ -1,3 +1,8 @@
+If you're fine with always forcing the latest version during development, 
+you can use the dynamic timestamp method. For production, you should stick 
+with static versioning to take advantage of caching.
+
+
 <!-- For WP to use most up to date JS-->
 
 add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
@@ -9,7 +14,7 @@ add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address 
 </body>
 </html>
 
-<!-- For WP to use most up to date html-->
+<!-- For WP to use most up to date css-->
 add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
 <script>
     const link = document.createElement('link');
@@ -19,9 +24,9 @@ add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address 
 </script>
 
 
-
-
-
+If you're fine with always forcing the latest version during development, 
+you can use the dynamic timestamp method. For production, you should stick 
+with static versioning to take advantage of caching.
 
 
 (file name).css  eg:<link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/summary_thermal.css?v=2">
