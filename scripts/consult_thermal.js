@@ -48,8 +48,8 @@ function validateMandatoryFields() {
 
   localStorage.setItem('highRiskConsiderations', JSON.stringify(highRiskConsiderations));
 
-// Redirect to the summary page (absolute hosted environment)
-window.location.href = "https://concussed8.github.io/Burn-Management-Project/page/summary_thermal.html";
+// Redirect to the summary page (absolute hosted environment) with cache-busting
+window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/summary_thermal.html?ts=${Date.now()}`;
 
 }
 
