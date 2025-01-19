@@ -19,20 +19,23 @@ document.getElementById('keepDataBtn').addEventListener('click', function () {
 function loadPage(type) {
     console.log(`Redirecting to ${type} burn management checklist`);
 
-    // Dynamically update the CSS for the page
-    const existingCSS = document.getElementById('dynamic-css');
-  if (existingCSS) {
-    existingCSS.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`; // Update the CSS file path with cache-busting
+// Dynamically update the CSS for the page
+const existingCSS = document.getElementById('dynamic-css');
+if (existingCSS) {
+    // Update the existing CSS file with cache-busting
+    existingCSS.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
 } else {
+    // Create a new CSS link element if it doesn't exist
     const cssLink = document.createElement('link');
     cssLink.id = 'dynamic-css';
     cssLink.rel = 'stylesheet';
-    cssLink.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`; // Add the CSS file path with cache-busting
+    cssLink.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
     document.head.appendChild(cssLink);
 }
 
-   // Redirect to the appropriate page with cache-busting
-location.href = `https://concussed8.github.io/Burn-Management-Project/page/page2${type}.html?ts=${Date.now()}`; // Redirect to the corresponding HTML file
+// Redirect to the appropriate page with cache-busting
+location.href = `https://concussed8.github.io/Burn-Management-Project/page/page2${type}.html?ts=${Date.now()}`;
+
 
 }
 
