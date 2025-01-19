@@ -4,31 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Initial Management Thermal</title>
-
-    <!-- Preload CSS for better performance -->
-    <link rel="preload" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?ts=${Date.now()}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    
-    <!-- Fallback for users with JavaScript disabled -->
-    <noscript>
-        <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css">
-    </noscript>
-
-    <!-- Add styles to hide unstyled content during load -->
-    <style>
-        body {
-            visibility: hidden;
-        }
-    </style>
+    <!-- Link to the external CSS file with cache-busting -->
+    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?ts=${Date.now()}">
 </head>
 <body>
-    <script>
-        // Ensure styles are applied before showing the page
-        document.addEventListener('DOMContentLoaded', () => {
-            document.body.style.visibility = 'visible';
-        });
-    </script>
-
-
     <div class="container">
         <div class="header">Initial Thermal Burn Management</div>
         <div class="content">
