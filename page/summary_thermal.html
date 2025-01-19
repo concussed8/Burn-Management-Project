@@ -90,7 +90,12 @@
 </div>
 
 <!-- Link to the external JavaScript file with cache-busting -->
-<script src="https://concussed8.github.io/Burn-Management-Project/scripts/summary_thermal.js?ts=${Date.now()}"></script>
+<script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/summary_thermal.js?ts=${Date.now()}`;
+    document.head.appendChild(script);
+</script>
+
 </body>
 </html>
 
