@@ -1,3 +1,21 @@
+<!-- For WP to use most up to date files-->
+
+add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
+<script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/thermal_tbsa_and_resus.js?ts=${Date.now()}`;
+    document.head.appendChild(script);
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
 (file name).css  eg:<link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/summary_thermal.css?v=2">
 
 CSS/JS Versioning
