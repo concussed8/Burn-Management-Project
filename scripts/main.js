@@ -21,18 +21,19 @@ function loadPage(type) {
 
     // Dynamically update the CSS for the page
     const existingCSS = document.getElementById('dynamic-css');
-    if (existingCSS) {
-        existingCSS.href = `./styles/page2${type}.css`; // Update the CSS file path
-    } else {
-        const cssLink = document.createElement('link');
-        cssLink.id = 'dynamic-css';
-        cssLink.rel = 'stylesheet';
-        cssLink.href = `./styles/page2${type}.css`; // Add the CSS file path
-        document.head.appendChild(cssLink);
-    }
+  if (existingCSS) {
+    existingCSS.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`; // Update the CSS file path with cache-busting
+} else {
+    const cssLink = document.createElement('link');
+    cssLink.id = 'dynamic-css';
+    cssLink.rel = 'stylesheet';
+    cssLink.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`; // Add the CSS file path with cache-busting
+    document.head.appendChild(cssLink);
+}
 
-    // Redirect to the appropriate page
-    location.href = `./page/page2${type}.html`; // Redirect to the corresponding HTML file
+   // Redirect to the appropriate page with cache-busting
+location.href = `https://concussed8.github.io/Burn-Management-Project/page/page2${type}.html?ts=${Date.now()}`; // Redirect to the corresponding HTML file
+
 }
 
 // Event listeners for the icons
