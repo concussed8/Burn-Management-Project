@@ -39,7 +39,7 @@ function validateMandatoryFields() {
         alert('Please ensure all mandatory fields are completed.');
     } else {
         // Redirect to the thermal TBSA and resus page with weight parameter
-window.location.href = `https://concussed8.github.io/Burn-Management-Project/thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}`;
+window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}`;
 
     }
 }
