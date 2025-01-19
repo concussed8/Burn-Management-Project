@@ -1,4 +1,4 @@
-<!-- For WP to use most up to date files-->
+<!-- For WP to use most up to date JS-->
 
 add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
 <script>
@@ -9,6 +9,14 @@ add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address 
 </body>
 </html>
 
+<!-- For WP to use most up to date html-->
+add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address   `
+<script>
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = `https://concussed8.github.io/Burn-Management-Project/styles/thermal_tbsa_and_resus.css?ts=${Date.now()}`;
+    document.head.appendChild(link);
+</script>
 
 
 
