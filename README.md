@@ -1,6 +1,7 @@
 If you're fine with always forcing the latest version during development, 
 you can use the dynamic timestamp method. For production, you should stick 
-with static versioning to take advantage of caching.
+with static versioning to take advantage of caching.  This approach is used 
+if you don't care if the css loads before the JS
 
 
 <!-- For WP to use most up to date JS-->
@@ -22,6 +23,9 @@ add this parameter: ?ts=${Date.now()}  make sure the whole address is ` address 
     link.href = `https://concussed8.github.io/Burn-Management-Project/styles/thermal_tbsa_and_resus.css?ts=${Date.now()}`;
     document.head.appendChild(link);
 </script>
+
+This version is simpilar and allows CSS to run before JS
+<link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/summary_thermal.css?ts=${Date.now()}">
 
 
 If you're fine with always forcing the latest version during development, 
