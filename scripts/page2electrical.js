@@ -6,8 +6,8 @@ function validateMandatoryFields() {
         // Show alert only if neither checkbox is selected
         alert('Please ensure the mandatory field is completed.');
     } else if (checkboxYes.checked) {
-        // Redirect to the Initial Management Checklist for "YES"
-        window.location.href = "./initial_management_electrical.html"; // Relative path for local and hosted environments
+        // Redirect to the Initial_Management_Checklist for "YES"
+        window.location.href = "https://concussed8.github.io/Burn-Management-Project/page/page2electrical.html"; // Full path for GitHub Pages
     } else if (checkboxNo.checked) {
         // Perform an action for "NO" (if applicable)
         alert('Form submitted successfully for NO.');
