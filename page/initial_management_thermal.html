@@ -5,8 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Initial Management Thermal</title>
     
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?v=1"></head>
+  <!-- Dynamically load CSS with a timestamp -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?ts=${Date.now()}`;
+        document.head.appendChild(link);
+    </script>
 
 </head>
 <body>
@@ -81,9 +86,12 @@
         <button class="button close" onclick="closeNumpad()">CLOSE</button>
     </div>
 
-   
-    <!-- Link to the external JavaScript file -->
-    <script src="https://concussed8.github.io/Burn-Management-Project/scripts/initial_management_thermal.js"></script>
+     <!-- Link to the external JavaScript file -->
+    <script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/initial_management_thermal.js?ts=${Date.now()}`;
+    document.head.appendChild(script);
+</script>
 
 </body>
 </html>
