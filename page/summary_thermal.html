@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Thermal Burn Summary SBAR</title>
-    <!-- Link to the external CSS file -->
-    <!-- this allows css to load before js -->
-    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/summary_thermal.css?ts=${Date.now()}">
-
-
+  <!-- Dynamically load CSS with a timestamp -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://concussed8.github.io/Burn-Management-Project/styles/ summary_thermal.css?ts=${Date.now()}`;
+        document.head.appendChild(link);
+    </script>
 </head>
 <body>
 
@@ -92,8 +94,13 @@
     </div>
 </div>
 
-<!-- Add JavaScript for functionality -->
-<script src="https://concussed8.github.io/Burn-Management-Project/scripts/summary_thermal.js?ts=${Date.now()}"></script>
+    <!-- Link to the external JavaScript file -->
+    <script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/ summary_thermal.js?ts=${Date.now()}`;
+    document.head.appendChild(script);
+</script>
+
 
 
 </body>
