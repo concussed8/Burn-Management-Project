@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adult Thermal Burn Management Checklist</title>
-   <!-- Link to the external CSS file -->
-<link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/consult_thermal.css">
+<!-- Dynamically load CSS with a timestamp -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://concussed8.github.io/Burn-Management-Project/styles/ consult_thermal.css?ts=${Date.now()}`;
+        document.head.appendChild(link);
+    </script>
+
 
 </head>
 <body>
@@ -78,6 +84,12 @@
     <p class="mandatory-info">* denotes mandatory checkbox</p>
   </div>
 </div>
-<script src="https://concussed8.github.io/Burn-Management-Project/scripts/consult_thermal.js"></script>
+   <!-- Link to the external JavaScript file -->
+    <script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/ consult_thermal.js?ts=${Date.now()}`;
+    document.head.appendChild(script);
+</script>
+
 </body>
 </html>
