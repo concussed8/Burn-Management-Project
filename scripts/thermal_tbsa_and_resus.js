@@ -187,7 +187,7 @@ window.addEventListener('load', () => {
 
 document.getElementById('continueButton').addEventListener('click', () => {
     saveTableValues();
-    window.location.href = "consult_thermal.html";
+    window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_thermal.html?ts=${Date.now()}`;
 });
 
 });
