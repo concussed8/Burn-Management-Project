@@ -29,6 +29,10 @@
         </div>
     </div>
 
-     <!-- Link to the external JavaScript file -->
-    <script src="https://concussed8.github.io/Burn-Management-Project/scripts/page2lelectrical.js"></script></body>
+  <!-- Link to the external JavaScript file -->
+    <script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/page2electrical.js?ts=${Date.now()}`;
+     script.defer = true; // Ensures the script executes after parsing
+    document.head.appendChild(script);
 </html>
