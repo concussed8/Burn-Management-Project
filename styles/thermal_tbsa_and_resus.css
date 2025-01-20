@@ -372,29 +372,30 @@ font-weight: bold;
   /* Add the pulse animation */
   animation: pulse 1s infinite ease-in-out;
 }
-.title-container {
-    display: block; /* Ensures the container doesn't shrink-wrap */
-    width: auto; /* Ensure container adapts to content */
-    height: auto; /* Ensure container adapts to content */
-    text-align: center; /* Center the title-box inside the container */
-    position: absolute; /* For manual positioning */
-    top: 20px;
-    left: 20px;
+
+
+.parkland-container {
+    position: relative; /* Allows absolute positioning of children */
+    width: 100%; /* Flexible width */
+    height: auto; /* Adapts to content */
 }
 
-.title-box {
+.parkland-box {
     font-family: 'Garamond', serif;
-    font-size: 36px; /* Adjust font size */
+    font-size: 36px; /* Font size adjusts as needed */
     font-weight: bold;
-    color: #000;
+    color: #800000; /* Text color */
     outline: 2px solid #800000; /* Maroon outline */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    padding: 10px; /* Adds space inside the box */
+    padding: 10px 20px; /* Space inside the box */
     background-color: #fff; /* White background */
     border-radius: 5px; /* Rounded corners */
     text-align: center; /* Center-align text */
-    display: inline-block; /* Resizes based on content */
-    width: auto; /* Dynamically adjusts width to content */
-    height: auto; /* Dynamically adjusts height to content */
+    position: absolute; /* Allows manual positioning */
+    top: 0px; /* Adjust vertical position */
+    left: 715px; /* Adjust horizontal position */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    display: inline-block; /* Adapts size to content */
+    width: auto; /* Dynamic width */
+    height: auto; /* Dynamic height */
     box-sizing: border-box; /* Includes padding and border in calculations */
 }
