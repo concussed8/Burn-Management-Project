@@ -38,8 +38,8 @@ function validateMandatoryFields() {
     if (!checkbox1.checked || !checkbox2.checked || !checkbox3.checked || !checkbox4.checked) {
         alert('Please ensure all mandatory fields are completed.');
     } else {
-        // Redirect to electrical TBSA and resus page with weight parameter
-        window.location.href = `./electrical_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}`;
+          // Redirect to the thermal TBSA and resus page with weight parameter
+window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/electrical_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     }
 }
 
