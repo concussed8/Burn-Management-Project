@@ -15,12 +15,8 @@ function saveChecklistData() {
     // Save the data in localStorage
     localStorage.setItem('highRiskConsiderations', JSON.stringify(highRiskConsiderations));
 
-    // Redirect to the summary page (handles both local and hosted paths)
-    const isLocal = window.location.protocol === "file:"; // Check if running locally
-    const path = isLocal 
-        ? "H:/ABLS/Burn App/BurnManagemntProject/page/summary_electrical.html" // Local path
-        : "/BurnManagemntProject/page/summary_electrical.html"; // Hosted path
-    window.location.href = path;
+   // Redirect to the summary page (absolute hosted environment) with cache-busting
+window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/summary_thermal.html?ts=${Date.now()}`;
 }
 
 // Attach event listener to the "Continue" button
