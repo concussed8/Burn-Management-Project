@@ -24,7 +24,7 @@ function validateMandatoryFields(event) {
 
 // Attach event listener to the "Continue" button
 window.addEventListener('load', function () {
-    console.log("Thermal page script loaded!");
+    console.log("Electical page script loaded!");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         console.log("Continue button found. Adding event listener.");
