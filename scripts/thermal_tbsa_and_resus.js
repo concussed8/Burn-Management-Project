@@ -10,33 +10,63 @@ const weight = getQueryParameter('weight');
 // Display the weight in the first orange box (#weightValue)
 if (weight) {
     const weightValueCell = document.getElementById('weightValue');
-    weightValueCell.textContent = `${parseFloat(weight).toFixed(2)} Kg`;
+    if (weightValueCell) {
+        weightValueCell.textContent = `${parseFloat(weight).toFixed(2)} Kg`;
+        updateBoxes(); // Trigger calculations immediately if weight exists
+    }
 }
 
-// Function to update both the TBSA and weight display boxes
-function updateBoxes() {
-    // Update the second orange box
-    const weightValText = document.getElementById('weightValue').textContent.replace('Kg', '').trim();
-    const numericWeight = parseFloat(weightValText) || 0;
-    const calcOrangeBox = document.getElementById('calcOrangeBox');
-    calcOrangeBox.textContent = numericWeight > 0 ? `${numericWeight.toFixed(2)} Kg` : '';
-
-    // Update the second blue box
-    const totalTBSA = document.querySelector('[data-part="total"]').textContent.replace('%', '').trim();
-    const numericTBSA = parseFloat(totalTBSA) || 0;
-    const calcBlueBox = document.getElementById('calcBlueBox');
-    calcBlueBox.textContent = numericTBSA > 0 ? `${numericTBSA.toFixed(2)}%` : '';
-
-    // Trigger the yellow box calculation
-    executeCalculation();
+// Debounce function to limit frequent function calls
+let debounceTimeout;
+function debounce(func, delay) {
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(func, delay);
 }
 
-// Call updateBoxes immediately if weight exists
-if (weight) {
-    updateBoxes();
+// Highlight the selected cell when clicked
+const inputCells = document.querySelectorAll('.input-cell');
+let currentCell = null;
+
+inputCells.forEach(cell => {
+    cell.addEventListener('click', () => highlightCell(cell));
+});
+
+function highlightCell(cell) {
+    if (currentCell) currentCell.classList.remove('selected-cell');
+    currentCell = cell;
+    currentCell.classList.add('selected-cell');
 }
 
-// Define the maximum values for each body part
+// Handle keypad input
+const keys = document.querySelectorAll('.key');
+
+keys.forEach(key => {
+    key.addEventListener('click', () => handleKeypadInput(key));
+});
+
+function handleKeypadInput(key) {
+    if (!currentCell) return;
+
+    const keyContent = key.textContent;
+    const isClear = key.hasAttribute('data-clear');
+
+    if (isClear) {
+        currentCell.textContent = '';
+        debounce(updateTotal, 300); // Recalculate after clearing
+        return;
+    }
+
+    const oldValue = currentCell.textContent;
+    currentCell.textContent = oldValue + keyContent;
+
+    if (!validateCell(currentCell)) {
+        currentCell.textContent = oldValue; // Revert if invalid
+    }
+
+    debounce(updateTotal, 300); // Recalculate after input
+}
+
+// Validate individual cell input
 const maxValues = {
     'head-neck': 9,
     'r-arm': 9,
@@ -57,57 +87,20 @@ const regionNames = {
     'l-leg': 'Left Leg'
 };
 
-const inputCells = document.querySelectorAll('.input-cell');
-let currentCell = null;
-
-// Highlight the selected cell when clicked
-inputCells.forEach(cell => {
-    cell.addEventListener('click', () => {
-        if (currentCell) currentCell.classList.remove('selected-cell');
-        currentCell = cell;
-        currentCell.classList.add('selected-cell');
-    });
-});
-
-// Handle keypad input
-const keys = document.querySelectorAll('.key');
-keys.forEach(key => {
-    key.addEventListener('click', () => {
-        if (!currentCell) return;
-
-        const keyContent = key.textContent;
-        const isClear = key.hasAttribute('data-clear');
-
-        if (isClear) {
-            // Clear the cell content
-            currentCell.textContent = '';
-            updateTotal(); // Recalculate the total and update the boxes
-            return;
-        }
-
-        const oldValue = currentCell.textContent;
-        currentCell.textContent = oldValue + keyContent;
-
-        if (!validateCell(currentCell)) {
-            // If the input is invalid, revert to the old value
-            currentCell.textContent = oldValue;
-        }
-
-        updateTotal(); // Recalculate the total and update the boxes
-    });
-});
-
-// Validate individual cell input
 function validateCell(cell) {
     const part = cell.dataset.part;
     const val = parseFloat(cell.textContent.trim()) || 0;
 
     if (maxValues[part] !== undefined && val > maxValues[part]) {
-        alert(`${regionNames[part]} cannot exceed ${maxValues[part]}%`);
+        showError(`${regionNames[part]} cannot exceed ${maxValues[part]}%`);
         return false;
     }
-
     return true;
+}
+
+// Show validation error
+function showError(message) {
+    alert(message); // Replace with a more user-friendly UI if desired
 }
 
 // Update the total percentage (TBSA) and validate the sum
@@ -126,13 +119,37 @@ function updateTotal() {
     sum = Math.min(sum, 100);
 
     const totalCell = document.querySelector('[data-part="total"]');
-    totalCell.textContent = `${sum.toFixed(2)}%`;
-
     const tbsaValueBox = document.getElementById('tbsaValue');
-    tbsaValueBox.textContent = `${sum.toFixed(2)}%`;
 
-    // Ensure dependent boxes are updated
+    if (totalCell) totalCell.textContent = `${sum.toFixed(2)}%`;
+    if (tbsaValueBox) tbsaValueBox.textContent = `${sum.toFixed(2)}%`;
+
+    // Update dependent boxes
     updateBoxes();
+}
+
+// Update both the TBSA and weight display boxes
+function updateBoxes() {
+    // Update the second orange box
+    const weightValText = document.getElementById('weightValue').textContent.replace('Kg', '').trim();
+    const numericWeight = parseFloat(weightValText) || 0;
+    const calcOrangeBox = document.getElementById('calcOrangeBox');
+
+    if (calcOrangeBox) {
+        calcOrangeBox.textContent = numericWeight > 0 ? `${numericWeight.toFixed(2)} Kg` : '';
+    }
+
+    // Update the second blue box
+    const totalTBSA = document.querySelector('[data-part="total"]').textContent.replace('%', '').trim();
+    const numericTBSA = parseFloat(totalTBSA) || 0;
+    const calcBlueBox = document.getElementById('calcBlueBox');
+
+    if (calcBlueBox) {
+        calcBlueBox.textContent = numericTBSA > 0 ? `${numericTBSA.toFixed(2)}%` : '';
+    }
+
+    // Trigger the yellow box calculation
+    executeCalculation();
 }
 
 // Perform the yellow box calculation
@@ -141,9 +158,11 @@ function executeCalculation() {
     const tbsaVal = parseFloat(document.getElementById('tbsaValue').textContent.replace('%', '').trim()) || 0;
 
     const rate = weightVal > 0 && tbsaVal > 0 ? (2 * weightVal * tbsaVal) / 16 : 0;
-
     const startingRateBox = document.getElementById('startingRateBox');
-    startingRateBox.textContent = rate > 0 ? `${rate.toFixed(2)} mls/hr` : '';
+
+    if (startingRateBox) {
+        startingRateBox.textContent = rate > 0 ? `${rate.toFixed(2)} mls/hr` : '';
+    }
 }
 
 // Save table values to localStorage
@@ -177,17 +196,27 @@ function loadTableValues() {
 window.addEventListener('load', () => {
     loadTableValues();
 
-    document.getElementById('addresButton').addEventListener('click', () => {
-        document.getElementById('popupOverlay').style.display = 'block';
-    });
+    const addResButton = document.getElementById('addresButton');
+    const closePopupBtn = document.getElementById('closePopupBtn');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const continueButton = document.getElementById('continueButton');
 
-    document.getElementById('closePopupBtn').addEventListener('click', () => {
-        document.getElementById('popupOverlay').style.display = 'none';
-    });
+    if (addResButton && popupOverlay) {
+        addResButton.addEventListener('click', () => {
+            popupOverlay.style.display = 'block';
+        });
+    }
 
-document.getElementById('continueButton').addEventListener('click', () => {
-    saveTableValues();
-    window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_thermal.html?ts=${Date.now()}`;
-});
+    if (closePopupBtn && popupOverlay) {
+        closePopupBtn.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+        });
+    }
 
+    if (continueButton) {
+        continueButton.addEventListener('click', () => {
+            saveTableValues();
+            window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_thermal.html?ts=${Date.now()}`;
+        });
+    }
 });
