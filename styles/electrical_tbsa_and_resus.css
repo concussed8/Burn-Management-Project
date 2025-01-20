@@ -164,34 +164,11 @@
       box-shadow: inset 1px 1px 2px #aaa;
       border: 2px solid #ccc;
     }
-  .calculate-button {
-    background-color: #eee;
-    border: 2px solid #ccc;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1),
-                inset -2px -2px 5px rgba(255, 255, 255, 0.7);
-    color: #333;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px 0;
-  }
 
-  .calculate-button:hover {
-    background-color: #ddd;
-}
-.calculate-button:active {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
-    background-color: #ccc;
-  
-  }
 .calc-container {
     position: absolute; /* Enables precise positioning */
     left: 700px; /* Adjust horizontal position */
-    top: 200px; /* Adjust vertical position */
+    top: 120px; /* Adjust vertical position */
     padding: 20px;
     background-color: #f9f9f9; /* Light background for visibility */
     border: 2px solid #ccc; /* Optional border for clarity */
@@ -263,15 +240,15 @@
        margin-top: auto to push it to the bottom of the .panels-group column */
     #continueButton {
 	position: absolute; /* Enables precise positioning */
-      left: 875px; /* Adjust horizontal position */
-      top: 850px; /* Adjust vertical position */
+      left: 780px; /* Adjust horizontal position */
+      top: 700px; /* Adjust vertical position */
       background-color: #ADD8E6;;
       color: #fff;
       font-weight: bold;
       border: none;
       border-radius: 4px;
       padding: 15px 30px;
-      font-size: 1.2em;
+      font-size: 2.0em;
       cursor: pointer;
       margin-top: auto;
     }
