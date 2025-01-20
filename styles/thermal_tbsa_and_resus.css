@@ -168,7 +168,7 @@
 .calc-container {
     position: absolute; /* Enables precise positioning */
     left: 700px; /* Adjust horizontal position */
-    top: 200px; /* Adjust vertical position */
+    top: 120px; /* Adjust vertical position */
     padding: 20px;
     background-color: #f9f9f9; /* Light background for visibility */
     border: 2px solid #ccc; /* Optional border for clarity */
@@ -240,15 +240,15 @@
        margin-top: auto to push it to the bottom of the .panels-group column */
     #continueButton {
 	position: absolute; /* Enables precise positioning */
-      left: 810px; /* Adjust horizontal position */
-      top: 800px; /* Adjust vertical position */
+      left: 780px; /* Adjust horizontal position */
+      top: 700px; /* Adjust vertical position */
       background-color: #b30000;
       color: #fff;
       font-weight: bold;
       border: none;
       border-radius: 4px;
       padding: 15px 30px;
-      font-size: 1.2em;
+      font-size: 2.0em;
       cursor: pointer;
       margin-top: auto;
     }
@@ -376,5 +376,33 @@ font-weight: bold;
     /* Manual positioning */
     position: absolute; /* Allows manual top and left control */
     top: 0px; /* Set vertical position */
-    left: 695px; /* Set horizontal position */
+    left: 700px; /* Set horizontal position */
+}
+
+.ruleof9header-container {
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.ruleof9header-box {
+    font-family: 'Garamond', serif;
+    font-size: 23px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #800000; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #800000; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 0px; /* Set vertical position */
+    left: 3px; /* Set horizontal position */
 }
