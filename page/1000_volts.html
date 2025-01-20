@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Electrical Burn Consult Checklist</title>
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="/BurnManagemntProject/styles/1000_volts.css">
-</head>
+   <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/1000_volts.css?ts=${Date.now()}"></head>
 <body>
     <div class="container">
         <div class="header">Electrical Burn Consult Checklist</div>
@@ -30,7 +29,12 @@
         </div>
     </div>
 
-    <!-- Link to the external JavaScript file -->
-    <script src="/BurnManagemntProject/scripts/1000_volts.js"></script>
+     <!-- Link to the external JavaScript file -->
+    <script>
+    const script = document.createElement('script');
+    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/1000_volts.js?ts=${Date.now()}`;
+     script.defer = true; // Ensures the script executes after parsing
+    document.head.appendChild(script);
+</script>
 </body>
 </html>
