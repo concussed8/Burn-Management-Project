@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>(ELECTRICAL) ADULT BURN CALCULATOR</title>
-    <!-- Link to the external CSS file -->
-    <link rel="stylesheet" href="/BurnManagemntProject/styles/electrical_tbsa_and_resus.css">
+    <!-- Dynamically load CSS with a timestamp -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+         link.href = `https://concussed8.github.io/Burn-Management-Project/styles/electrical_tbsa_and_resus.css?ts=${Date.now()}`;
+        document.head.appendChild(link); 
+    </script>
 </head>
 <body>
     <h1>(ELECTRICAL) ADULT BURN CALCULATOR</h1>
-
+ <div class="parkland-container">
+        <div class="parkland-box">FLUID RESUSCITATION <br> (PARKLAND)</div>
+          <div class="ruleof9header-containerr">
+        <div class="ruleof9header-box">RULE OF 9 <br>TOTAL BODY SURFACE AREA</div>
+    </div>
     <div class="TBSA-container">
         <div class="diagram-image">
             <img src="/BurnManagemntProject/images/adult9.jpg" alt="Adult burn diagram">
@@ -86,7 +95,7 @@
                     <div class="weight-value input-cell" data-part="weight" id="weightValue"></div>
                 </div>
                 <div class="calc-diagram">
-                    <span>2 mls LR</span>
+                    <span>4 mls LR</span>
                     <strong style="font-size: 1.3em;">×</strong>
                     <div class="tinyBox" id="calcOrangeBox" style="background-color: #FF9900;"></div>
                     <strong style="font-size: 1.3em;">×</strong>
@@ -95,8 +104,7 @@
                         <div style="border-bottom: 2px solid #000; line-height: 0.8em;">&nbsp;</div>
                         <div>16</div>
                     </div>
-                    <button class="calculate-button" onclick="executeCalculation()">CALCULATE</button>
-                </div>
+                  </div>
                 <div class="starting-rate-panel" style="display: flex; align-items: center;">
                     <div class="starting-rate-box" id="startingRateBox"></div>
                     <span style="font-weight: bold; margin-left: 10px;">mls/hr LR (Starting Rate)</span>
@@ -121,7 +129,11 @@
     <img id="additional-resources" src="/BurnManagemntProject/images/additional_resources.jpg" alt="Additional Resources Image">
     <img id="area-burned" src="/BurnManagemntProject/images/area_burned.jpg" alt="Area Burned Image">
 
-    <!-- Link to external JS file -->
-    <script src="/BurnManagemntProject/scripts/electrical_tbsa_and_resus.js"></script>
+   <!-- Link to the external JavaScript file -->
+    <script>
+        const script = document.createElement('script');
+        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/electrical_tbsa_and_resus.js?ts=${Date.now()}`;
+        document.head.appendChild(script);
+    </script>
 </body>
 </html>
