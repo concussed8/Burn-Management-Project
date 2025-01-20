@@ -372,24 +372,29 @@ font-weight: bold;
   /* Add the pulse animation */
   animation: pulse 1s infinite ease-in-out;
 }
- .title-box {
-    position: absolute; /* Allows precise positioning */
-    top: 20px; /* Adjust vertical position */
-    left: 20px; /* Adjust horizontal position */
-    font-family: 'Garamond', serif; /* Garamond font with serif fallback */
-    font-size: 18px; /* Adjust font size as needed */
-    font-weight: bold; /* Makes the text bold */
-    color: #800000; /* Text color */
-    outline: 2px solid #800000; /* Outline with specified color */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds shadow for depth */
-    padding: 10px; /* Adds spacing inside the box */
-    background-color: #fff; /* White background */
-    border-radius: 5px; /* Rounded corners */
-    width: 300px; /* Adjust width as needed */
-    height: auto; /* Automatically adjusts height to fit content */
-    text-align: center; /* Center-align the text */
-    box-sizing: border-box; /* Ensures padding and border are included in width/height */
-    pointer-events: none; /* Prevents interaction or editing */
-    user-select: none; /* Prevents text from being selected */
+.title-container {
+    display: block; /* Ensures the container doesn't shrink-wrap */
+    width: auto; /* Ensure container adapts to content */
+    height: auto; /* Ensure container adapts to content */
+    text-align: center; /* Center the title-box inside the container */
+    position: absolute; /* For manual positioning */
+    top: 20px;
+    left: 20px;
 }
 
+.title-box {
+    font-family: 'Garamond', serif;
+    font-size: 36px; /* Adjust font size */
+    font-weight: bold;
+    color: #000;
+    outline: 2px solid #800000; /* Maroon outline */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    padding: 10px; /* Adds space inside the box */
+    background-color: #fff; /* White background */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center-align text */
+    display: inline-block; /* Resizes based on content */
+    width: auto; /* Dynamically adjusts width to content */
+    height: auto; /* Dynamically adjusts height to content */
+    box-sizing: border-box; /* Includes padding and border in calculations */
+}
