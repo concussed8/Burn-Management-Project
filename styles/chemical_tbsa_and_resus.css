@@ -1,4 +1,5 @@
-<title>(THERMAL) Adult Burn Checklist</title>
+
+  <title>(CHEMICAL) Adult Burn Checklist</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -7,7 +8,7 @@
 
     /* NEW: Updated h1 style for a dark-red header box */
     h1 {
-      background-color: #90EE90;
+      background-color:#90EE90;
       color: #fff;
       font-weight: bold;
       text-align: center;
@@ -25,7 +26,7 @@
     }
     .keypad {
 	position: absolute;
-      left: 425px;
+      left: 415px;
       top: 100px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -163,34 +164,11 @@
       box-shadow: inset 1px 1px 2px #aaa;
       border: 2px solid #ccc;
     }
-  .calculate-button {
-    background-color: #eee;
-    border: 2px solid #ccc;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1),
-                inset -2px -2px 5px rgba(255, 255, 255, 0.7);
-    color: #333;
-    font-size: 1em;
-    font-weight: bold;
-    text-align: center;
-    line-height: 40px;
-    padding: 5px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 10px 0;
-  }
 
-  .calculate-button:hover {
-    background-color: #ddd;
-}
-.calculate-button:active {
-    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.2);
-    background-color: #ccc;
-  
-  }
 .calc-container {
     position: absolute; /* Enables precise positioning */
     left: 700px; /* Adjust horizontal position */
-    top: 200px; /* Adjust vertical position */
+    top: 120px; /* Adjust vertical position */
     padding: 20px;
     background-color: #f9f9f9; /* Light background for visibility */
     border: 2px solid #ccc; /* Optional border for clarity */
@@ -205,7 +183,7 @@
     left: 0px; /* Adjust horizontal position */
     top: 100px; /* Adjust vertical position */
     padding: 20px;
-    background-color: #90EE90; /* Light background for visibility */
+    background-color: #ADD8E6; /* Light background for visibility */
     border: 2px solid #ccc; /* Optional border for clarity */
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
     border-radius: 8px; /* Rounds the corners */
@@ -262,15 +240,15 @@
        margin-top: auto to push it to the bottom of the .panels-group column */
     #continueButton {
 	position: absolute; /* Enables precise positioning */
-      left: 875px; /* Adjust horizontal position */
-      top: 850px; /* Adjust vertical position */
+      left: 780px; /* Adjust horizontal position */
+      top: 700px; /* Adjust vertical position */
       background-color: #90EE90;
       color: #fff;
       font-weight: bold;
       border: none;
       border-radius: 4px;
       padding: 15px 30px;
-      font-size: 1.2em;
+      font-size: 2.0em;
       cursor: pointer;
       margin-top: auto;
     }
@@ -371,4 +349,59 @@ font-weight: bold;
   
   /* Add the pulse animation */
   animation: pulse 1s infinite ease-in-out;
+}
+.parkland-container {
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.parkland-box {
+    font-family: 'Garamond', serif;
+    font-size: 27px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #90EE90; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #90EE90; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 0px; /* Set vertical position */
+    left: 700px; /* Set horizontal position */
+}
+
+.ruleof9header-container {
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.ruleof9header-box {
+    font-family: 'Garamond', serif;
+    font-size: 23px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color:#ADD8E6; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #90EE90; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 0px; /* Set vertical position */
+    left: 3px; /* Set horizontal position */
 }
