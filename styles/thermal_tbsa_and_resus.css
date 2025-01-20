@@ -373,29 +373,30 @@ font-weight: bold;
   animation: pulse 1s infinite ease-in-out;
 }
 
-
 .parkland-container {
-    position: relative; /* Allows absolute positioning of children */
-    width: 100%; /* Flexible width */
-    height: auto; /* Adapts to content */
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
 }
 
 .parkland-box {
     font-family: 'Garamond', serif;
-    font-size: 36px; /* Font size adjusts as needed */
+    font-size: 200px; /* Adjust this for the desired size */
     font-weight: bold;
     color: #800000; /* Text color */
-    outline: 2px solid #800000; /* Maroon outline */
-    padding: 10px 20px; /* Space inside the box */
     background-color: #fff; /* White background */
-    border-radius: 5px; /* Rounded corners */
-    text-align: center; /* Center-align text */
-    position: absolute; /* Allows manual positioning */
-    top: 0px; /* Adjust vertical position */
-    left: 715px; /* Adjust horizontal position */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-    display: inline-block; /* Adapts size to content */
-    width: auto; /* Dynamic width */
-    height: auto; /* Dynamic height */
-    box-sizing: border-box; /* Includes padding and border in calculations */
+    border: 2px solid #800000; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 50px; /* Set vertical position */
+    left: 700px; /* Set horizontal position */
 }
