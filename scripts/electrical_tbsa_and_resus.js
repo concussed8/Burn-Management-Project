@@ -216,7 +216,7 @@ window.addEventListener('load', () => {
     if (continueButton) {
         continueButton.addEventListener('click', () => {
             saveTableValues();
-            window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_electrical.html?ts=${Date.now()}`;
+            window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/1000_volts.html?ts=${Date.now()}`;
         });
     }
 });
