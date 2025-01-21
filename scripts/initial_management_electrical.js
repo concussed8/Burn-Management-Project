@@ -1,3 +1,9 @@
+// Close the disclaimer popup when the "CLOSE" button is clicked
+
+document.getElementById('closeStartupBtn').addEventListener('click', function () {
+    document.getElementById('startupOverlay').style.display = 'none';
+});
+
 document.getElementById('checkbox3').addEventListener('change', function () {
     const numpad = document.getElementById('numpad');
     const weightInput = document.querySelector('.weight-input');
