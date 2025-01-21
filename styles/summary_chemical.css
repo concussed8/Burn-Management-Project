@@ -231,7 +231,7 @@
             flex-direction: column; /* Stacks child elements vertically */
             align-items: center;
             justify-content: flex-start; /* Aligns children to the top */
-            border: 3px solid red;
+            border: 6px solid red;
             border-radius: 15px;
             animation: pulse 2s infinite;
             overflow: hidden; /* Ensures the image and text do not overflow the box */
@@ -278,7 +278,7 @@
     font-weight: bold;
     color: #90EE90; /* Text color */
     background-color: #fff; /* White background */
-    border: 2px solid #90EE90; /* Border color */
+    border: 6px solid #90EE90; /* Border color */
     padding: 15px 25px; /* Space inside the box */
     border-radius: 8px; /* Rounded corners */
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
