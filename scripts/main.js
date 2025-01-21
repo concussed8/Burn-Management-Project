@@ -11,9 +11,9 @@ document.getElementById('freshStartBtn').addEventListener('click', function () {
 });
 
 // Keep existing data
-document.getElementById('keepDataBtn').addEventListener('click', function () {
-    document.getElementById('startupOverlay').style.display = 'none';
-});
+//document.getElementById('keepDataBtn').addEventListener('click', function () {
+   // document.getElementById('startupOverlay').style.display = 'none';
+//});
 
 // Function to load pages dynamically with corresponding CSS
 function loadPage(type) {
