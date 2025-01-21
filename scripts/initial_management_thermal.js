@@ -51,7 +51,7 @@ window.location.href = `https://concussed8.github.io/Burn-Management-Project/pag
 
 // Attach event listener to the Continue button
 window.addEventListener('load', function () {
-    console.log("Initial management electrical page script loaded!");
+    console.log("Initial management thermal page script loaded!");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         continueBtn.addEventListener('click', validateMandatoryFields);
