@@ -1,18 +1,20 @@
- body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      background-color: #f9f9f9;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+}
 
-    .container {
-      border: 1px solid #ADD8E6;
-      border-radius: 8px;
-      background-color: #fff;
-      width: 60%;
-      margin: 0 auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      padding: 20px;
-    }
+.container {
+  border: 6px solid #ADD8E6;
+  border-radius: 8px;
+  background-color: #fff;
+  width: 60%; /* Ensure the semicolon is present */
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+ 
+}
+
 
     .header {
       background-color: #ADD8E6;
@@ -141,7 +143,7 @@
     }
 
     .button.clear {
-      background-color: #ff4d4d;
+      background-color:#ff4d4d;
       color: #ffffff;
     }
 
@@ -162,10 +164,9 @@
       text-align: center;
     }
 
-    .footer button {
-      background-color: #ADD8E6;
+    .footer button 
+      background-color:#ADD8E6;
       color: white;
-      font-weight: bold;
       border: none;
       padding: 10px 20px;
       font-size: 1em;
@@ -189,3 +190,53 @@
       font-weight: bold;
       margin-left: 10px;
     }
+
+    /* Prevent zoom-related formatting issues */
+    html {
+      zoom: 100%;
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        width: 50%;
+      }
+    .disclaimerpopup-box {
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    border: 8px solid #ADD8E6; /* Consistent border style */
+    font-size: 65px; /* Font size of the text inside the popup */
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    width: 100%; /* Take up the full width of its container */
+    max-width: 800px; /* Maximum width for larger screens */
+    background: #fff; /* White background */
+    padding: 20px; /* Space inside the popup */
+    border-radius: 10px; /* Rounded corners */
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Default text alignment */
+    align-items: center; /* Centers the button horizontally */
+    justify-content: center; /* Centers content vertically */
+    box-sizing: border-box; /* Ensure padding and borders are included in the size */
+    height: auto; /* Dynamically adjust height */
+    word-wrap: break-word; /* Prevent text overflow */
+}
+
+.close-btn {
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+    margin-top: 20px; /* Adds space between the button and other elements */
+    padding: 15px 30px; /* Adjust button size */
+    cursor: pointer;
+    background-color: #ADD8E6; /* Red shade */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center; /* Centers the button text */
+}
+
+.close-btn:hover {
+    background-color: #c9302c; /* Darker red on hover */
+}
