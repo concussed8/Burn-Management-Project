@@ -143,7 +143,7 @@ body {
     }
 
     .button.clear {
-      background-color:#ff4d4d;
+      background-color: #ff4d4d;
       color: #ffffff;
     }
 
@@ -164,7 +164,7 @@ body {
       text-align: center;
     }
 
-    .footer button 
+    .footer button {
       background-color:#ADD8E6;
       color: white;
       border: none;
@@ -230,7 +230,7 @@ body {
     margin-top: 20px; /* Adds space between the button and other elements */
     padding: 15px 30px; /* Adjust button size */
     cursor: pointer;
-    background-color: #ADD8E6; /* Red shade */
+    background-color:#ADD8E6; /* Red shade */
     color: #fff;
     border: none;
     border-radius: 5px;
