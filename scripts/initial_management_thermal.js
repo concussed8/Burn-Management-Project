@@ -1,55 +1,42 @@
-document.getElementById('checkbox3').addEventListener('change', function () {
-    const numpad = document.getElementById('numpad');
-    const weightInput = document.querySelector('.weight-input');
-
-    if (this.checked) {
-        numpad.style.display = 'grid';
-        weightInput.focus();
-    } else {
-        numpad.style.display = 'none';
-    }
+// Close the disclaimer popup when the "CLOSE" button is clicked
+document.getElementById('closeStartupBtn').addEventListener('click', function () {
+    document.getElementById('startupOverlay').style.display = 'none';
 });
 
-function showNumpad() {
-    document.getElementById('numpad').style.display = 'grid';
+
+// Function to load pages dynamically with corresponding CSS
+function loadPage(type) {
+    console.log(`Redirecting to ${type} burn management checklist`);
+
+// Dynamically update the CSS for the page
+const existingCSS = document.getElementById('dynamic-css');
+if (existingCSS) {
+    // Update the existing CSS file with cache-busting
+    existingCSS.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
+} else {
+    // Create a new CSS link element if it doesn't exist
+    const cssLink = document.createElement('link');
+    cssLink.id = 'dynamic-css';
+    cssLink.rel = 'stylesheet';
+    cssLink.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
+    document.head.appendChild(cssLink);
 }
 
-function closeNumpad() {
-    document.getElementById('numpad').style.display = 'none';
+// Redirect to the appropriate page with cache-busting
+location.href = `https://concussed8.github.io/Burn-Management-Project/page/page2${type}.html?ts=${Date.now()}`;
+
+
 }
 
-function appendNumber(num) {
-    const inputBox = document.querySelector('.weight-input');
-    inputBox.value += num;
-}
+// Event listeners for the icons
+document.getElementById("thermal-icon").addEventListener("click", function () {
+    loadPage('thermal'); // Redirect and load CSS for page2thermal
+});
 
-function clearInput() {
-    const inputBox = document.querySelector('.weight-input');
-    inputBox.value = '';
-}
+document.getElementById("electrical-icon").addEventListener("click", function () {
+    loadPage('electrical'); // Redirect and load CSS for page2electrical
+});
 
-function validateMandatoryFields() {
-    const checkbox1 = document.getElementById('checkbox1');
-    const checkbox2 = document.getElementById('checkbox2');
-    const checkbox3 = document.getElementById('checkbox3');
-    const checkbox4 = document.getElementById('checkbox4');
-    const weightInput = document.querySelector('.weight-input').value;
-
-    if (!checkbox1.checked || !checkbox2.checked || !checkbox3.checked || !checkbox4.checked) {
-        alert('Please ensure all mandatory fields are completed.');
-    } else {
-      // Redirect to the thermal TBSA and resus page with weight parameter
-window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
-
-
-    }
-}
-
-// Attach event listener to the Continue button
-window.addEventListener('load', function () {
-    console.log("Initial management thermal page script loaded!");
-    const continueBtn = document.getElementById('continueBtn');
-    if (continueBtn) {
-        continueBtn.addEventListener('click', validateMandatoryFields);
-    }
+document.getElementById("chemical-icon").addEventListener("click", function () {
+    loadPage('chemical'); // Redirect and load CSS for page2chemical
 });
