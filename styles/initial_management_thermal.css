@@ -8,11 +8,11 @@ body {
   border: 6px solid #800000;
   border-radius: 8px;
   background-color: #fff;
-  width: 100%; /* Ensure the semicolon is present */
+  width: 60%; /* Ensure the semicolon is present */
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  max-width: 25%; /* Optional: Set a maximum width for better responsiveness */
+ 
 }
 
 
