@@ -202,7 +202,7 @@
             position: absolute;
             top: 155px; /* Adjust to position summary box */
             left: 275px; /* Adjust to position summary box */
-            border: 2px solid #800000; /* Maroon border */
+            border: 6px solid #800000; /* Maroon border */
           
             border-radius: 8px;
             padding: 20px;
