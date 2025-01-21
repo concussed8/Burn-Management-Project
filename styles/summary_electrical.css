@@ -100,9 +100,9 @@
 
         /* High Risk Container styles */
         .highRiskContainer {
-            top: 500px;
-            left: 900px;
-            width: 20%;
+            top: 550px;
+            left: 850px;
+            width: 30%;
             min-height: 350px;
             border: 3px solid #ADD8E6;
             background-color: #fff;
@@ -114,9 +114,9 @@
 
         /* Burn Checklist Container styles */
         .summaryContainer {
-            top: 125px;
-            left: 900px;
-            width: 20%;
+            top: 100px;
+            left: 850px;
+            width: 30%;
             min-height: 300px;
             border: 3px solid #ADD8E6;
             background-color: #fff;
@@ -205,7 +205,7 @@
             border: 2px solid #ADD8E6; /* Maroon border */
             border-radius: 8px;
             padding: 20px;
-            width: 300px; /* Width of the summary box */
+            width: 350px; /* Width of the summary box */
             background-color: #FFFFFF; /* White background */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
@@ -272,3 +272,23 @@
         .text-two {
             top: 40px; /* Position text box vertically within the box */
         }
+.summaryinitial-box {
+    font-family: 'Garamond', serif;
+    font-size: 30px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #ADD8E6; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #ADD8E6; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 75px; /* Set vertical position */
+    left: 80px; /* Set horizontal position */
+}
