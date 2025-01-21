@@ -1,3 +1,9 @@
+// Close the disclaimer popup when the "CLOSE" button is clicked
+
+document.getElementById('closeStartupBtn').addEventListener('click', function () {
+    document.getElementById('startupOverlay').style.display = 'none';
+});
+
 document.getElementById('checkbox3').addEventListener('change', function () {
     const numpad = document.getElementById('numpad');
     const weightInput = document.querySelector('.weight-input');
@@ -45,7 +51,7 @@ window.location.href = `https://concussed8.github.io/Burn-Management-Project/pag
 
 // Attach event listener to the Continue button
 window.addEventListener('load', function () {
-    console.log("Initial management chemical page script loaded!");
+    console.log("Initial management thermal page script loaded!");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         continueBtn.addEventListener('click', validateMandatoryFields);
