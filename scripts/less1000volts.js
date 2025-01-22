@@ -4,7 +4,7 @@ function saveChecklistData() {
     // Perform any necessary data saving logic here (if applicable)
 
     // Redirect to the summary page with cache-busting
-    window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_electrical.html?ts=${Date.now()}`;
+    window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/consult_electrical_less1000.html?ts=${Date.now()}`;
 }
 
 // Attach event listener to the "Continue" button
