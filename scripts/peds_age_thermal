@@ -1,56 +1,48 @@
-function validateMandatoryFields(event) {
+function validateAgeAndRedirect(event) {
     // Prevent default form submission or unwanted behavior
     event.preventDefault();
 
-    const checkboxYes = document.getElementById('checkboxYes');
-    const checkboxNo = document.getElementById('checkboxNo');
-
-    if (!checkboxYes.checked && !checkboxNo.checked) {
-        // Show alert only if neither checkbox is selected
-        alert('Please ensure the mandatory field is completed.');
-        console.log("No checkbox selected.");
-    } else if (checkboxYes.checked) {
-        // Redirect to the Initial_Management_Checklist for "YES"
-        console.log("Redirecting to the thermal management checklist...");
-        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/initial_management_thermal.html?ts=${Date.now()}`; // Full path for GitHub Pages with cache-busting
-    } else if (checkboxNo.checked) {
-        // Perform an action for "NO"
-        console.log("Redirecting to the less1000volts page...");
-        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/less1000volts.html?ts=${Date.now()}`; // Redirect to another page
+    const ageInput = document.getElementById('ageInput');
+    if (!ageInput) {
+        console.error("Age input field not found!");
+        return;
     }
-}
 
-// Ensure only one checkbox can be selected
-function toggleCheckboxes() {
-    const checkboxYes = document.getElementById('checkboxYes');
-    const checkboxNo = document.getElementById('checkboxNo');
+    const age = parseInt(ageInput.value, 10); // Parse the age input as an integer
 
-    if (checkboxYes && checkboxNo) {
-        checkboxYes.addEventListener('change', function () {
-            if (checkboxYes.checked) {
-                checkboxNo.checked = false;
-            }
-        });
+    if (isNaN(age) || age < 0 || age > 15) {
+        // Show alert if the input is invalid or out of the allowed range
+        alert('Please enter a valid age between 0 and 15.');
+        return;
+    }
 
-        checkboxNo.addEventListener('change', function () {
-            if (checkboxNo.checked) {
-                checkboxYes.checked = false;
-            }
-        });
+    // Redirect based on the age range
+    let redirectPath = '';
+    if (age < 2) {
+        console.log("Redirecting to peds_0_2_initial_management_thermal.html...");
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_0_2_initial_management_thermal.html?ts=${Date.now()}`;
+    } else if (age >= 2 && age <= 5) {
+        console.log("Redirecting to peds_2_5_initial_management_thermal.html...");
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_2_5_initial_management_thermal.html?ts=${Date.now()}`;
+    } else if (age >= 6 && age <= 15) {
+        console.log("Redirecting to peds_6_16_initial_management_thermal.html...");
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_6_16_initial_management_thermal.html?ts=${Date.now()}`;
+    }
+
+    // Redirect to the appropriate page
+    if (redirectPath) {
+        window.location.href = redirectPath;
     }
 }
 
 // Attach event listener to the "Continue" button
 window.addEventListener('load', function () {
-    console.log("Thermal page script loaded!");
+    console.log("Age-based redirection script loaded!");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         console.log("Continue button found. Adding event listener.");
-        continueBtn.addEventListener('click', validateMandatoryFields);
+        continueBtn.addEventListener('click', validateAgeAndRedirect);
     } else {
         console.error("Continue button not found!");
     }
-
-    // Ensure mutually exclusive checkboxes
-    toggleCheckboxes();
 });
