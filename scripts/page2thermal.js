@@ -15,8 +15,8 @@ function validateMandatoryFields(event) {
         window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/initial_management_thermal.html?ts=${Date.now()}`; // Full path for GitHub Pages with cache-busting
     } else if (checkboxNo.checked) {
         // Perform an action for "NO"
-        console.log("Redirecting to the less1000volts page...");
-        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/less1000volts.html?ts=${Date.now()}`; // Redirect to another page
+        console.log("Redirecting to the peds_age_thermal...");
+        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_age_thermal.html?ts=${Date.now()}`; // Redirect to another page
     }
 }
 
