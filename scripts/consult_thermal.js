@@ -16,7 +16,7 @@ function validateMandatoryFields() {
     inhalationInjury: {
       yes: document.getElementById('cbInhalationInjuryYes').checked,
       no: document.getElementById('cbInhalationInjuryNo').checked,
-    }
+    },
   };
 
   // Check if each mandatory question has at least one box selected (YES or NO)
@@ -43,21 +43,52 @@ function validateMandatoryFields() {
     specialCare: document.getElementById('cbHighRiskSpecialCare').checked,
     physicianAssessment: document.getElementById('cbHighRiskPhysicianAssessment').checked,
     medicalProblems: document.getElementById('cbHighRiskMedicalProblems').checked,
-    none: document.getElementById('cbHighRiskNone').checked
+    none: document.getElementById('cbHighRiskNone').checked,
   };
 
   localStorage.setItem('highRiskConsiderations', JSON.stringify(highRiskConsiderations));
 
-// Redirect to the summary page (absolute hosted environment) with cache-busting
-window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/summary_thermal.html?ts=${Date.now()}`;
-
+  // Redirect to the summary page (absolute hosted environment) with cache-busting
+  window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/summary_thermal.html?ts=${Date.now()}`;
 }
 
-// Attach event listener to the "Continue" button
+// Ensure only one checkbox can be selected for each question
+function toggleCheckboxes() {
+  const togglePairs = [
+    ['cbFullThicknessYes', 'cbFullThicknessNo'],
+    ['cbPartialThickness10Yes', 'cbPartialThickness10No'],
+    ['cbDeepPartialFullFaceYes', 'cbDeepPartialFullFaceNo'],
+    ['cbInhalationInjuryYes', 'cbInhalationInjuryNo'],
+  ];
+
+  togglePairs.forEach(([yesId, noId]) => {
+    const yesCheckbox = document.getElementById(yesId);
+    const noCheckbox = document.getElementById(noId);
+
+    if (yesCheckbox && noCheckbox) {
+      yesCheckbox.addEventListener('change', function () {
+        if (yesCheckbox.checked) {
+          noCheckbox.checked = false;
+        }
+      });
+
+      noCheckbox.addEventListener('change', function () {
+        if (noCheckbox.checked) {
+          yesCheckbox.checked = false;
+        }
+      });
+    }
+  });
+}
+
+// Attach event listeners
 window.addEventListener('load', function () {
   console.log("Thermal Burn Checklist script loaded.");
   const continueBtn = document.getElementById('continueBtn');
   if (continueBtn) {
     continueBtn.addEventListener('click', validateMandatoryFields);
   }
+
+  // Ensure mutually exclusive checkboxes
+  toggleCheckboxes();
 });
