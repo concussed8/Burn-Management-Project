@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Thermal Burn Management</title>
+    <!-- Link to the external CSS file with cache-busting -->
+    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/pedsagethermal.css?ts=${Date.now()}">
+</head>
+<body>
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            Pediatric Thermal Burn Management Checklist
+        </div>
+
+        <!-- Age Label and Input -->
+        <div class="age-label-container">
+            <label for="ageInput" class="age-label">Age of patient:</label>
+            <input type="number" id="ageInput" name="ageInput" placeholder="Enter age" class="ageInput" min="0" max="15">
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <button id="continueBtn">Continue</button>
+        </div>
+    </div>
+
+    <!-- Link to the external JavaScript file -->
+    <script>
+        const script = document.createElement('script');
+        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/peds_age_thermal.js?ts=${Date.now()}`;
+        script.defer = true; // Ensures the script executes after parsing
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
