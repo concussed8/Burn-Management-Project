@@ -157,7 +157,7 @@ function executeCalculation() {
     const weightVal = parseFloat(document.getElementById('weightValue').textContent.replace('Kg', '').trim()) || 0;
     const tbsaVal = parseFloat(document.getElementById('tbsaValue').textContent.replace('%', '').trim()) || 0;
 
-    const rate = weightVal > 0 && tbsaVal > 0 ? (2 * weightVal * tbsaVal) / 16 : 0;
+    const rate = weightVal > 0 && tbsaVal > 0 ? (3 * weightVal * tbsaVal) / 16 : 0;
     const startingRateBox = document.getElementById('startingRateBox');
 
     if (startingRateBox) {
