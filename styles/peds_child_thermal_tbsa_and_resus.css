@@ -179,62 +179,72 @@
     gap: 15px; /* Adds spacing between child elements */
 }
 .TBSA-container {
-    position: absolute; /* Enables precise positioning */
-    left: 0px; /* Adjust horizontal position */
+    position: relative; /* Keep it in the document flow */
+    left: 0; /* Aligns to the left of the parent container */
     top: 100px; /* Adjust vertical position */
-    padding: 20px;
-    background-color: #800000; /* Light background for visibility */
-    border: 2px solid #ccc; /* Optional border for clarity */
+   max-width: 12.7%; 
+    padding: 10px;
+    background-color: #800000; /* Background color for visibility */
+    border: 2px solid #ccc; /* Optional border */
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
     border-radius: 8px; /* Rounds the corners */
     display: flex;
-    flex-direction: column; /* Stacks panels vertically */
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items: center; /* Centers child elements horizontally */
     gap: 15px; /* Adds spacing between child elements */
 }
-  /* Styling for the diagram image */
-    .diagram-image img {
-      max-width: 200%; /* Ensures the image doesn't exceed the container width */
-      height: auto; /* Maintains aspect ratio */
-      border: 1px solid #ddd; /* Optional border for clarity */
-      border-radius: 8px; /* Rounded corners for the image */
+
+/* Styling for the diagram image */
+.diagram-image img {
+    max-width: 100%; /* Allows the image to scale within the container */
+    height: auto; /* Maintains aspect ratio */
+    border: 1px solid #ddd; /* Optional border for clarity */
+    border-radius: 8px; /* Rounded corners */
 }
-    /* Styling for the table */
-    table {
-      width: 100%; /* Table spans the width of the container */
-      border-collapse: collapse; /* Remove gaps between table cells */
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    th {
-      background-color: #f0f0f0;
-      text-align: left;
-    }
-    .body-part-label {
-      color: #333;
-      font-weight: bold;
-    }
-    .head-neck { background-color: #00FFFF; }
-    .r-arm     { background-color: #99FF99; }
-    .l-arm     { background-color: #99FF99; }
-    .trunk     { background-color: #FFCCCC; }
-    .groin     { background-color: #FFD9B3; }
-    .r-leg     { background-color: #FFFF99; }
-    .l-leg     { background-color: #FFFF99; }
-    .total     { background-color: #CCFFFF; }
 
-    .input-cell {
-      background-color: #fff;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-    }
+/* Styling for the table */
+table {
+    width: 100%; /* Table spans the width of the container */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    margin-top: 20px; /* Adds spacing above the table */
+}
 
-    .selected-cell {
-      background-color: #eaf2ff;
-      border: 2px solid #3399ff;
-    }
+th, td {
+    border: 1px solid #ddd; /* Light gray borders for cells */
+    padding: 8px;
+}
+
+th {
+    background-color: #f0f0f0; /* Light background for header cells */
+    text-align: left; /* Align header text to the left */
+}
+
+.body-part-label {
+    color: #333; /* Darker text for readability */
+    font-weight: bold;
+}
+
+/* Background colors for each body part */
+.head-neck { background-color: #00FFFF; }
+.r-arm     { background-color: #99FF99; }
+.l-arm     { background-color: #99FF99; }
+.trunk     { background-color: #FFCCCC; }
+.groin     { background-color: #FFD9B3; }
+.r-leg     { background-color: #FFFF99; }
+.l-leg     { background-color: #FFFF99; }
+.total     { background-color: #CCFFFF; }
+
+.input-cell {
+    background-color: #fff; /* White background for cells */
+    text-align: center; /* Center-align text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    user-select: none; /* Prevent text selection */
+}
+
+.selected-cell {
+    background-color: #eaf2ff; /* Highlighted background for selected cells */
+    border: 2px solid #3399ff; /* Blue border for selection */
+}
 
     /* CONTINUE button styling (red with white text).
        margin-top: auto to push it to the bottom of the .panels-group column */
