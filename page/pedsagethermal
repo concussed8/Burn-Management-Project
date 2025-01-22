@@ -30,7 +30,7 @@
     <!-- Link to the external JavaScript file -->
     <script>
         const script = document.createElement('script');
-        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/peds_age_thermal.js?ts=${Date.now()}`;
+        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/pedsagethermal.js?ts=${Date.now()}`;
         script.defer = true; // Ensures the script executes after parsing
         document.head.appendChild(script);
     </script>
