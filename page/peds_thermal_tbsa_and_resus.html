@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(THERMAL) ADULT BURN CALCULATOR</title>
+    <!-- Dynamically load CSS with a timestamp -->
+    <script>
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+         link.href = `https://concussed8.github.io/Burn-Management-Project/styles/thermal_tbsa_and_resus.css?ts=${Date.now()}`;
+        document.head.appendChild(link); 
+    </script>
+</head>
+<body>
+    <h1>(THERMAL) ADULT BURN CALCULATOR</h1>
+    <div class="parkland-container">
+        <div class="parkland-box">FLUID RESUSCITATION <br> (PARKLAND)</div>
+          <div class="ruleof9header-containerr">
+        <div class="ruleof9header-box">RULE OF 9 <br>TOTAL BODY SURFACE AREA</div>
+    </div>
+    <div class="TBSA-container">
+        <div class="diagram-image">
+            <img src="https://concussed8.github.io/Burn-Management-Project/images/adult9.jpg?v=1" alt="Adult burn diagram">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Body Part</th>
+                    <th>Body Surface Area</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="body-part-label head-neck">Entire Head &amp; Neck</td>
+                    <td class="input-cell" data-part="head-neck"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label r-arm">Entire Right Arm</td>
+                    <td class="input-cell" data-part="r-arm"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label l-arm">Entire Left Arm</td>
+                    <td class="input-cell" data-part="l-arm"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label trunk">Entire Trunk</td>
+                    <td class="input-cell" data-part="trunk"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label groin">Groin</td>
+                    <td class="input-cell" data-part="groin"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label r-leg">Entire Right Leg</td>
+                    <td class="input-cell" data-part="r-leg"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label l-leg">Entire Left Leg</td>
+                    <td class="input-cell" data-part="l-leg"></td>
+                </tr>
+                <tr>
+                    <td class="body-part-label total"><strong>TBSA (TOTAL)</strong></td>
+                    <td class="input-cell" data-part="total"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="right-section">
+        <div class="keypad">
+            <div class="key">1</div>
+            <div class="key">2</div>
+            <div class="key">3</div>
+            <div class="key">4</div>
+            <div class="key">5</div>
+            <div class="key">6</div>
+            <div class="key">7</div>
+            <div class="key">8</div>
+            <div class="key">9</div>
+            <div class="key">0</div>
+            <div class="key">.</div>
+            <div class="key special-key" data-clear="true">CLEAR</div>
+        </div>
+
+        <div class="calc-container">
+            <div class="panels-group">
+                <div class="tbsa-panel">
+                    <div class="tbsa-label">TBSA =</div>
+                    <div class="tbsa-value input-cell" data-part="totalDisplay" id="tbsaValue">0%</div>
+                </div>
+                <div class="weight-panel">
+                    <div class="weight-label">WEIGHT/Kg</div>
+                    <div class="weight-value input-cell" data-part="weight" id="weightValue"></div>
+                </div>
+                <div class="calc-diagram">
+                    <span>2 mls LR</span>
+                    <strong style="font-size: 1.3em;">×</strong>
+                    <div class="tinyBox" id="calcOrangeBox" style="background-color: #FF9900;"></div>
+                    <strong style="font-size: 1.3em;">×</strong>
+                    <div class="tinyBox" id="calcBlueBox" style="background-color: #66CCFF; width:80px;"></div>
+                    <div style="text-align: center;">
+                        <div style="border-bottom: 2px solid #000; line-height: 0.8em;">&nbsp;</div>
+                        <div>16</div>
+                    </div>
+                </div>
+                <div class="starting-rate-panel" style="display: flex; align-items: center;">
+                    <div class="starting-rate-box" id="startingRateBox"></div>
+                    <span style="font-weight: bold; margin-left: 10px;">mls/hr LR (Starting Rate)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTINUE BUTTON -->
+        <button id="continueButton">CONTINUE</button>
+    </div>
+
+    <!-- Popup Overlay -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-box">
+            <img src="https://concussed8.github.io/Burn-Management-Project/images/hand.jpg" alt="Hand" class="popup-image">
+            <button id="closePopupBtn" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <button id="addresButton">CLICK HERE</button>
+    <img id="additional-resources" src="https://concussed8.github.io/Burn-Management-Project/images/additional_resources.jpg?v=1" alt="Additional Resources Image">
+    <img id="area-burned" src="https://concussed8.github.io/Burn-Management-Project/images/area_burned.jpg?v=1" alt="Area Burned Image">
+
+    <!-- Link to the external JavaScript file -->
+    <script>
+        const script = document.createElement('script');
+        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/thermal_tbsa_and_resus.js?ts=${Date.now()}`;
+        document.head.appendChild(script);
+    </script>
+</body>
+</html>
