@@ -45,7 +45,7 @@ function validateMandatoryFields() {
         alert('Please ensure all mandatory fields are completed.');
     } else {
           // Redirect to the thermal TBSA and resus page with weight parameter
-window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/ped_6_15_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     }
 }
 
