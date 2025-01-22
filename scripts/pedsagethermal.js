@@ -26,7 +26,7 @@ function validateAgeAndRedirect(event) {
         redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_2_5_initial_management_thermal.html?ts=${Date.now()}`;
     } else if (age >= 6 && age <= 15) {
         console.log("Redirecting to peds_6_16_initial_management_thermal.html...");
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_6_16_initial_management_thermal.html?ts=${Date.now()}`;
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_6_15_initial_management_thermal.html?ts=${Date.now()}`;
     }
 
     // Redirect to the appropriate page
