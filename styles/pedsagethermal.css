@@ -1,48 +1,90 @@
-function validateAgeAndRedirect(event) {
-    // Prevent default form submission or unwanted behavior
-    event.preventDefault();
-
-    const ageInput = document.getElementById('ageInput');
-    if (!ageInput) {
-        console.error("Age input field not found!");
-        return;
-    }
-
-    const age = parseInt(ageInput.value, 10); // Parse the age input as an integer
-
-    if (isNaN(age) || age < 0 || age > 15) {
-        // Show alert if the input is invalid or out of the allowed range
-        alert('Please enter a valid age between 0 and 15.');
-        return;
-    }
-
-    // Redirect based on the age range
-    let redirectPath = '';
-    if (age < 2) {
-        console.log("Redirecting to peds_0_2_initial_management_thermal.html...");
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_0_2_initial_management_thermal.html?ts=${Date.now()}`;
-    } else if (age >= 2 && age <= 5) {
-        console.log("Redirecting to peds_2_5_initial_management_thermal.html...");
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_2_5_initial_management_thermal.html?ts=${Date.now()}`;
-    } else if (age >= 6 && age <= 15) {
-        console.log("Redirecting to peds_6_16_initial_management_thermal.html...");
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_6_16_initial_management_thermal.html?ts=${Date.now()}`;
-    }
-
-    // Redirect to the appropriate page
-    if (redirectPath) {
-        window.location.href = redirectPath;
-    }
+/* Base styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f9f9f9;
 }
 
-// Attach event listener to the "Continue" button
-window.addEventListener('load', function () {
-    console.log("Age-based redirection script loaded!");
-    const continueBtn = document.getElementById('continueBtn');
-    if (continueBtn) {
-        console.log("Continue button found. Adding event listener.");
-        continueBtn.addEventListener('click', validateAgeAndRedirect);
-    } else {
-        console.error("Continue button not found!");
-    }
-});
+/* Main container */
+.main-container {
+    position: relative; /* Enables child elements to use relative positioning */
+    border: 6px solid #800000; /* Dark red border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    width: 60%; /* Width of the container */
+    max-width: 900px; /* Optional: maximum width for responsiveness */
+    min-width: 300px; /* Optional: minimum width to prevent shrinking too much */
+    height: 500px; /* Default height adjusts to content */
+    margin: 0 auto; /* Center the container horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+    padding: 20px; /* Inner spacing */
+    box-sizing: border-box; /* Include padding and border in size calculations */
+    top: 50px; /* Position from the top */
+}
+
+/* Header */
+.header {
+    background-color: #800000; /* Dark red background */
+    color: white; /* White text */
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    font-size: 1.5em;
+}
+
+/* Age label */
+.age-label {
+    position: absolute; /* Positioned relative to .main-container */
+    left: 10%; /* Horizontal position relative to container */
+    top: 50%; /* Vertical position relative to container */
+    display: inline-flex;
+    align-items: center;
+    background-color: #fff; /* White background */
+    font-weight: bold;
+    font-size: 2em;
+    box-shadow: inset 1px 1px 2px #aaa;
+    border: 5px solid #800000;
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+
+/* Age input */
+.ageInput {
+    position: absolute; /* Positioned relative to .main-container */
+    left: 55%; /* Adjust the horizontal position */
+    top: 50%; /* Adjust the vertical position */
+    width: 30%; /* Percentage width relative to container */
+    max-width: 300px; /* Optional: maximum width */
+    padding: 10px; /* Add padding for inner spacing */
+    font-size: 25px; /* Set font size */
+    border: 3px solid #800000; /* Maroon border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    outline: none; /* Remove the default focus outline */
+    background-color: #f9f9f9; /* Light background */
+    text-align: center; /* Centers the text horizontally */
+}
+
+/* Footer */
+.footer {
+    position: absolute; /* Positioned relative to .main-container */
+    bottom: 20px; /* Position from the bottom of the container */
+    width: 100%; /* Full width of the container */
+    text-align: center;
+}
+
+.footer button {
+    background-color: #800000; /* Maroon background */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.footer button:hover {
+    background-color: #a00000; /* Darker maroon */
+}
