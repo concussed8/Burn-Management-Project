@@ -19,7 +19,7 @@ function saveChecklistData() {
     const isLocal = window.location.protocol === "file:"; // Check if running locally
     const path = isLocal 
         ? "H:/ABLS/Burn App/BurnManagemntProject/page/summary_electrical.html" // Local path
-        : "/BurnManagemntProject/page/summary_electrical.html"; // Hosted path
+        : "/BurnManagemntProject/page/summary_electrical_less1000.html"; // Hosted path
     window.location.href = path;
 }
 
