@@ -21,11 +21,32 @@ function validateMandatoryFields() {
     }
 }
 
-// Attach event listener to the "Continue" button
+// Ensure only one checkbox can be selected at a time
+function toggleCheckboxes() {
+    const checkboxYes = document.getElementById('checkboxYes');
+    const checkboxNo = document.getElementById('checkboxNo');
+
+    checkboxYes.addEventListener('change', function () {
+        if (checkboxYes.checked) {
+            checkboxNo.checked = false;
+        }
+    });
+
+    checkboxNo.addEventListener('change', function () {
+        if (checkboxNo.checked) {
+            checkboxYes.checked = false;
+        }
+    });
+}
+
+// Attach event listeners
 window.addEventListener('load', function () {
     console.log("Electrical Burn Consult Checklist script loaded.");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         continueBtn.addEventListener('click', validateMandatoryFields);
     }
+
+    // Ensure mutually exclusive checkboxes
+    toggleCheckboxes();
 });
