@@ -1,103 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electircal Summary Thermal</title>
-    <!-- Link to the external CSS file with cache-busting -->
-    <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/summary_electrical.css?ts=${Date.now()}">
-</head>
-<body>
-<h1>ADULT ELECTRICAL BURN SUMMARY SBAR</h1>
- 
-        <div class="summaryinitial-box">PRE-Consult Inital Management</div>
-          <div class="ruleof9header-containerr">
-  
-<div class="pulsing-box">
-    <!-- Text Box 1: Immediate Consult Required -->
-    <div class="alert-text text-one">*IMMEDIATE BURN CENTRE CONSULT REQUIRED*</div>
-    <!-- Text Box 2: Secondary Consult Required -->
-    <div class="alert-text text-two">*SECONDARY VIRTUAL CRITICAL CARE CONSULT REQUIRED*</div>
-    <img src="https://concussed8.github.io/Burn-Management-Project/images/criticall.jpg" alt="Critical Alert Image">
+// Function to populate the High Risk Considerations list
+function populateHighRiskList() {
+    const highRiskList = document.getElementById('highRiskList');
+    const highRiskConsiderations = JSON.parse(localStorage.getItem('highRiskConsiderations'));
 
-</div>
+    // Check if data exists
+    if (highRiskConsiderations) {
+        let hasCheckedItems = false;
 
-<!-- High Risk Considerations Container -->
-<div class="container highRiskContainer" id="highRiskContainer">
-    <div class="header">High Risk Considerations</div>
-    <ul id="highRiskList">
-        <!-- High Risk Considerations will be dynamically populated here -->
-    </ul>
-</div>
+        Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
+            if (isChecked) {
+                hasCheckedItems = true;
+                const listItem = document.createElement('li');
+                listItem.textContent = formatHighRisk(key);
+                highRiskList.appendChild(listItem);
+            }
+        });
 
-<!-- Summary of Burn Checklist Responses Container -->
-<div class="container summaryContainer" id="summaryContainer">
-    <div class="header">IMMEDIATE BURN CENTRE CONSULT REQUIRED</div>
-    <ul id="summaryList">
-        <!-- New text box for "Cause of Burn ≥ 1000 Volts" -->
-        <li>
-            <label for="txtCauseOfBurn" style="font-size: 25px; font-weight: bold;">Reason:<br> Cause of Burn (≥ 1000 Volts)</label>
+        if (!hasCheckedItems) {
+            const listItem = document.createElement('li');
+            listItem.textContent = "No high-risk considerations selected.";
+            highRiskList.appendChild(listItem);
+        }
+    } else {
+        const listItem = document.createElement('li');
+        listItem.textContent = "No Data Available";
+        highRiskList.appendChild(listItem);
+    }
+}
 
-        </li>
-    </ul>
-</div>
+// Function to format High Risk Considerations labels
+function formatHighRisk(key) {
+    switch (key) {
+        case 'age': return '≥ 50 years of age';
+        case 'anticoagulation': return 'Anticoagulation';
+        case 'immunosuppression': return 'Immunosuppression';
+        case 'pregnancy': return 'Pregnancy';
+        case 'diabetes': return 'Diabetes';
+        case 'specialCare': return 'Requires special social, emotional, or rehabilitation care';
+        case 'physicianAssessment': return 'Requires more care based on ED Physician assessment';
+        case 'medicalProblems': return 'Significant medical problems';
+        case 'none': return 'No high-risk considerations';
+        default: return key;
+    }
+}
 
-<!--<h1>ADULT ELECTRICAL BURN SUMMARY SBAR</h1>-->
+// Function to set value in a box
+function setValue(elementId, value) {
+    document.getElementById(elementId).innerText = value !== undefined ? value : 'No data available';
+}
 
-<div class="content">
-    <!-- Group summary nine + percentages for image and value boxes -->
-    <div class="summary-nine">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/summary_nine.jpg?ts=${Date.now()}" alt="Burn Summary" class="summary-image">
-        <span id="summaryValue" class="value-box" style="left: 81px; top: 22px;">Loading...</span> <!-- head-neck -->
-        <span id="summaryValue2" class="value-box" style="left: 8px; top: 140px;">Loading...</span> <!-- r-arm -->
-        <span id="summaryValue3" class="value-box" style="left: 152px; top: 140px;">Loading...</span> <!-- l-arm -->
-        <span id="summaryValue4" class="value-box" style="left: 83px; top: 104px;">Loading...</span> <!-- trunk -->
-        <span id="summaryValue5" class="value-box" style="left: 82px; top: 205px;">Loading...</span> <!-- groin -->
-        <span id="summaryValue6" class="value-box" style="left: 47px; top: 300px;">Loading...</span> <!-- r-leg -->
-        <span id="summaryValue7" class="value-box" style="left: 113px; top: 300px;">Loading...</span> <!-- l-leg -->
-        <span id="summaryValue8" class="total-box" style="left: 38px; top: 410px;">Loading...</span> <!-- total -->
-    </div>
+// Function to calculate the starting rate
+function updateStartingRate() {
+    const tbsaValue = parseFloat(document.getElementById('tbsaValue').innerText) || 0;
+    const weightValue = parseFloat(document.getElementById('weightValue').innerText) || 0;
 
-    <!-- Group TBSA, Weight, and Starting Rate into one container -->
-    <div class="panel-group">
-        <!-- TBSA Panel -->
-        <div class="tbsa-panel">
-            <div class="tbsa-label">TBSA =</div>
-            <div class="tbsa-value" id="tbsaValue">0</div>
-        </div>
+    // Calculate: 4 * TBSA * Weight / 16
+    const startingRate = (4 * tbsaValue * weightValue) / 16;
 
-        <!-- Weight Panel -->
-        <div class="weight-panel">
-            <div class="weight-label">WEIGHT/Kg</div>
-            <div class="weight-value" id="weightValue">Loading...</div>
-        </div>
+    // Update the starting rate box
+    document.getElementById('startingRateBox').innerText = startingRate.toFixed(2) || '0';  // Display with two decimal places
+}
 
-        <!-- Starting Rate Panel -->
-        <div class="starting-rate-panel">
-            <div class="starting-rate-box" id="startingRateBox">Loading...</div>
-            <span style="font-weight: bold; margin-left: 10px;">mls/hr LR (Starting Resuscitation Rate)</span>
-        </div>
-    </div>
+// Run functions on page load
+document.addEventListener('DOMContentLoaded', () => {
+    // Populate High Risk Considerations list
+    populateHighRiskList();
 
-    <!-- Add Summary Box -->
-    <div class="summary-box">
-        <div class="summary-box-title">(Electrical) Initial Burn Management No Consult</div>
-        <div class="summary-item">
-            <span class="summary-label">IV Access Secured</span>
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Initial Fluid Rate (500 mls/hr Ringer's Lactate)</span>
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Foley Catheter Placed</span>
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Blood Work (HGB, Creatinine, Lactate) Sent</span>
-        </div>
-    </div>
-</div>
+    // Retrieve the saved table data from localStorage
+    const tableData = JSON.parse(localStorage.getItem('burnCalculatorTable')) || {};
 
-<!-- Link to the external JavaScript file with cache-busting -->
-<script defer src="https://concussed8.github.io/Burn-Management-Project/scripts/summary_electrical_less1000.js?ts=${Date.now()}"></script>
-</body>
-</html>
+    // Populate percentage boxes with values from localStorage
+    setValue('summaryValue', tableData['head-neck']);
+    setValue('summaryValue2', tableData['r-arm']);
+    setValue('summaryValue3', tableData['l-arm']);
+    setValue('summaryValue4', tableData['trunk']);
+    setValue('summaryValue5', tableData['groin']);
+    setValue('summaryValue6', tableData['r-leg']);
+    setValue('summaryValue7', tableData['l-leg']);
+    setValue('summaryValue8', tableData['total']);
+
+    // Populate TBSA and Weight values
+    setValue('tbsaValue', tableData['total']);
+    setValue('weightValue', tableData['weight']);
+
+    // Update the starting rate on page load
+    updateStartingRate();
+});
