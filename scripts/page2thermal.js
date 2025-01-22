@@ -16,7 +16,7 @@ function validateMandatoryFields(event) {
     } else if (checkboxNo.checked) {
         // Perform an action for "NO"
         console.log("Redirecting to the peds_age_thermal...");
-        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_age_thermal.html?ts=${Date.now()}`; // Redirect to another page
+        window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/pedsagethermal.html?ts=${Date.now()}`; // Redirect to another page
     }
 }
 
