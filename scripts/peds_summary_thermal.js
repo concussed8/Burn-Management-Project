@@ -4,33 +4,26 @@ function populateHighRiskList() {
   const highRiskConsiderations = JSON.parse(localStorage.getItem('highRiskConsiderations'));
   const age = localStorage.getItem('age'); // Retrieve age from localStorage
 
-  if (highRiskConsiderations || age) {
+  // Display the age in the designated age box if it exists
+  if (age !== null) {
+    const ageValueBox = document.getElementById('ageValue');
+    if (ageValueBox) {
+      ageValueBox.innerText = `${age} years`; // Display age in the age box
+    }
+  }
+
+  // Populate the High Risk Considerations list
+  if (highRiskConsiderations) {
     let hasCheckedItems = false;
 
-    // Add the age if it exists
-    if (age !== null) {
-      const ageValueBox = document.getElementById('ageValue');
-      if (ageValueBox) {
-        ageValueBox.innerText = `${age} years`; // Display age in the age box
+    Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
+      if (isChecked) {
+        hasCheckedItems = true;
+        const listItem = document.createElement('li');
+        listItem.textContent = formatHighRisk(key);
+        highRiskList.appendChild(listItem);
       }
-
-      const ageItem = document.createElement('li');
-      ageItem.textContent = `Age: ${age} years`;
-      highRiskList.appendChild(ageItem);
-      hasCheckedItems = true;
-    }
-
-    // Add other high-risk considerations
-    if (highRiskConsiderations) {
-      Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
-        if (isChecked) {
-          hasCheckedItems = true;
-          const listItem = document.createElement('li');
-          listItem.textContent = formatHighRisk(key);
-          highRiskList.appendChild(listItem);
-        }
-      });
-    }
+    });
 
     if (!hasCheckedItems) {
       const listItem = document.createElement('li');
