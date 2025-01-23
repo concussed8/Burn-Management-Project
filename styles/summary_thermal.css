@@ -98,109 +98,153 @@
             margin-bottom: 10px;
         }
 
-        /* High Risk Container styles */
-        .highRiskContainer {
-            top: 550px;
-            left: 850px;
-            width: 30%;
-            min-height: 350px;
-            border: 6px solid #800000;
-            background-color: #fff;
-        }
+       /* High Risk Container styles */
+.highRiskContainer {
+    position: absolute; /* Enables precise positioning */
+    top: 450px; /* Vertical position */
+    left: 850px; /* Horizontal position */
+    width: 750px; /* Fixed width */
+    max-width: 90%; /* Maximum width as a percentage of the viewport */
+    min-height: 350px; /* Minimum height */
+    border: 6px solid #800000; /* Maroon border */
+    background-color: #fff; /* White background */
+    box-sizing: border-box; /* Include border and padding in size calculations */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    overflow: visible; /* Allow content to expand the height */
+}
+/* Header inside the container */
+.highRiskContainerheader {
+    background-color: #800000; /* Maroon background for the header */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Center-align the header text */
+    padding: 10px; /* Add padding inside the header */
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top edges */
+    font-size: 1.2em; /* Slightly larger font size for prominence */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for a raised effect */
+}
 
-        .highRiskContainer .header {
-            background-color: #800000;
-        }
 
-        /* Burn Checklist Container styles */
-        .summaryContainer {
-            top: 100px;
-            left: 850px;
-            width: 30%;
-            min-height: 300px;
-            border: 6px solid #800000;
-            background-color: #fff;
-        }
+   /* Burn Checklist Container styles */
+.summaryContainer {
+    position: absolute; /* Add this if the container needs precise positioning */
+    top: 100px; /* Vertical position */
+    left: 850px; /* Horizontal position */
+    width: 750px; /* Fixed width */
+    height: 300px; /* Fixed height */
+    border: 6px solid #800000; /* Maroon border */
+    background-color: #fff; /* White background */
+    box-sizing: border-box; /* Ensures border and padding are included in the size */
+}
 
-        .summaryContainer .header {
-            background-color: #800000;
-        }
+/* Header inside the container */
+.summaryContainerheader {
+    background-color: #800000; /* Maroon background for the header */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add padding inside the header */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+}
 
-        /* Group the TBSA, Weight, and Calculated Value panels together */
-        .panel-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px; /* Space between each panel */
-            position: absolute; /* Allows us to position the group independently */
-            top: 420px; /* You can adjust this to move the whole group vertically */
-            left: 275px; /* You can adjust this to move the whole group horizontally */
-        }
+        
 
-        /* TBSA, Weight, and Starting Rate Panels */
-        .tbsa-panel,
-        .weight-panel,
-        .starting-rate-panel {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            position: relative; /* Allows for easy positioning within the group */
-        }
+/* Group the panels together */
+.panel-group {
+    display: flex;
+    flex-direction: column; /* Stacks all panels vertically */
+    gap: 10px; /* Space between each panel */
+    position: absolute; /* Allows us to position the group independently */
+    top: 450px; /* Adjust this to move the whole group vertically */
+    left: 275px; /* Adjust this to move the whole group horizontally */
+}
 
-        .tbsa-label,
-        .tbsa-value,
-        .weight-label,
-        .weight-value,
-        .starting-rate-box {
-            height: 50px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2em;
-            box-shadow: inset 1px 1px 2px #aaa;
-            border: 2px solid #ccc;
-            padding: 0 15px;
-        }
+/* Panels for Age, TBSA, Weight, and Starting Rate */
+.age-panel,
+.weight-panel,
+.tbsa-panel,
+.starting-rate-panel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative; /* Allows for easy positioning within the group */
+}
 
-        .tbsa-label,
-        .weight-label {
-            background-color: #fff;
-            color: #000;
-        }
+/* Labels for Age, TBSA, and Weight Panels */
+.age-label,
+.weight-label,
+.tbsa-label {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    box-shadow: inset 1px 1px 2px #aaa; /* Subtle shadow */
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0 15px; /* Inner padding */
+}
 
-        /* tbsa-value styling */
-        .tbsa-value {
-            background-color: #66CCFF; /* Blue box */
-            color: #fff;
-            border: 2px solid lightgrey;
-        }
+/* Value Boxes for Age, TBSA, Weight, and Starting Rate */
+.age-value,
+.weight-value,
+.tbsa-value,
+.starting-rate-box {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-shadow: inset 1px 1px 2px #aaa; /* Subtle shadow */
+    border: 2px solid lightgrey; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0 15px; /* Inner padding */
+    width: 100px; /* Standard width */
+}
 
-        /* weight-value styling */
-        .weight-value {
-            background-color: #FF9900; /* Orange box */
-            color: #fff;
-            width: 100px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            border: 2px solid lightgrey;
+/* Specific Background Colors for Value Boxes */
+.age-value {
+    background-color: #FF0000; /* Red for Age */
+    color: #fff; /* White text */
+}
+ .content {
+            margin-left: 170px;  /* Prevent overlap with the image */
         }
+.weight-value {
+    background-color: #FF9900; /* Orange for Weight */
+    color: #fff;
+}
+.tbsa-value {
+    background-color: #66CCFF; /* Blue for TBSA */
+    color: #fff;
+}
 
-        /* starting-rate-box styling */
-        .starting-rate-box {
-            background-color: #FFEE66; /* Yellow box */
-            color: #000;
-            width: 138px;
-        }
+
+.starting-rate-box {
+    background-color: #FFEE66; /* Yellow for Starting Rate */
+    color: #000;
+    width: 138px; /* Fixed width for consistency */
+}
+
 
         .content {
-            margin-left: 170px;  /* Prevent overlap with the image */
+            margin-left: 268px;  /* Prevent overlap with the image */
+          margin-top: 150px; /* Control the vertical spacing */
         }
 
         /* Summary box */
         .summary-box {
             position: absolute;
-            top: 175px; /* Adjust to position summary box */
+            top: 160px; /* Adjust to position summary box */
             left: 275px; /* Adjust to position summary box */
             border: 6px solid #800000; /* Maroon border */
           
@@ -225,8 +269,8 @@
 .pulsing-box {
             position: relative; /* Set to relative to position children absolutely within it */
             top: 650px; /* Adjust top position in pixels as needed */
-            left: 100px; /* Adjust left position in pixels as needed */
-            width: 600px;
+            left: 35px; /* Adjust left position in pixels as needed */
+            width: 700px;
             height: 200px;
             display: flex;
             flex-direction: column; /* Stacks child elements vertically */
