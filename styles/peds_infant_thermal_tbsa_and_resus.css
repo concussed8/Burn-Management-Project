@@ -1,4 +1,4 @@
-  <title>(THERMAL) Ped infant Burn Checklist</title>
+  <title>(THERMAL) Ped Child Burn Checklist</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -180,7 +180,7 @@
 }
 .TBSA-container {
     position: relative; /* Keep it in the document flow */
-    left: 0; /* Aligns to the left of the parent container */
+    left: 0px; /* Aligns to the left of the parent container */
     top: 100px; /* Adjust vertical position */
     width: 362px; /* Fixed width to prevent resizing */
     height: auto; /* Adjust height dynamically based on content */
@@ -197,11 +197,18 @@
 }
 
 /* Styling for the diagram image */
+.diagram-image {
+    display: flex; /* Enable flexbox for centering */
+    justify-content: center; /* Horizontally center the image */
+    width: 140%; /* Take up full width of the container */
+}
+
 .diagram-image img {
-    max-width: 100%; /* Fixed width for the image */
+    max-width: 200%; /* Allow the image to scale within the container */
     height: auto; /* Maintain aspect ratio */
     border: 1px solid #ddd; /* Optional border for clarity */
     border-radius: 8px; /* Rounded corners */
+    object-fit: contain; /* Ensures the image fits within the container */
 }
 
 /* Styling for the table */
@@ -253,7 +260,7 @@ th {
     #continueButton {
 	position: absolute; /* Enables precise positioning */
       left: 780px; /* Adjust horizontal position */
-      top: 700px; /* Adjust vertical position */
+      top: 650px; /* Adjust vertical position */
       background-color: #b30000;
       color: #fff;
       font-weight: bold;
@@ -268,7 +275,7 @@ th {
     #addresButton {
 	position: absolute; /* Enables precise positioning */
       left: 200px; /* Adjust horizontal position */
-      top: 875px; /* Adjust vertical position */
+      top: 775px; /* Adjust vertical position */
       background-color: #b30000;
       color: #fff;
 font-weight: bold;
@@ -340,7 +347,7 @@ font-weight: bold;
 /* #additional-resources styling */
 #additional-resources {
   position: absolute;      /* Allows top/left positioning */
-  top: 800px;              /* Adjust vertical position */
+  top: 700px;              /* Adjust vertical position */
   left: 0px;               /* Adjust horizontal position */
   width: 175px;            /* Set image width (pixels, %, etc.) */
   height: auto;            /* Keeps aspect ratio */
@@ -353,7 +360,7 @@ font-weight: bold;
 /* #area-burned styling */
 #area-burned {
   position: absolute;      /* Allows top/left positioning */
-  top: 500px;              /* Adjust vertical position */
+  top: 400px;              /* Adjust vertical position */
   left: 400px;             /* Adjust horizontal position */
   width: 200px;            /* Set image width (pixels, %, etc.) */
   height: auto;            /* Keeps aspect ratio */
