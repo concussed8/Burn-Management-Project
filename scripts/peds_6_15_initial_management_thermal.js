@@ -1,14 +1,14 @@
 // Close the disclaimer popup when the "CLOSE" button is clicked
-document.getElementById('closeStartupBtn').addEventListener('click', function () {
+document.getElementById('closeStartupBtn').addEventListener('click', () => {
     document.getElementById('startupOverlay').style.display = 'none';
 });
 
 // Show or hide the numpad based on checkbox3
-document.getElementById('checkbox3').addEventListener('change', function () {
+document.getElementById('checkbox3').addEventListener('change', () => {
     const numpad = document.getElementById('numpad');
     const weightInput = document.querySelector('.weight-input');
 
-    if (this.checked) {
+    if (document.getElementById('checkbox3').checked) {
         numpad.style.display = 'grid';
         weightInput.focus();
     } else {
@@ -35,13 +35,14 @@ function clearInput() {
     inputBox.value = '';
 }
 
-// Save the state of all checkboxes to localStorage
-function saveCheckboxStates() {
+// Save the state of all checkboxes and fluid rate to localStorage
+function saveCheckboxStates(age) {
     const checkboxStates = {
         checkbox1: document.getElementById('checkbox1')?.checked || false,
         checkbox2: document.getElementById('checkbox2')?.checked || false,
         checkbox3: document.getElementById('checkbox3')?.checked || false,
         checkbox4: document.getElementById('checkbox4')?.checked || false,
+        fluidRate: age >= 2 && age <= 5 ? "125 mls/hr" : "250 mls/hr"
     };
     localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
 }
@@ -57,7 +58,6 @@ function validateMandatoryFields(event) {
     const weightInput = document.querySelector('.weight-input').value;
     const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage
 
-    // Debugging logs
     console.log({
         checkbox1Checked: checkbox1?.checked,
         checkbox2Checked: checkbox2?.checked,
@@ -78,8 +78,8 @@ function validateMandatoryFields(event) {
         return;
     }
 
-    // Save the checkbox states
-    saveCheckboxStates();
+    // Save the checkbox states and fluid rate
+    saveCheckboxStates(age);
 
     // Redirect based on age
     let redirectPath = '';
@@ -96,7 +96,7 @@ function validateMandatoryFields(event) {
 }
 
 // Attach event listener to the Continue button
-window.addEventListener('load', function () {
+window.addEventListener('load', () => {
     console.log("Initial management thermal page script loaded!");
 
     const continueBtn = document.getElementById('continueBtn');
