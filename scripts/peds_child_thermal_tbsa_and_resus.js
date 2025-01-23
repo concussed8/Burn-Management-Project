@@ -161,7 +161,11 @@ function executeCalculation() {
     const startingRateBox = document.getElementById('startingRateBox');
 
     if (startingRateBox) {
+        // Display the calculated rate
         startingRateBox.textContent = rate > 0 ? `${rate.toFixed(2)} mls/hr` : '';
+
+        // Save the calculated rate to localStorage
+        localStorage.setItem('startingRate', rate.toFixed(2));
     }
 }
 
