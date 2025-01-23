@@ -182,8 +182,9 @@
     position: relative; /* Keep it in the document flow */
     left: 0; /* Aligns to the left of the parent container */
     top: 100px; /* Adjust vertical position */
-   max-width: 20%; 
-    padding: 10px;
+    width: 362px; /* Fixed width to prevent resizing */
+    height: auto; /* Adjust height dynamically based on content */
+    padding: 10px; /* Adds spacing inside the container */
     background-color: #800000; /* Background color for visibility */
     border: 2px solid #ccc; /* Optional border */
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
@@ -192,12 +193,13 @@
     flex-direction: column; /* Stacks child elements vertically */
     align-items: center; /* Centers child elements horizontally */
     gap: 15px; /* Adds spacing between child elements */
+    overflow: hidden; /* Prevent content overflow */
 }
 
 /* Styling for the diagram image */
 .diagram-image img {
-    max-width: 100%; /* Allows the image to scale within the container */
-    height: auto; /* Maintains aspect ratio */
+    max-width: 360px; /* Fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
     border: 1px solid #ddd; /* Optional border for clarity */
     border-radius: 8px; /* Rounded corners */
 }
