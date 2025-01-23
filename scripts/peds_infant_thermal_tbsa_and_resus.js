@@ -68,13 +68,13 @@ function handleKeypadInput(key) {
 
 // Validate individual cell input
 const maxValues = {
-    'head-neck': 9,
+    'head-neck': 18,
     'r-arm': 9,
     'l-arm': 9,
     'trunk': 36,
     'groin': 1,
-    'r-leg': 18,
-    'l-leg': 18
+    'r-leg': 14,
+    'l-leg': 14
 };
 
 const regionNames = {
