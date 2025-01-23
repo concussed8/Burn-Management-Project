@@ -16,6 +16,10 @@ function validateAgeAndRedirect(event) {
         return;
     }
 
+    // Store the age in localStorage
+    localStorage.setItem('age', age);
+    console.log(`Age ${age} saved to localStorage.`);
+
     // Redirect based on the age range
     let redirectPath = '';
     if (age < 2) {
