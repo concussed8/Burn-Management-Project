@@ -35,6 +35,17 @@ function clearInput() {
     inputBox.value = '';
 }
 
+// Save the state of all checkboxes to localStorage
+function saveCheckboxStates() {
+    const checkboxStates = {
+        checkbox1: document.getElementById('checkbox1')?.checked || false,
+        checkbox2: document.getElementById('checkbox2')?.checked || false,
+        checkbox3: document.getElementById('checkbox3')?.checked || false,
+        checkbox4: document.getElementById('checkbox4')?.checked || false,
+    };
+    localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
+}
+
 // Validate mandatory fields and redirect based on age and weight
 function validateMandatoryFields(event) {
     event.preventDefault(); // Prevent default form submission behavior
@@ -56,6 +67,7 @@ function validateMandatoryFields(event) {
         age,
     });
 
+    // Validate checkboxes and inputs
     if (!checkbox1?.checked || !checkbox2?.checked || !checkbox3?.checked || !checkbox4?.checked) {
         alert('Please ensure all mandatory fields are completed.');
         return;
@@ -65,6 +77,9 @@ function validateMandatoryFields(event) {
         alert('Please enter a valid age between 2 and 15.');
         return;
     }
+
+    // Save the checkbox states
+    saveCheckboxStates();
 
     // Redirect based on age
     let redirectPath = '';
@@ -98,5 +113,14 @@ window.addEventListener('load', function () {
         if (ageDisplay) {
             ageDisplay.value = age; // Populate the age input with the saved age
         }
+    }
+
+    // Restore checkbox states from localStorage
+    const savedCheckboxStates = JSON.parse(localStorage.getItem('checkboxStates'));
+    if (savedCheckboxStates) {
+        document.getElementById('checkbox1').checked = savedCheckboxStates.checkbox1 || false;
+        document.getElementById('checkbox2').checked = savedCheckboxStates.checkbox2 || false;
+        document.getElementById('checkbox3').checked = savedCheckboxStates.checkbox3 || false;
+        document.getElementById('checkbox4').checked = savedCheckboxStates.checkbox4 || false;
     }
 });
