@@ -182,7 +182,7 @@
     position: relative; /* Keep it in the document flow */
     left: 0; /* Aligns to the left of the parent container */
     top: 100px; /* Adjust vertical position */
-   max-width: 19.5%; 
+   max-width: 20%; 
     padding: 10px;
     background-color: #800000; /* Background color for visibility */
     border: 2px solid #ccc; /* Optional border */
