@@ -1,39 +1,36 @@
 // Function to populate the High Risk Considerations list
 function populateHighRiskList() {
   const highRiskList = document.getElementById('highRiskList');
-  const highRiskConsiderations = JSON.parse(localStorage.getItem('highRiskConsiderations'));
-  const age = localStorage.getItem('age'); // Retrieve age from localStorage
+  if (!highRiskList) {
+    console.error("Element 'highRiskList' not found!");
+    return;
+  }
+
+  const highRiskConsiderations = JSON.parse(localStorage.getItem('highRiskConsiderations')) || {};
+  const age = localStorage.getItem('age') || 'N/A';
 
   console.log('High Risk Considerations:', highRiskConsiderations);
   console.log('Age:', age);
 
-  if (highRiskConsiderations || age) {
-    let hasCheckedItems = false;
+  let hasCheckedItems = false;
 
-    if (age !== null) {
-      const ageItem = document.createElement('li');
-      ageItem.textContent = `Age: ${age} years`;
-      highRiskList.appendChild(ageItem);
+  if (age !== 'N/A') {
+    const ageItem = document.createElement('li');
+    ageItem.textContent = `Age: ${age} years`;
+    highRiskList.appendChild(ageItem);
+    hasCheckedItems = true;
+  }
+
+  Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
+    if (isChecked) {
       hasCheckedItems = true;
-    }
-
-    if (highRiskConsiderations) {
-      Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
-        if (isChecked) {
-          hasCheckedItems = true;
-          const listItem = document.createElement('li');
-          listItem.textContent = formatHighRisk(key);
-          highRiskList.appendChild(listItem);
-        }
-      });
-    }
-
-    if (!hasCheckedItems) {
       const listItem = document.createElement('li');
-      listItem.textContent = "No high-risk considerations selected.";
+      listItem.textContent = formatHighRisk(key);
       highRiskList.appendChild(listItem);
     }
-  } else {
+  });
+
+  if (!hasCheckedItems) {
     const listItem = document.createElement('li');
     listItem.textContent = "No high-risk considerations selected.";
     highRiskList.appendChild(listItem);
@@ -42,16 +39,15 @@ function populateHighRiskList() {
 
 // Function to load and display the starting rate from memory
 function loadStartingRate() {
-  const startingRate = localStorage.getItem('startingRate');
   const startingRateBox = document.getElementById('startingRateBox');
-
-  console.log('Starting Rate:', startingRate);
-
-  if (startingRate && startingRateBox) {
-    startingRateBox.innerText = startingRate;
-  } else if (startingRateBox) {
-    startingRateBox.innerText = 'No data available';
+  if (!startingRateBox) {
+    console.error("Element 'startingRateBox' not found!");
+    return;
   }
+
+  const startingRate = localStorage.getItem('startingRate') || 'No data available';
+  console.log('Starting Rate:', startingRate);
+  startingRateBox.innerText = startingRate;
 }
 
 // Run functions on page load
