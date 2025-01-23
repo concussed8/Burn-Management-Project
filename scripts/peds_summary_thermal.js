@@ -4,10 +4,12 @@ function populateHighRiskList() {
   const highRiskConsiderations = JSON.parse(localStorage.getItem('highRiskConsiderations'));
   const age = localStorage.getItem('age'); // Retrieve age from localStorage
 
+  console.log('High Risk Considerations:', highRiskConsiderations);
+  console.log('Age:', age);
+
   if (highRiskConsiderations || age) {
     let hasCheckedItems = false;
 
-    // Add the age if it exists
     if (age !== null) {
       const ageItem = document.createElement('li');
       ageItem.textContent = `Age: ${age} years`;
@@ -15,7 +17,6 @@ function populateHighRiskList() {
       hasCheckedItems = true;
     }
 
-    // Add other high-risk considerations
     if (highRiskConsiderations) {
       Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
         if (isChecked) {
@@ -39,20 +40,17 @@ function populateHighRiskList() {
   }
 }
 
-// Function to set value in a box
-function setValue(elementId, value) {
-  document.getElementById(elementId).innerText = value !== undefined ? value : 'No data available';
-}
-
 // Function to load and display the starting rate from memory
 function loadStartingRate() {
-  const startingRate = localStorage.getItem('startingRate'); // Retrieve starting rate from localStorage
+  const startingRate = localStorage.getItem('startingRate');
   const startingRateBox = document.getElementById('startingRateBox');
 
+  console.log('Starting Rate:', startingRate);
+
   if (startingRate && startingRateBox) {
-    startingRateBox.innerText = startingRate; // Display the stored starting rate
+    startingRateBox.innerText = startingRate;
   } else if (startingRateBox) {
-    startingRateBox.innerText = 'No data available'; // Fallback if no data is stored
+    startingRateBox.innerText = 'No data available';
   }
 }
 
@@ -61,8 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
   populateHighRiskList();
 
   const tableData = JSON.parse(localStorage.getItem('burnCalculatorTable')) || {};
+  console.log('Table Data:', tableData);
 
-  // Set values directly from localStorage
   setValue('summaryValue', tableData['head-neck']);
   setValue('summaryValue2', tableData['r-arm']);
   setValue('summaryValue3', tableData['l-arm']);
@@ -74,6 +72,5 @@ document.addEventListener('DOMContentLoaded', () => {
   setValue('tbsaValue', tableData['total']);
   setValue('weightValue', tableData['weight']);
 
-  // Load and display the starting rate
   loadStartingRate();
 });
