@@ -1,5 +1,4 @@
 // Close the disclaimer popup when the "CLOSE" button is clicked
-
 document.getElementById('closeStartupBtn').addEventListener('click', function () {
     document.getElementById('startupOverlay').style.display = 'none';
 });
@@ -34,18 +33,37 @@ function clearInput() {
     inputBox.value = '';
 }
 
-function validateMandatoryFields() {
+function validateMandatoryFields(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+
     const checkbox1 = document.getElementById('checkbox1');
     const checkbox2 = document.getElementById('checkbox2');
     const checkbox3 = document.getElementById('checkbox3');
     const checkbox4 = document.getElementById('checkbox4');
     const weightInput = document.querySelector('.weight-input').value;
+    const ageInput = document.getElementById('ageInput');
+    const age = parseInt(ageInput.value, 10); // Parse age input as an integer
 
     if (!checkbox1.checked || !checkbox2.checked || !checkbox3.checked || !checkbox4.checked) {
         alert('Please ensure all mandatory fields are completed.');
-    } else {
-          // Redirect to the thermal TBSA and resus page with weight parameter
-window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+        return;
+    }
+
+    if (isNaN(age) || age < 2 || age > 15) {
+        alert('Please enter a valid age between 2 and 15.');
+        return;
+    }
+
+    // Redirect based on age
+    let redirectPath = '';
+    if (age === 2 || age === 3) {
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_infant_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+    } else if (age >= 4 && age <= 15) {
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+    }
+
+    if (redirectPath) {
+        window.location.href = redirectPath; // Redirect to the appropriate page
     }
 }
 
