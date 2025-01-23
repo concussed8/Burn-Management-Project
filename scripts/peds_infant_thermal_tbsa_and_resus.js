@@ -72,7 +72,7 @@ const maxValues = {
     'r-arm': 9,
     'l-arm': 9,
     'trunk': 36,
-    'groin': 1,
+    'groin': 0,
     'r-leg': 14,
     'l-leg': 14
 };
