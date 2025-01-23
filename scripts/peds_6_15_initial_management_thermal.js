@@ -3,6 +3,7 @@ document.getElementById('closeStartupBtn').addEventListener('click', function ()
     document.getElementById('startupOverlay').style.display = 'none';
 });
 
+// Show or hide the numpad based on checkbox3
 document.getElementById('checkbox3').addEventListener('change', function () {
     const numpad = document.getElementById('numpad');
     const weightInput = document.querySelector('.weight-input');
@@ -15,6 +16,7 @@ document.getElementById('checkbox3').addEventListener('change', function () {
     }
 });
 
+// Functions for numpad operations
 function showNumpad() {
     document.getElementById('numpad').style.display = 'grid';
 }
@@ -33,6 +35,7 @@ function clearInput() {
     inputBox.value = '';
 }
 
+// Validate mandatory fields and redirect based on age and weight
 function validateMandatoryFields(event) {
     event.preventDefault(); // Prevent default form submission behavior
 
@@ -41,10 +44,19 @@ function validateMandatoryFields(event) {
     const checkbox3 = document.getElementById('checkbox3');
     const checkbox4 = document.getElementById('checkbox4');
     const weightInput = document.querySelector('.weight-input').value;
-    const ageInput = document.getElementById('ageInput');
-    const age = parseInt(ageInput.value, 10); // Parse age input as an integer
+    const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage
 
-    if (!checkbox1.checked || !checkbox2.checked || !checkbox3.checked || !checkbox4.checked) {
+    // Debugging logs
+    console.log({
+        checkbox1Checked: checkbox1?.checked,
+        checkbox2Checked: checkbox2?.checked,
+        checkbox3Checked: checkbox3?.checked,
+        checkbox4Checked: checkbox4?.checked,
+        weightInput,
+        age,
+    });
+
+    if (!checkbox1?.checked || !checkbox2?.checked || !checkbox3?.checked || !checkbox4?.checked) {
         alert('Please ensure all mandatory fields are completed.');
         return;
     }
@@ -59,10 +71,11 @@ function validateMandatoryFields(event) {
     if (age === 2 || age === 3) {
         redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_infant_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     } else if (age >= 4 && age <= 15) {
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_thermal_tbsa_and_resus.htmlweight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     }
 
     if (redirectPath) {
+        console.log("Redirecting to:", redirectPath); // Debugging log
         window.location.href = redirectPath; // Redirect to the appropriate page
     }
 }
@@ -70,8 +83,20 @@ function validateMandatoryFields(event) {
 // Attach event listener to the Continue button
 window.addEventListener('load', function () {
     console.log("Initial management thermal page script loaded!");
+
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
         continueBtn.addEventListener('click', validateMandatoryFields);
+    } else {
+        console.error("Continue button not found!");
+    }
+
+    // Display saved age (if available)
+    const age = localStorage.getItem('age');
+    if (age) {
+        const ageDisplay = document.getElementById('ageInput');
+        if (ageDisplay) {
+            ageDisplay.value = age; // Populate the age input with the saved age
+        }
     }
 });
