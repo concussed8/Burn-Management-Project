@@ -3,6 +3,7 @@ document.getElementById('closeStartupBtn').addEventListener('click', function ()
     document.getElementById('startupOverlay').style.display = 'none';
 });
 
+// Show or hide the numpad based on checkbox3
 document.getElementById('checkbox3').addEventListener('change', function () {
     const numpad = document.getElementById('numpad');
     const weightInput = document.querySelector('.weight-input');
@@ -15,6 +16,7 @@ document.getElementById('checkbox3').addEventListener('change', function () {
     }
 });
 
+// Functions for numpad operations
 function showNumpad() {
     document.getElementById('numpad').style.display = 'grid';
 }
@@ -33,18 +35,16 @@ function clearInput() {
     inputBox.value = '';
 }
 
+// Validate mandatory fields and redirect based on age and weight
 function validateMandatoryFields(event) {
     event.preventDefault(); // Prevent default form submission behavior
-
-    console.log("Continue button clicked!"); // Log to confirm click event is registered
 
     const checkbox1 = document.getElementById('checkbox1');
     const checkbox2 = document.getElementById('checkbox2');
     const checkbox3 = document.getElementById('checkbox3');
     const checkbox4 = document.getElementById('checkbox4');
-    const weightInput = document.querySelector('.weight-input')?.value || '';
-    const ageInput = document.getElementById('ageInput');
-    const age = parseInt(ageInput?.value, 10); // Parse age input as an integer
+    const weightInput = document.querySelector('.weight-input').value;
+    const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage
 
     // Debugging logs
     console.log({
@@ -53,7 +53,7 @@ function validateMandatoryFields(event) {
         checkbox3Checked: checkbox3?.checked,
         checkbox4Checked: checkbox4?.checked,
         weightInput,
-        age
+        age,
     });
 
     if (!checkbox1?.checked || !checkbox2?.checked || !checkbox3?.checked || !checkbox4?.checked) {
@@ -83,11 +83,20 @@ function validateMandatoryFields(event) {
 // Attach event listener to the Continue button
 window.addEventListener('load', function () {
     console.log("Initial management thermal page script loaded!");
+
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
-        console.log("Continue button found. Adding event listener.");
         continueBtn.addEventListener('click', validateMandatoryFields);
     } else {
         console.error("Continue button not found!");
+    }
+
+    // Display saved age (if available)
+    const age = localStorage.getItem('age');
+    if (age) {
+        const ageDisplay = document.getElementById('ageInput');
+        if (ageDisplay) {
+            ageDisplay.value = age; // Populate the age input with the saved age
+        }
     }
 });
