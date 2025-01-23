@@ -1,242 +1,420 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background-color: #f9f9f9;
-}
+  <title>(THERMAL) Ped Child Burn Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0px;
+    }
 
-.container {
-  border: 6px solid #800000;
-  border-radius: 8px;
-  background-color: #fff;
-  width: 60%; /* Ensure the semicolon is present */
-  margin: 0 auto;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
- 
-}
-
-
-    .header {
+    /* NEW: Updated h1 style for a dark-red header box */
+    h1 {
       background-color: #800000;
-      color: white;
+      color: #fff;
       font-weight: bold;
       text-align: center;
       padding: 15px;
       border-radius: 8px 8px 0 0;
       font-size: 1.5em;
+      margin-top: 0;
+      margin-bottom: 20px;
     }
 
-    .content {
-      padding: 20px;
-      line-height: 1.6;
-    }
-
-    .content ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .content li {
-      margin: 10px 0;
-    }
-
-    .content label {
+    .container {
       display: flex;
-      align-items: flex-start;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 40px; /* space between left section and right section */
     }
-
-    .content input[type="checkbox"] {
-      margin-top: 2px;
-    }
-
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.05); }
-      100% { transform: scale(1); }
-    }
-
-    .highlight-box {
-      text-align: center;
-      margin: 20px 0;
-      animation: pulse 2s infinite ease-in-out;
-    }
-
-    .highlight-text {
-      font-size: 1.1em;
-      color: #0056b3;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    .blue-box {
-      background-color: #003366;
-      color: white;
-      font-weight: bold;
-      padding: 15px;
-      border-radius: 5px;
-      font-size: 1em;
-      display: inline-block;
-    }
-
-    .weight-box-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-      justify-content: center;
-    }
-
-    .weight-label {
-      display: inline-block;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      background-color: #f9f9f9;
-      font-weight: bold;
-      height: 36px;
-      line-height: 36px;
-    }
-
-    .weight-input {
-      display: inline-block;
-      width: 80px;
-      border: 1px solid #FF9900;
-      border-radius: 5px;
-      background-color: #FF9900;
-      color: white;
-      font-weight: bold;
-      text-align: center;
-      height: 36px;
-      line-height: 36px;
-      font-size: 20px;
-    }
-
-    .numpad-container {
-      background-color: #d3d3d3;
-      width: 240px;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-      display: none;
+    .keypad {
+	position: absolute;
+      left: 415px;
+      top: 100px;
+      display: grid;
       grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 60px;
       gap: 10px;
-      grid-template-rows: auto auto auto auto;
-      position: absolute;
-      z-index: 1000;
-      top: 25%;
-      left: 50%;
-      transform: translate(-50%, -30%);
+      max-width: 250px;
+      border-radius: 8px; /* Rounds the corners */
+      padding: 10px;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+      background-color: #696969;
+    }
+    .key {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      line-height: 60px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .key:active {
+      background-color: #ddd;
+    }
+    .special-key {
+      background-color: #ff5858;
+      color: #fff;
     }
 
-    .button {
+    .panels-group {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
+      gap: 75px; /* bigger gap as in your current baseline code */
+    }
+
+    .tbsa-panel {
+      display: flex;
       align-items: center;
-      background-color: #ffffff;
-      border: none;
-      border-radius: 5px;
+      gap: 5px;
+    }
+    .tbsa-label,
+    .tbsa-value {
       height: 50px;
-      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: inset 1px 1px 2px #aaa;
+      border: 2px solid #ccc;
+      padding: 0 15px;
+    }
+    .tbsa-label {
+      background-color: #fff;
+      color: #000;
+    }
+    .tbsa-value {
+      background-color: #66CCFF; /* The first "blue" box */
+      color: #66CCFF
+    }
+
+    .weight-panel {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .weight-label,
+    .weight-value {
+      height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      box-shadow: inset 1px 1px 2px #aaa;
+      border: 2px solid #ccc;
+      padding: 0 15px;
+    }
+    .weight-label {
+      background-color: #fff;
+      color: #000;
+    }
+    .weight-value {
+      background-color: #ffd699; /* The first "orange" box */
+      color: #FF9900;
+      width: 100px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       cursor: pointer;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
+    .weight-value.selected-cell {
+      background-color: #ffd699;
+      border: 2px solid #ff6600;
+ }
 
-    .button.clear {
-      background-color: #ff4d4d;
-      color: #ffffff;
+    .calc-diagram {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 3px dashed #000;
+      padding: 10px;
+      background-color: #fafafa;
     }
-
-    .button.close {
-      background-color: #e0e0e0;
-    }
-
-    .button.zero {
-      grid-column: 2;
-    }
-
-    .button:hover {
-      filter: brightness(0.9);
-    }
-
-    .footer {
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .footer button {
-      background-color: #800000;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .footer button:hover {
-      background-color: #a00000;
-    }
-
-    .mandatory-info {
-      color: red;
+    .calc-diagram .tinyBox {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 40px;
+      color: #fff;
       font-weight: bold;
-      text-align: center;
-      margin-top: 10px;
+      box-shadow: inset 1px 1px 2px #aaa;
+      border: 2px solid #ccc;
     }
 
-    .mandatory-field {
-      color: red;
+    /* The second "orange" box (#calcOrangeBox) and second "blue" box (#calcBlueBox)
+       are inside the calc-diagram */
+    .starting-rate-panel {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .starting-rate-box {
+      width: 138px;
+      height: 50px;
+      background-color: #FFEE66;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
-      margin-left: 10px;
-    }
-
-    /* Prevent zoom-related formatting issues */
-    html {
-      zoom: 100%;
-      overflow-x: hidden;
-    }
-
-    @media (min-width: 1200px) {
-      .container {
-        width: 50%;
-      }
-    .disclaimerpopup-box {
-    position: absolute;
-    top: 50%; 
-    left: 50%;
-    border: 8px solid #800000; /* Consistent border style */
-    font-size: 65px; /* Font size of the text inside the popup */
-    font-weight: bold;
-    transform: translate(-50%, -50%);
-    width: 100%; /* Take up the full width of its container */
-    max-width: 800px; /* Maximum width for larger screens */
-    background: #fff; /* White background */
-    padding: 20px; /* Space inside the popup */
-    border-radius: 10px; /* Rounded corners */
+      font-size: 1.2em;
+      box-shadow: inset 1px 1px 2px #aaa;
+      border: 2px solid #ccc;
+    
+  
+  }
+.calc-container {
+    position: absolute; /* Enables precise positioning */
+    left: 700px; /* Adjust horizontal position */
+    top: 120px; /* Adjust vertical position */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for visibility */
+    border: 2px solid #ccc; /* Optional border for clarity */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
+    border-radius: 8px; /* Rounds the corners */
     display: flex;
-    flex-direction: column;
-    text-align: left; /* Default text alignment */
-    align-items: center; /* Centers the button horizontally */
-    justify-content: center; /* Centers content vertically */
-    box-sizing: border-box; /* Ensure padding and borders are included in the size */
-    height: auto; /* Dynamically adjust height */
-    word-wrap: break-word; /* Prevent text overflow */
+    flex-direction: column; /* Stacks panels vertically */
+    gap: 15px; /* Adds spacing between child elements */
+}
+.TBSA-container {
+    position: relative; /* Keep it in the document flow */
+    left: 0; /* Aligns to the left of the parent container */
+    top: 100px; /* Adjust vertical position */
+    width: 362px; /* Fixed width to prevent resizing */
+    height: auto; /* Adjust height dynamically based on content */
+    padding: 10px; /* Adds spacing inside the container */
+    background-color: #800000; /* Background color for visibility */
+    border: 2px solid #ccc; /* Optional border */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
+    border-radius: 8px; /* Rounds the corners */
+    display: flex;
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items: center; /* Centers child elements horizontally */
+    gap: 15px; /* Adds spacing between child elements */
+    overflow: hidden; /* Prevent content overflow */
 }
 
-.close-btn {
-    font-size: 20px; /* Adjust font size */
-    font-weight: bold; /* Bold text */
-    margin-top: 20px; /* Adds space between the button and other elements */
-    padding: 15px 30px; /* Adjust button size */
-    cursor: pointer;
-    background-color: #d9534f; /* Red shade */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    text-align: center; /* Centers the button text */
+/* Styling for the diagram image */
+.diagram-image img {
+    max-width: 360px; /* Fixed width for the image */
+    height: auto; /* Maintain aspect ratio */
+    border: 1px solid #ddd; /* Optional border for clarity */
+    border-radius: 8px; /* Rounded corners */
 }
 
-.close-btn:hover {
-    background-color: #c9302c; /* Darker red on hover */
+/* Styling for the table */
+table {
+    width: 100%; /* Table spans the width of the container */
+    border-collapse: collapse; /* Remove gaps between table cells */
+    margin-top: 20px; /* Adds spacing above the table */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Light gray borders for cells */
+    padding: 8px;
+}
+
+th {
+    background-color: #f0f0f0; /* Light background for header cells */
+    text-align: left; /* Align header text to the left */
+}
+
+.body-part-label {
+    color: #333; /* Darker text for readability */
+    font-weight: bold;
+}
+
+/* Background colors for each body part */
+.head-neck { background-color: #00FFFF; }
+.r-arm     { background-color: #99FF99; }
+.l-arm     { background-color: #99FF99; }
+.trunk     { background-color: #FFCCCC; }
+.groin     { background-color: #FFD9B3; }
+.r-leg     { background-color: #FFFF99; }
+.l-leg     { background-color: #FFFF99; }
+.total     { background-color: #CCFFFF; }
+
+.input-cell {
+    background-color: #fff; /* White background for cells */
+    text-align: center; /* Center-align text */
+    cursor: pointer; /* Pointer cursor for interactivity */
+    user-select: none; /* Prevent text selection */
+}
+
+.selected-cell {
+    background-color: #eaf2ff; /* Highlighted background for selected cells */
+    border: 2px solid #3399ff; /* Blue border for selection */
+}
+
+    /* CONTINUE button styling (red with white text).
+       margin-top: auto to push it to the bottom of the .panels-group column */
+    #continueButton {
+	position: absolute; /* Enables precise positioning */
+      left: 780px; /* Adjust horizontal position */
+      top: 700px; /* Adjust vertical position */
+      background-color: #b30000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      padding: 15px 30px;
+      font-size: 2.0em;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    #addresButton {
+	position: absolute; /* Enables precise positioning */
+      left: 200px; /* Adjust horizontal position */
+      top: 875px; /* Adjust vertical position */
+      background-color: #b30000;
+      color: #fff;
+font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      margin-top: auto;
+ }
+/* Overlay for the popup */
+        .popup-overlay {
+    display: none; /* Hide the popup overlay initially */
+    position: fixed; /* Positioned relative to the viewport */
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+    z-index: 1000; /* Makes sure the overlay is on top */
+        }
+
+        /* Popup box styling */
+        .popup-box {
+            position: absolute;
+            left: 100px; /* Adjust horizontal position */
+            top: 100px;  /* Adjust vertical position */
+            width: 400px; /* Adjust width */
+            height: 400px; /* Adjust height */
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image inside the popup */
+        .popup-image {
+            width: 100%; /* Adjust image width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px;
+        }
+
+        /* Close button styling */
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .close-btn:hover {
+            background-color: #c9302c;
+        }
+ /* Keyframe definition */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* #additional-resources styling */
+#additional-resources {
+  position: absolute;      /* Allows top/left positioning */
+  top: 800px;              /* Adjust vertical position */
+  left: 0px;               /* Adjust horizontal position */
+  width: 175px;            /* Set image width (pixels, %, etc.) */
+  height: auto;            /* Keeps aspect ratio */
+  border: 0px solid #000;  /* Optional border for clarity */
+  
+  /* Add the pulse animation */
+  animation: pulse 1s infinite ease-in-out;
+}
+
+/* #area-burned styling */
+#area-burned {
+  position: absolute;      /* Allows top/left positioning */
+  top: 500px;              /* Adjust vertical position */
+  left: 400px;             /* Adjust horizontal position */
+  width: 200px;            /* Set image width (pixels, %, etc.) */
+  height: auto;            /* Keeps aspect ratio */
+  border: 0px solid #000;  /* Optional border for clarity */
+  
+  /* Add the pulse animation */
+  animation: pulse 1s infinite ease-in-out;
+}
+
+.parkland-container {
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.parkland-box {
+    font-family: 'Garamond', serif;
+    font-size: 27px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #800000; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #800000; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 0px; /* Set vertical position */
+    left: 700px; /* Set horizontal position */
+}
+
+.ruleof9header-container {
+    position: relative; /* Keeps the container relative for positioning child elements */
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+}
+
+.ruleof9header-box {
+    font-family: 'Garamond', serif;
+    font-size: 23px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #800000; /* Text color */
+    background-color: #fff; /* White background */
+    border: 2px solid #800000; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 0px; /* Set vertical position */
+    left: 3px; /* Set horizontal position */
 }
