@@ -216,7 +216,7 @@ window.addEventListener('load', () => {
     if (continueButton) {
         continueButton.addEventListener('click', () => {
             saveTableValues();
-            window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_infant_summary_thermal.html?ts=${Date.now()}`;
+            window.location.href = `https://concussed8.github.io/Burn-Management-Project/page/peds_summary_thermal.html?ts=${Date.now()}`;
         });
     }
 });
