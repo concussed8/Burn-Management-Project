@@ -36,15 +36,27 @@ function clearInput() {
 function validateMandatoryFields(event) {
     event.preventDefault(); // Prevent default form submission behavior
 
+    console.log("Continue button clicked!"); // Log to confirm click event is registered
+
     const checkbox1 = document.getElementById('checkbox1');
     const checkbox2 = document.getElementById('checkbox2');
     const checkbox3 = document.getElementById('checkbox3');
     const checkbox4 = document.getElementById('checkbox4');
-    const weightInput = document.querySelector('.weight-input').value;
+    const weightInput = document.querySelector('.weight-input')?.value || '';
     const ageInput = document.getElementById('ageInput');
-    const age = parseInt(ageInput.value, 10); // Parse age input as an integer
+    const age = parseInt(ageInput?.value, 10); // Parse age input as an integer
 
-    if (!checkbox1.checked || !checkbox2.checked || !checkbox3.checked || !checkbox4.checked) {
+    // Debugging logs
+    console.log({
+        checkbox1Checked: checkbox1?.checked,
+        checkbox2Checked: checkbox2?.checked,
+        checkbox3Checked: checkbox3?.checked,
+        checkbox4Checked: checkbox4?.checked,
+        weightInput,
+        age
+    });
+
+    if (!checkbox1?.checked || !checkbox2?.checked || !checkbox3?.checked || !checkbox4?.checked) {
         alert('Please ensure all mandatory fields are completed.');
         return;
     }
@@ -63,6 +75,7 @@ function validateMandatoryFields(event) {
     }
 
     if (redirectPath) {
+        console.log("Redirecting to:", redirectPath); // Debugging log
         window.location.href = redirectPath; // Redirect to the appropriate page
     }
 }
@@ -72,6 +85,9 @@ window.addEventListener('load', function () {
     console.log("Initial management thermal page script loaded!");
     const continueBtn = document.getElementById('continueBtn');
     if (continueBtn) {
+        console.log("Continue button found. Adding event listener.");
         continueBtn.addEventListener('click', validateMandatoryFields);
+    } else {
+        console.error("Continue button not found!");
     }
 });
