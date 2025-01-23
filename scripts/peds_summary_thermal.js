@@ -5,7 +5,7 @@ function populateHighRiskList() {
   const age = localStorage.getItem('age'); // Retrieve age from localStorage
 
   // Display the age in the designated age box if it exists
-  if (age !== null) {
+  if (age) {
     const ageValueBox = document.getElementById('ageValue');
     if (ageValueBox) {
       ageValueBox.innerText = `${age} years`; // Display age in the age box
@@ -14,63 +14,73 @@ function populateHighRiskList() {
 
   // Populate the High Risk Considerations list
   if (highRiskConsiderations) {
-    let hasCheckedItems = false;
-
-    Object.entries(highRiskConsiderations).forEach(([key, isChecked]) => {
-      if (isChecked) {
-        hasCheckedItems = true;
+    const entries = Object.entries(highRiskConsiderations).filter(([_, isChecked]) => isChecked);
+    if (entries.length > 0) {
+      entries.forEach(([key]) => {
         const listItem = document.createElement('li');
         listItem.textContent = formatHighRisk(key);
         highRiskList.appendChild(listItem);
-      }
-    });
-
-    if (!hasCheckedItems) {
-      const listItem = document.createElement('li');
-      listItem.textContent = "No high-risk considerations selected.";
-      highRiskList.appendChild(listItem);
+      });
+    } else {
+      highRiskList.innerHTML = '<li>No high-risk considerations selected.</li>';
     }
   } else {
-    const listItem = document.createElement('li');
-    listItem.textContent = "No high-risk considerations selected.";
-    highRiskList.appendChild(listItem);
+    highRiskList.innerHTML = '<li>No high-risk considerations selected.</li>';
   }
 }
 
-// Function to set value in a box
+// Function to set a value in a specific element
 function setValue(elementId, value) {
-  document.getElementById(elementId).innerText = value !== undefined ? value : 'No data available';
+  const element = document.getElementById(elementId);
+  if (element) {
+    element.innerText = value !== undefined ? value : 'No data available';
+  }
 }
 
-// Function to load and display the starting rate from memory
+// Function to load and display the starting rate from localStorage
 function loadStartingRate() {
   const startingRate = localStorage.getItem('startingRate'); // Retrieve starting rate from localStorage
   const startingRateBox = document.getElementById('startingRateBox');
 
-  if (startingRate && startingRateBox) {
-    startingRateBox.innerText = startingRate; // Display the stored starting rate
-  } else if (startingRateBox) {
-    startingRateBox.innerText = 'No data available'; // Fallback if no data is stored
+  if (startingRateBox) {
+    startingRateBox.innerText = startingRate || 'No data available'; // Display the stored rate or fallback text
   }
 }
 
-// Run functions on page load
+// Function to format high-risk consideration labels
+function formatHighRisk(key) {
+  const riskLabels = {
+    anticoagulation: 'Anticoagulation',
+    diabetes: 'Diabetes',
+    pregnancy: 'Pregnancy',
+    immunosuppression: 'Immunosuppression',
+    specialCare: 'Requires special social, emotional, or rehabilitation care',
+    none: 'No high-risk considerations'
+  };
+
+  return riskLabels[key] || key; // Return formatted label or key as fallback
+}
+
+// Run initialization functions on page load
 document.addEventListener('DOMContentLoaded', () => {
   populateHighRiskList();
 
+  // Retrieve and populate burn calculator data
   const tableData = JSON.parse(localStorage.getItem('burnCalculatorTable')) || {};
+  const fieldsToUpdate = [
+    { id: 'summaryValue', key: 'head-neck' },
+    { id: 'summaryValue2', key: 'r-arm' },
+    { id: 'summaryValue3', key: 'l-arm' },
+    { id: 'summaryValue4', key: 'trunk' },
+    { id: 'summaryValue5', key: 'groin' },
+    { id: 'summaryValue6', key: 'r-leg' },
+    { id: 'summaryValue7', key: 'l-leg' },
+    { id: 'summaryValue8', key: 'total' },
+    { id: 'tbsaValue', key: 'total' },
+    { id: 'weightValue', key: 'weight' }
+  ];
 
-  // Set values directly from localStorage
-  setValue('summaryValue', tableData['head-neck']);
-  setValue('summaryValue2', tableData['r-arm']);
-  setValue('summaryValue3', tableData['l-arm']);
-  setValue('summaryValue4', tableData['trunk']);
-  setValue('summaryValue5', tableData['groin']);
-  setValue('summaryValue6', tableData['r-leg']);
-  setValue('summaryValue7', tableData['l-leg']);
-  setValue('summaryValue8', tableData['total']);
-  setValue('tbsaValue', tableData['total']);
-  setValue('weightValue', tableData['weight']);
+  fieldsToUpdate.forEach(({ id, key }) => setValue(id, tableData[key]));
 
   // Load and display the starting rate
   loadStartingRate();
