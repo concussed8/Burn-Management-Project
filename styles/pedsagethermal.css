@@ -20,6 +20,7 @@ body {
     padding: 20px; /* Inner spacing */
     box-sizing: border-box; /* Include padding and border in size calculations */
     top: 50px; /* Position from the top */
+    overflow: hidden;
 }
 
 /* Header */
