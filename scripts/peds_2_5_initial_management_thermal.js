@@ -35,7 +35,7 @@ function clearInput() {
     inputBox.value = '';
 }
 
-// Validate mandatory fields and redirect based on age and weight
+// Validate mandatory fields, save data, and redirect based on age and weight
 function validateMandatoryFields(event) {
     event.preventDefault(); // Prevent default form submission behavior
 
@@ -65,6 +65,16 @@ function validateMandatoryFields(event) {
         alert('Please enter a valid age between 2 and 15.');
         return;
     }
+
+    // Save checkbox states and fluid rate to localStorage
+    const checkboxStates = {
+        checkbox1: checkbox1.checked,
+        checkbox2: checkbox2.checked,
+        checkbox3: checkbox3.checked,
+        checkbox4: checkbox4.checked,
+        fluidRate: age >= 2 && age <= 5 ? "125 mls/hr" : "250 mls/hr"
+    };
+    localStorage.setItem('checkboxStates', JSON.stringify(checkboxStates));
 
     // Redirect based on age
     let redirectPath = '';
