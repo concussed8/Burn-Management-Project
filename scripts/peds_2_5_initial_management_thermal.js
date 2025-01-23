@@ -59,7 +59,7 @@ function validateMandatoryFields(event) {
     if (age === 2 || age === 3) {
         redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_infant_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     } else if (age >= 4 && age <= 15) {
-        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
+        redirectPath = `https://concussed8.github.io/Burn-Management-Project/page/peds_child_thermal_tbsa_and_resus.html?weight=${encodeURIComponent(weightInput)}&ts=${Date.now()}`;
     }
 
     if (redirectPath) {
