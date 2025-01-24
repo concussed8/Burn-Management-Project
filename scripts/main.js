@@ -63,7 +63,6 @@
       if (chemicalIcon) {
         chemicalIcon.addEventListener("click", function () {
           loadPage('chemical'); // Redirect and load CSS for page2chemical
-        });
-      }
+        }
     });
 
