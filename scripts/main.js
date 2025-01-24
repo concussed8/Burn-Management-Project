@@ -14,14 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Keep existing data (commented out by default)
-  // const keepDataBtn = document.getElementById('keepDataBtn');
-  // if (keepDataBtn) {
-  //   keepDataBtn.addEventListener('click', function () {
-  //     document.getElementById('startupOverlay').style.display = 'none';
-  //   });
-  // }
-
   // Dynamically update the CSS and redirect to new page
   function loadPage(type) {
     console.log(`Redirecting to ${type} burn management checklist`);
