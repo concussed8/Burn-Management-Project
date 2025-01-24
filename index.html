@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thermal Burn Management Checklist</title>
-
-  <!-- Preload CSS for better performance -->
-  <link
-    rel="preload"
-    href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}"
-    as="style"
-    onload="this.onload=null;this.rel='stylesheet'"
-  />
+  
+  <!-- Link to External CSS File -->
+  <link rel="stylesheet" href="main.css">
 </head>
 <body>
 
-  <!-- Your content here -->
   <h1>Burn Management Checklist</h1>
   
   <!-- Arrow Section -->
@@ -67,7 +61,9 @@
     />
   </div>
 
-  <!-- Link to the external JavaScript file -->
+  <!-- Dynamically load external JS from GitHub -->
+  <!-- This replaces any <script src="main.js"></script> tag -->
+  <!-- and appends your external script to the <head> of the document. -->
   <script>
     const script = document.createElement('script');
     script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/main.js?ts=${Date.now()}`;
