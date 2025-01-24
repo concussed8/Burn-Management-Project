@@ -244,7 +244,7 @@
         /* Summary box */
         .summary-box {
             position: absolute;
-            top: 155px; /* Adjust to position summary box */
+            top: 150px; /* Adjust to position summary box */
             left: 275px; /* Adjust to position summary box */
             border: 6px solid #800000; /* Maroon border */
           
@@ -337,6 +337,6 @@
 
     /* Manual positioning */
     position: absolute; /* Allows manual top and left control */
-    top: 70px; /* Set vertical position */
+    top: 65px; /* Set vertical position */
     left: 80px; /* Set horizontal position */
 }
