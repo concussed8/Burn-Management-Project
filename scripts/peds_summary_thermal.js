@@ -37,20 +37,20 @@ function setValue(elementId, value) {
   }
 }
 
-// Function to load and display the starting rate from localStorage
-function loadStartingRate() {
+// Function to update the fluid rate in the summary box
+function updateSummaryBoxFluidRate() {
   const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage and convert to number
-  const startingRateBox = document.getElementById('startingRateBox');
+  const fluidRateElement = document.querySelector('.summary-item .summary-label:nth-child(2)');
 
-  if (startingRateBox) {
+  if (fluidRateElement) {
     if (!isNaN(age)) {
       // Determine fluid rate based on age
       const fluidRate = age >= 2 && age <= 5 ? '125 mls/hr Ringer\'s Lactate' : 
                         age >= 6 && age <= 15 ? '250 mls/hr Ringer\'s Lactate' : 
-                        'Age out of range';
-      startingRateBox.innerText = fluidRate; // Update the fluid rate display
+                        'No fluid rate available for age';
+      fluidRateElement.innerText = `Initial Fluid Rate (${fluidRate})`; // Update the summary item text
     } else {
-      startingRateBox.innerText = 'No data available'; // Fallback if age is invalid or missing
+      fluidRateElement.innerText = 'Initial Fluid Rate (No data available)'; // Fallback if age is invalid
     }
   }
 }
@@ -90,6 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fieldsToUpdate.forEach(({ id, key }) => setValue(id, tableData[key]));
 
-  // Load and display the starting rate
-  loadStartingRate();
+  // Update the fluid rate in the summary box
+  updateSummaryBoxFluidRate();
 });
