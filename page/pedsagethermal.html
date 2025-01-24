@@ -3,103 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pediatric Burn Summary</title>
+    <title>Pediatric Thermal Burn Management</title>
     <!-- Link to the external CSS file with cache-busting -->
-    <!--<link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/peds_summary_thermal.css?ts=${Date.now()}">-->
+   <!-- <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/pedsagethermal.css?ts=${Date.now()}">-->
 </head>
 <body>
-<h1>PEDIATRIC BURN SUMMARY SBAR</h1>
- 
-        <div class="summaryinitial-box">PRE-Consult Inital Management</div>
-          <div class="ruleof9header-containerr">
-  
-<div class="pulsing-box">
-    <!-- Text Box 1: Immediate Consult Required -->
-    <div class="alert-text text-one">*IMMEDIATE BURN CENTRE CONSULT REQUIRED FOR ALL PEDIATRIC BURNS*</div>
-    
-    <img src="https://concussed8.github.io/Burn-Management-Project/images/criticall.jpg" alt="Critical Alert Image">
-
-</div>
-
-<!-- High Risk Considerations Container -->
-<div class="container highRiskContainer" id="highRiskContainer">
-    <div class="header">High Risk Considerations</div>
-    <ul id="highRiskList">
-        <!-- High Risk Considerations will be dynamically populated here -->
-    </ul>
-</div>
-
-<!-- Summary of Burn Checklist Responses Container -->
-<div class="container summaryContainer" id="summaryContainer">
-    <div class="header">IMMEDIATE BURN CENTRE CONSULT REQUIRED</div>
-    <ul id="summaryList">
-         <label for="txtCauseOfBurn" style="font-size: 25px; font-weight: bold;">Reason:<br><br>***ALL PEDIATRIC BURNS REQUIRES BURN CENTRE CONSULTATION***</label> 
-        
-        <!-- Responses will be dynamically populated here -->
-    </ul>
-</div>
-
-
-
-<div class="content">
-    <!-- Group summary nine + percentages for image and value boxes -->
-    <div class="summary-nine">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/summary_nine.jpg?ts=${Date.now()}" alt="Burn Summary" class="summary-image">
-        <span id="summaryValue" class="value-box" style="left: 81px; top: 22px;">Loading...</span> <!-- head-neck -->
-        <span id="summaryValue2" class="value-box" style="left: 8px; top: 140px;">Loading...</span> <!-- r-arm -->
-        <span id="summaryValue3" class="value-box" style="left: 152px; top: 140px;">Loading...</span> <!-- l-arm -->
-        <span id="summaryValue4" class="value-box" style="left: 83px; top: 104px;">Loading...</span> <!-- trunk -->
-        <span id="summaryValue5" class="value-box" style="left: 82px; top: 205px;">Loading...</span> <!-- groin -->
-        <span id="summaryValue6" class="value-box" style="left: 47px; top: 300px;">Loading...</span> <!-- r-leg -->
-        <span id="summaryValue7" class="value-box" style="left: 113px; top: 300px;">Loading...</span> <!-- l-leg -->
-        <span id="summaryValue8" class="total-box" style="left: 38px; top: 410px;">Loading...</span> <!-- total -->
-    </div>
-
-   <!-- Age Panel -->
-    <div class="age-panel">
-        <div class="age-label">Age:</div>
-        <div id="ageValue" class="age-value">Loading...</div>
-    </div  
-    <!-- Group TBSA, Weight, and Starting Rate into one container -->
-    <div class="panel-group">
-      <!-- Weight Panel -->
-        <div class="weight-panel">
-            <div class="weight-label">WEIGHT/Kg</div>
-            <div class="weight-value" id="weightValue">Loading...</div>
-        </div>
-        <!-- TBSA Panel -->
-        <div class="tbsa-panel">
-            <div class="tbsa-label">TBSA =</div>
-            <div class="tbsa-value" id="tbsaValue">0</div>
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            Pediatric Thermal Burn Management Checklist
         </div>
 
+        <!-- Age Label and Input -->
+        <div class="age-label-container">
+            <label for="ageInput" class="age-label">Age of patient:</label>
+            <input type="number" id="ageInput" name="ageInput" placeholder="Enter age" class="ageInput" min="0" max="15">
+        </div>
 
-        <!-- Starting Rate Panel -->
-        <div class="starting-rate-panel">
-            <div class="starting-rate-box" id="startingRateBox">Loading...</div>
-            <span style="font-weight: bold; margin-left: 10px;">mls/hr LR (Starting Resuscitation Rate)<br>modified Parkland</span>
+        <!-- Footer -->
+        <div class="footer">
+            <button id="continueBtn">Continue</button>
         </div>
     </div>
 
-    <!-- Add Summary Box -->
-    <div class="summary-box">
-        <div class="summary-box-title">(Thermal) Initial Burn Management No Consult</div>
-        <div class="summary-item">
-            <span class="summary-label">IV Access Secured</span>
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Initial Fluid Rate (Loading...)</span> <!-- This will be dynamically updated -->
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Foley Catheter Placed</span>
-        </div>
-        <div class="summary-item">
-            <span class="summary-label">Blood Work (HGB, Creatinine, Lactate) Sent</span>
-        </div>
-    </div>
-</div>
-
-<!-- Link to the external JavaScript file with cache-busting -->
-              <!--<<script defer src="https://concussed8.github.io/Burn-Management-Project/scripts/peds_summary_thermal.js?ts=${Date.now()}"></script>-->
+    <!-- Link to the external JavaScript file -->
+    <script>
+        const script = document.createElement('script');
+        script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/pedsagethermal.js?ts=${Date.now()}`;
+        script.defer = true; // Ensures the script executes after parsing
+        document.head.appendChild(script);
+    </script>
 </body>
 </html>
