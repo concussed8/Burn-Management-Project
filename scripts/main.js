@@ -1,4 +1,4 @@
-<script>
+
     document.addEventListener('DOMContentLoaded', () => {
       // Show the popup on page load
       window.addEventListener('load', function () {
@@ -66,4 +66,4 @@
         });
       }
     });
-  </script>
+
