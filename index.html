@@ -1,49 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thermal Burn Management Checklist</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thermal Burn Management Checklist</title>
 
-    <!-- Preload CSS for better performance -->
-    <link rel="preload" href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  
-    <!-- Fallback for users with JavaScript disabled -->
-    <noscript>
-        <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}">
-    </noscript>
+  <!-- Preload CSS for better performance -->
+  <link
+    rel="preload"
+    href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}"
+    as="style"
+    onload="this.onload=null;this.rel='stylesheet'"
+  />
 </head>
 <body>
-    <!-- Your content here -->
-    <h1>Burn Management Checklist</h1>
-    <!-- Arrow Section -->
-    <div class="arrow">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/arrow.jpg" alt="Arrow Instruction">
-    </div>
 
+    <!-- Your content here -->
+  <h1>Burn Management Checklist</h1>
+  
+  <!-- Arrow Section -->
+  <div class="arrow">
+    <img 
+      src="https://concussed8.github.io/Burn-Management-Project/images/arrow.jpg"
+      alt="Arrow Instruction"
+    />
+  </div>
+
+  <!-- Icons and Popup Section -->
+  <div class="icons-container">
     <!-- Image Icons Section -->
     <div class="image-container">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/Thermal.jpg" alt="Thermal Burn" id="thermal-icon">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/Electrical.jpg" alt="Electrical Burn" id="electrical-icon">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/Chemical.jpg?" alt="Chemical Burn" id="chemical-icon">
-    </div>
+      <img
+        src="https://concussed8.github.io/Burn-Management-Project/images/Thermal.jpg"
+        alt="Thermal Burn"
+        id="thermal-icon"
+      />
+      <img
+        src="https://concussed8.github.io/Burn-Management-Project/images/Electrical.jpg"
+        alt="Electrical Burn"
+        id="electrical-icon"
+      />
+      <img
+        src="https://concussed8.github.io/Burn-Management-Project/images/Chemical.jpg"
+        alt="Chemical Burn"
+        id="chemical-icon"
+      />
 
-    <!-- Disclaimer Section -->
-    <div class="disclaimer">
-        <img src="https://concussed8.github.io/Burn-Management-Project/images/CCSO_disclaimer.jpg" alt="CCSO Disclaimer">
-    </div>
-
-    <!-- Popup Overlay Section -->
-    <div class="popup-overlay" id="startupOverlay">
+      <!-- Popup Overlay Section (inside .image-container) -->
+      <div class="popup-overlay" id="startupOverlay">
         <div class="popup-box">
-            <p style="text-align: center;">Is this a new patient?</p>
-            <div style="margin-top: 20px;">
-  <button id="freshStartBtn" class="close-btn">Start Fresh</button>
-              
-               <!-- <button id="keepDataBtn" class="close-btn keep-data-btn">Keep Data</button>-->
-            </div>
-          
-    
+          <p style="text-align: center;">Is this a new patient?</p>
+          <button id="freshStartBtn" class="close-btn">Start Fresh</button>
+          <!-- Keep Data button if needed:
+          <button id="keepDataBtn" class="close-btn">Keep Data</button>
+          -->
+        </div>
+     
+    </div>
+  </div>
+
+  <!-- Disclaimer Section -->
+  <div class="disclaimer">
+    <img 
+      src="https://concussed8.github.io/Burn-Management-Project/images/CCSO_disclaimer.jpg"
+      alt="CCSO Disclaimer"
+    />
+  </div>
 
         </div>
     </div>
