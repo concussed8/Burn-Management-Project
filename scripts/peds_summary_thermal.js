@@ -90,4 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Update the fluid rate in the summary box
   updateSummaryBoxFluidRate();
+    // Load and display the starting rate
+  loadStartingRate();
 });
