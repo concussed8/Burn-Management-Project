@@ -50,7 +50,7 @@ function loadStartingRate() {
 // Function to update the fluid rate in the summary box based on age
 function updateSummaryBoxFluidRate() {
   const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage and convert to number
-  const fluidRateElement = document.querySelector('.summary-box .summary-item:nth-child(2) .summary-label'); // Target fluid rate summary item
+  const fluidRateElement = document.getElementById('fluidRate'); // Target the specific fluid rate element
 
   if (fluidRateElement) {
     if (!isNaN(age)) {
@@ -58,12 +58,19 @@ function updateSummaryBoxFluidRate() {
       const fluidRate = age >= 2 && age <= 5 ? '125 mls/hr Ringer\'s Lactate' : 
                         age >= 6 && age <= 15 ? '250 mls/hr Ringer\'s Lactate' : 
                         'No fluid rate available for age';
-      fluidRateElement.innerText = `Initial Fluid Rate (${fluidRate})`; // Update the summary item text
+      fluidRateElement.innerText = fluidRate; // Update the fluid rate text
     } else {
-      fluidRateElement.innerText = 'Initial Fluid Rate (No data available)'; // Fallback if age is invalid
+      fluidRateElement.innerText = 'No data available'; // Fallback if age is invalid
     }
   }
 }
+
+// Initialize the script on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Update the fluid rate in the summary box
+  updateSummaryBoxFluidRate();
+});
+
 
 // Function to format high-risk consideration labels
 function formatHighRisk(key) {
