@@ -55,8 +55,8 @@ function updateSummaryBoxFluidRate() {
   if (fluidRateElement) {
     if (!isNaN(age)) {
       // Determine fluid rate based on age
-      const fluidRate = age >= 2 && age <= 5 ? '125 mls/hr Ringer\'s Lactate' : 
-                        age >= 6 && age <= 15 ? '250 mls/hr Ringer\'s Lactate' : 
+      const fluidRate = age >= 2 && age <= 5 ? 'Inital NON CONSULT IV Rate: 125 mls/hr Ringer\'s Lactate' : 
+                        age >= 6 && age <= 15 ? 'Inital NON CONSULT IV Rate: 250 mls/hr Ringer\'s Lactate' : 
                         'No fluid rate available for age';
       fluidRateElement.innerText = fluidRate; // Update the fluid rate text
     } else {
