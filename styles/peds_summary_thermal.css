@@ -337,6 +337,6 @@
 
     /* Manual positioning */
     position: absolute; /* Allows manual top and left control */
-    top: 75px; /* Set vertical position */
+    top: 70px; /* Set vertical position */
     left: 80px; /* Set horizontal position */
 }
