@@ -5,15 +5,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Thermal Burn Management Checklist</title>
   
-<!-- Link to External CSS File on GitHub with cache-busting -->
-<link
-  rel="stylesheet"
-  href="https://concussed8.github.io/Burn-Management-Project/styles/main.css?ts=${Date.now()}"
->
+  <!-- Embedded CSS -->
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #ffffff;
+    }
+
+    h1 {
+      background-color: #800000;
+      color: #ffffff;
+      padding: 15px;
+      width: 100%;
+      text-align: center;
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .arrow {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .arrow img {
+      max-width: 30%;
+      height: auto;
+    }
+
+    /* Image Icons Section */
+    .image-container {
+      position: relative; /* Make this the positioning reference for .popup-overlay */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 20px;
+      width: 100%;
+      border: 0px solid #000; /* Black border */
+      border-radius: 10px;     /* Optional: rounded corners */
+      padding: 10px;           /* Optional: space inside the border */
+
+      /*
+       If you need to ensure the container is tall enough for the popup,
+       set a minimum height here. For example:
+      */
+      min-height: 150px;
+      
+      /*
+       If overflow is hidden, large popups might get clipped.
+       Comment it out or remove it if you want the popup fully visible:
+      */
+      /* overflow: hidden; */
+    }
+
+    .image-container img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 0px;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Disclaimer Section */
+    .disclaimer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .disclaimer img {
+      max-width: 80%;
+      height: auto;
+    }
+
+    /* Popup Styles */
+    .popup-overlay {
+      /* By default, keep it hidden */
+      display: none;
+      
+      /* Absolutely positioned INSIDE .image-container instead of the entire page */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      z-index: 9999;
+
+      /* Use Flexbox to center .popup-box horizontally & vertically */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .popup-box {
+      /* Position relative to .popup-overlay, no need for top/left/transform if using flex */
+      position: relative;
+      width: 100%; /* Adjust width as needed */
+      max-width: 500px;
+      background: #fff;
+      padding: 20px;
+      border: 2px solid #000;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+    }
+
+    /* Button Styles */
+    .close-btn {
+      margin: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .close-btn:hover {
+      background-color: #c9302c;
+    }
+  </style>
 
 </head>
 <body>
-
   <h1>Burn Management Checklist</h1>
   
   <!-- Arrow Section -->
@@ -65,13 +199,75 @@
     />
   </div>
 
-
+  <!-- Inline Script (or reference an external .js file) -->
   <script>
-    const script = document.createElement('script');
-    script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/main.js?ts=${Date.now()}`;
-    script.defer = true; // Ensures the script executes after parsing
-    document.head.appendChild(script);
-  </script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show the popup on page load
+      window.addEventListener('load', function () {
+        console.log("Popup triggered!");
+        document.getElementById('startupOverlay').style.display = 'flex';
+      });
 
+      // Start fresh and clear local storage
+      const freshStartBtn = document.getElementById('freshStartBtn');
+      if (freshStartBtn) {
+        freshStartBtn.addEventListener('click', function () {
+          localStorage.clear();
+          document.getElementById('startupOverlay').style.display = 'none';
+        });
+      }
+
+      // Keep existing data (commented out by default)
+      // const keepDataBtn = document.getElementById('keepDataBtn');
+      // if (keepDataBtn) {
+      //   keepDataBtn.addEventListener('click', function () {
+      //     document.getElementById('startupOverlay').style.display = 'none';
+      //   });
+      // }
+
+      // Dynamically update the CSS and redirect to new page
+      function loadPage(type) {
+        console.log(`Redirecting to ${type} burn management checklist`);
+
+        // Update the existing CSS file with cache-busting, if present
+        const existingCSS = document.getElementById('dynamic-css');
+        if (existingCSS) {
+          existingCSS.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
+        } else {
+          // Or create a new CSS link element if it doesn't exist
+          const cssLink = document.createElement('link');
+          cssLink.id = 'dynamic-css';
+          cssLink.rel = 'stylesheet';
+          cssLink.href = `https://concussed8.github.io/Burn-Management-Project/styles/page2${type}.css?ts=${Date.now()}`;
+          document.head.appendChild(cssLink);
+        }
+
+        // Redirect to the appropriate page with cache-busting
+        location.href = `https://concussed8.github.io/Burn-Management-Project/page/page2${type}.html?ts=${Date.now()}`;
+      }
+
+      // Event listeners for the icons
+      const thermalIcon = document.getElementById("thermal-icon");
+      if (thermalIcon) {
+        thermalIcon.addEventListener("click", function () {
+          loadPage('thermal'); // Redirect and load CSS for page2thermal
+        });
+      }
+
+      const electricalIcon = document.getElementById("electrical-icon");
+      if (electricalIcon) {
+        electricalIcon.addEventListener("click", function () {
+          loadPage('electrical'); // Redirect and load CSS for page2electrical
+        });
+      }
+
+      const chemicalIcon = document.getElementById("chemical-icon");
+      if (chemicalIcon) {
+        chemicalIcon.addEventListener("click", function () {
+          loadPage('chemical'); // Redirect and load CSS for page2chemical
+        });
+      }
+    });
+  </script>
 </body>
 </html>
