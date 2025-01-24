@@ -37,19 +37,31 @@ function setValue(elementId, value) {
   }
 }
 
-// Function to update the fluid rate in the summary box
+// Function to load and display the starting rate from the previous page
+function loadStartingRate() {
+  const startingRate = localStorage.getItem('startingRate'); // Retrieve starting rate from localStorage
+  const startingRateBox = document.getElementById('startingRateBox');
+
+  if (startingRateBox) {
+    startingRateBox.innerText = startingRate || 'No data available'; // Display the stored rate or fallback text
+  }
+}
+
+// Function to update the fluid rate in the summary box based on age
 function updateSummaryBoxFluidRate() {
   const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage and convert to number
-  const fluidRate = age >= 2 && age <= 5 
-    ? "125 mls/hr Ringer's Lactate" 
-    : age >= 6 && age <= 15 
-      ? "250 mls/hr Ringer's Lactate" 
-      : "No fluid rate available";
+  const fluidRateElement = document.querySelector('.summary-box .summary-item:nth-child(2) .summary-label'); // Target fluid rate summary item
 
-  // Update the Initial Fluid Rate in the summary box
-  const fluidRateElement = document.querySelector('.summary-label');
   if (fluidRateElement) {
-    fluidRateElement.innerText = `Initial Fluid Rate (${fluidRate})`;
+    if (!isNaN(age)) {
+      // Determine fluid rate based on age
+      const fluidRate = age >= 2 && age <= 5 ? '125 mls/hr Ringer\'s Lactate' : 
+                        age >= 6 && age <= 15 ? '250 mls/hr Ringer\'s Lactate' : 
+                        'No fluid rate available for age';
+      fluidRateElement.innerText = `Initial Fluid Rate (${fluidRate})`; // Update the summary item text
+    } else {
+      fluidRateElement.innerText = 'Initial Fluid Rate (No data available)'; // Fallback if age is invalid
+    }
   }
 }
 
@@ -88,8 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   fieldsToUpdate.forEach(({ id, key }) => setValue(id, tableData[key]));
 
+  // Load and display the starting rate from the previous page
+  loadStartingRate();
+
   // Update the fluid rate in the summary box
   updateSummaryBoxFluidRate();
-    // Load and display the starting rate
-  loadStartingRate();
 });
