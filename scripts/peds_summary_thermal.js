@@ -39,11 +39,19 @@ function setValue(elementId, value) {
 
 // Function to load and display the starting rate from localStorage
 function loadStartingRate() {
-  const startingRate = localStorage.getItem('startingRate'); // Retrieve starting rate from localStorage
+  const age = parseInt(localStorage.getItem('age'), 10); // Retrieve age from localStorage and convert to number
   const startingRateBox = document.getElementById('startingRateBox');
 
   if (startingRateBox) {
-    startingRateBox.innerText = startingRate || 'No data available'; // Display the stored rate or fallback text
+    if (!isNaN(age)) {
+      // Determine fluid rate based on age
+      const fluidRate = age >= 2 && age <= 5 ? '125 mls/hr Ringer\'s Lactate' : 
+                        age >= 6 && age <= 15 ? '250 mls/hr Ringer\'s Lactate' : 
+                        'Age out of range';
+      startingRateBox.innerText = fluidRate; // Update the fluid rate display
+    } else {
+      startingRateBox.innerText = 'No data available'; // Fallback if age is invalid or missing
+    }
   }
 }
 
