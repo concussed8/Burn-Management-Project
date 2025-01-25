@@ -4,104 +4,97 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>Initial Management Thermal</title>
-  <!-- Link to the external CSS file with cache-busting -->
-  <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?ts=${Date.now()}"> 
+  <!-- Link to the external CSS file with static cache-busting -->
+  <link rel="stylesheet" href="https://concussed8.github.io/Burn-Management-Project/styles/initial_management_thermal.css?ts=1"> 
 </head>
 <body>
 
-<div class="container">
-  <div class="header">ED PRESENTATION Initial Thermal Burn Management</div>
-  
-  <div class="content">
-    <ul>
-      <li>
-        <label>
-          <input type="checkbox" required id="checkbox1">
-          <span>
-            <span class="mandatory-field">*</span> Two large bore peripheral IVs should be placed through burn if needed.
-            <br>--Consider Intraosseous (IO) if cannot obtain peripheral intravenous (PIV).
-            <br>--Boluses should be avoided unless patient is hypotensive.
-          </span>
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" required id="checkbox2">
-          <span>
-            <span class="mandatory-field">*</span> <strong><u>RINGER'S LACTATE</u></strong> is the recommended resuscitation fluid.
-          </span>
-        </label>
-      </li>
-      <div class="highlight-box">
-        <div class="highlight-text">INITIAL FLUID RATE – DOES NOT REQUIRE TBSA ESTIMATE</div>
-        <div class="blue-box">Adults (&gt;16 years)<br>500 cc/hr</div>
-      </div>
-      <li>
-        <label>
-          <input type="checkbox" required id="checkbox3">
-          <span>
-            <span class="mandatory-field">*</span> Once patient has been assessed and stabilized, the TBSA should be estimated and the patient’s weight in kilograms determined.
-          </span>
-        </label>
-      </li>
-      <div class="weight-box-container">
-        <span class="weight-label">WEIGHT/Kg</span>
-        <input class="weight-input" type="text" placeholder="Enter" onclick="showNumpad()">
-      </div>
-      <br>
-      <li>
-        <label>
-          <input type="checkbox" required id="checkbox4">
-          <span>
-            <span class="mandatory-field">*</span> A Foley catheter should be placed to monitor urine output, and baseline bloodwork, including hemoglobin (<strong>Hgb</strong>), creatinine, and lactate, should be sent.
-          </span>
-        </label>
-      </li>
-    </ul>
-  </div>
-
-  <div class="footer">
-    <button id="continueBtn">Continue</button>
-    <p class="mandatory-info">* denotes mandatory checkbox</p>
-  </div>
-
-  <!-- Numeric Keypad -->
-  <div id="numpad" class="numpad-container" style="display: none;">
-    <button class="button" onclick="appendNumber('1')">1</button>
-    <button class="button" onclick="appendNumber('2')">2</button>
-    <button class="button" onclick="appendNumber('3')">3</button>
-    <button class="button" onclick="appendNumber('4')">4</button>
-    <button class="button" onclick="appendNumber('5')">5</button>
-    <button class="button" onclick="appendNumber('6')">6</button>
-    <button class="button" onclick="appendNumber('7')">7</button>
-    <button class="button" onclick="appendNumber('8')">8</button>
-    <button class="button" onclick="appendNumber('9')">9</button>
-    <button class="button clear" onclick="clearInput()">CLEAR</button>
-    <button class="button zero" onclick="appendNumber('0')">0</button>
-    <button class="button close" onclick="closeNumpad()">CLOSE</button>
-  </div>
-
- 
-
-  <!-- The overlay + box INSIDE the container -->
-  <div class="disclaimerpopup-overlay" id="startupOverlay">
-    <div class="disclaimerpopup-box">
-      <p style="text-align: center;">
-        *** ATTENTION DO NOT DELAY TREATMENT, INITIAL MANAGEMENT CAN COMMENCE 
-        BEFORE BURN CENTRE CONSULT OCCURS ***
-      </p>
-      <!-- <div style="margin-top: 20px;"> -->
-      <button id="closedisclaimerBtn" class="closedisclaimer-btn">CLOSE</button>
+  <div class="container">
+    <div class="header">ED PRESENTATION Initial Thermal Burn Management</div>
+    
+    <div class="content">
+      <ul>
+        <li>
+          <label>
+            <input type="checkbox" required id="checkbox1">
+            <span>
+              <span class="mandatory-field">*</span> Two large bore peripheral IVs should be placed through burn if needed.
+              <br>--Consider Intraosseous (IO) if cannot obtain peripheral intravenous (PIV).
+              <br>--Boluses should be avoided unless patient is hypotensive.
+            </span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type="checkbox" required id="checkbox2">
+            <span>
+              <span class="mandatory-field">*</span> <strong><u>RINGER'S LACTATE</u></strong> is the recommended resuscitation fluid.
+            </span>
+          </label>
+        </li>
+        <div class="highlight-box">
+          <div class="highlight-text">INITIAL FLUID RATE – DOES NOT REQUIRE TBSA ESTIMATE</div>
+          <div class="blue-box">Adults (&gt;16 years)<br>500 cc/hr</div>
+        </div>
+        <li>
+          <label>
+            <input type="checkbox" required id="checkbox3">
+            <span>
+              <span class="mandatory-field">*</span> Once patient has been assessed and stabilized, the TBSA should be estimated and the patient’s weight in kilograms determined.
+            </span>
+          </label>
+        </li>
+        <div class="weight-box-container">
+          <span class="weight-label">WEIGHT/Kg</span>
+          <input class="weight-input" type="text" placeholder="Enter" onclick="showNumpad()">
+        </div>
+        <br>
+        <li>
+          <label>
+            <input type="checkbox" required id="checkbox4">
+            <span>
+              <span class="mandatory-field">*</span> A Foley catheter should be placed to monitor urine output, and baseline bloodwork, including hemoglobin (<strong>Hgb</strong>), creatinine, and lactate, should be sent.
+            </span>
+          </label>
+        </li>
+      </ul>
     </div>
-  </div>
-</div>
-</div>
-<!-- Link to the external JavaScript file -->
-<script>
-  const script = document.createElement('script');
-  script.src = `https://concussed8.github.io/Burn-Management-Project/scripts/initial_management_thermal.js?ts=${Date.now()}`;
-  document.head.appendChild(script);
-</script>
+
+    <div class="footer">
+      <button id="continueBtn">Continue</button>
+      <p class="mandatory-info">* denotes mandatory checkbox</p>
+    </div>
+
+    <!-- Numeric Keypad -->
+    <div id="numpad" class="numpad-container" style="display: none;">
+      <button class="button" onclick="appendNumber('1')">1</button>
+      <button class="button" onclick="appendNumber('2')">2</button>
+      <button class="button" onclick="appendNumber('3')">3</button>
+      <button class="button" onclick="appendNumber('4')">4</button>
+      <button class="button" onclick="appendNumber('5')">5</button>
+      <button class="button" onclick="appendNumber('6')">6</button>
+      <button class="button" onclick="appendNumber('7')">7</button>
+      <button class="button" onclick="appendNumber('8')">8</button>
+      <button class="button" onclick="appendNumber('9')">9</button>
+      <button class="button clear" onclick="clearInput()">CLEAR</button>
+      <button class="button zero" onclick="appendNumber('0')">0</button>
+      <button class="button close" onclick="closeNumpad()">CLOSE</button>
+    </div>
+
+    <!-- The overlay + box INSIDE the container -->
+    <div class="disclaimerpopup-overlay" id="startupOverlay">
+      <div class="disclaimerpopup-box">
+        <p style="text-align: center;">
+          *** ATTENTION DO NOT DELAY TREATMENT, INITIAL MANAGEMENT CAN COMMENCE 
+          BEFORE BURN CENTRE CONSULT OCCURS ***
+        </p>
+        <button id="closedisclaimerBtn" class="closedisclaimer-btn">CLOSE</button>
+      </div>
+    </div>
+  </div> <!-- Removed the extra closing </div> here -->
+
+  <!-- Link to the external JavaScript file with static cache-busting and defer attribute -->
+  <script src="https://concussed8.github.io/Burn-Management-Project/scripts/initial_management_thermal.js?ts=1" defer></script>
 
 </body>
 </html>
