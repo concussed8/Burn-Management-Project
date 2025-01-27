@@ -9,8 +9,8 @@ body {
 }
 
 .container {
-  width: 30%;          /* Allows flexibility on smaller screens */
-  max-width: 960px;    /* Keeps a comfortable max size on desktops */
+  width: 50%;          /* Allows flexibility on smaller screens */
+  max-width: 750px;    /* Keeps a comfortable max size on desktops */
   margin: 20px auto;   /* Centers horizontally */
   padding: 20px;
   border: 6px solid #800000;
