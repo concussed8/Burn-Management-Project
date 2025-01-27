@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  width: 90%;          /* Allows flexibility on smaller screens */
+  width: 80%;          /* Allows flexibility on smaller screens */
   max-width: 950px;    /* Keeps a comfortable max size on desktops */
   margin: 0px auto;   /* Centers horizontally */
   padding: 20px;
