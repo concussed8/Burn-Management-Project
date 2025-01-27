@@ -1,21 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0; /* Remove default margins */
   background-color: #f9f9f9;
+  display: flex; /* Enable Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  min-height: 100vh; /* Ensure the body fills the viewport */
 }
 
-
 .container {
-  width: 90%;          /* Allows flexibility on smaller screens */
+  width: 30%;          /* Allows flexibility on smaller screens */
   max-width: 960px;    /* Keeps a comfortable max size on desktops */
-  margin: 0 auto;      /* Centers the container */
+  margin: 20px auto;   /* Centers horizontally */
   padding: 20px;
   border: 6px solid #800000;
   border-radius: 8px;
   background-color: #fff;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
 
 .header {
   background-color: #800000;
