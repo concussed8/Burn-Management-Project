@@ -193,10 +193,10 @@ body {
     }
 
     /* Prevent zoom-related formatting issues */
-    html {
+   /* html {
       zoom: 75%;
       overflow-x: hidden;
-    }
+    }*/
 
     @media (min-width: 1200px) {
       .container {
