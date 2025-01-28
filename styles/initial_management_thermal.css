@@ -246,10 +246,10 @@ display: flex;
   /* Let the box be up to 700px wide, matching container max */
   width: 100%;
   max-width: 700px; 
-max-height:700px;
+max-height:698px;
   /* If you don't want it super tall, 
      you can remove min-height or set a smaller min-height */
-  min-height: 700px; 
+  min-height: 693px; 
 font-size: 60px;
   
   font-weight: bold;
