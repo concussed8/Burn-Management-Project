@@ -207,7 +207,7 @@ body {
     top: 50%; 
     left: 50%;
     border: 8px solid #800000; /* Consistent border style */
-    font-size: 65px; /* Font size of the text inside the popup */
+    font-size: 40px; /* Font size of the text inside the popup */
     font-weight: bold;
     transform: translate(-50%, -50%);
     width: 60%; /* Take up the full width of its container */
