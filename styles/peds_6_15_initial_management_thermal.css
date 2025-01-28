@@ -12,6 +12,7 @@ body {
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
+  max-width: 600px;
  
 }
 
@@ -209,8 +210,8 @@ body {
     font-size: 65px; /* Font size of the text inside the popup */
     font-weight: bold;
     transform: translate(-50%, -50%);
-    width: 100%; /* Take up the full width of its container */
-    max-width: 800px; /* Maximum width for larger screens */
+    width: 60%; /* Take up the full width of its container */
+    max-width: 600px; /* Maximum width for larger screens */
     background: #fff; /* White background */
     padding: 20px; /* Space inside the popup */
     border-radius: 10px; /* Rounded corners */
