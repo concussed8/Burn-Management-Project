@@ -1,23 +1,20 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Show the popup on page load
-  window.addEventListener('load', function() {
-    console.log("Popup triggered!");
+document.addEventListener('DOMContentLoaded', function () {
+    // Show the popup on page load
     const overlay = document.getElementById('startupOverlay');
     if (overlay) {
-      overlay.style.display = 'flex';
+        overlay.style.display = 'flex'; // Show the popup
     }
-  });
 
-  // Close the popup
-  const closeBtn = document.getElementById('closedisclaimerBtn');
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function() {
-      const overlay = document.getElementById('startupOverlay');
-      if (overlay) {
-        overlay.style.display = 'none';
-      }
-    });
-  }
+    // Close the popup
+    const closeBtn = document.getElementById('closedisclaimerBtn');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function () {
+            if (overlay) {
+                overlay.style.display = 'none'; // Hide the popup
+                console.log("Popup closed!"); // For debugging
+            }
+        });
+    }
 
   // Show/hide the numpad when checkbox #3 changes
   const checkbox3 = document.getElementById('checkbox3');
