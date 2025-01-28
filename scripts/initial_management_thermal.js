@@ -1,17 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Show the popup on page load
+    // Get the overlay element
     const overlay = document.getElementById('startupOverlay');
+    
+    // Show the popup if the overlay exists
     if (overlay) {
-        overlay.style.display = 'flex'; // Show the popup
+        console.log("Displaying popup..."); // Debugging log
+        overlay.style.display = 'flex'; // Use 'flex' to match the CSS
     }
 
-    // Close the popup
+    // Close the popup when the close button is clicked
     const closeBtn = document.getElementById('closedisclaimerBtn');
     if (closeBtn) {
         closeBtn.addEventListener('click', function () {
             if (overlay) {
+                console.log("Closing popup..."); // Debugging log
                 overlay.style.display = 'none'; // Hide the popup
-                console.log("Popup closed!"); // For debugging
             }
         });
     }
