@@ -198,10 +198,11 @@ body {
       overflow-x: hidden;
     }*/
 
-    @media (min-width: 1200px) {
+   /* @media (min-width: 1200px) {
       .container {
         width: 50%;
-      }
+      }*/
+
     .disclaimerpopup-box {
     position: absolute;
     top: 50%; 
