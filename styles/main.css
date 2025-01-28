@@ -42,7 +42,7 @@ h1 {
   margin-top: 20px;
   width: 100%;
   border: 0px solid #000; /* Border set to 0px */
-  border-radius: 10px;    /* Optional: rounded corners */
+  border-radius: 0px;    /* Optional: rounded corners */
   padding: 10px;          /* Optional: space inside the border */
 
   /* 
