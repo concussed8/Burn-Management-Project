@@ -1,282 +1,307 @@
-  <title>(THERMAL) Adult Burn Checklist</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0px;
-    }
+  /* ============================= */
+        /* Base Body Styles             */
+        /* ============================= */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            background-color: #FFFFFF;
+        }
 
-    /* NEW: Updated h1 style for a dark-red header box */
-    h1 {
-      background-color: #800000;
-      color: #fff;
-      font-weight: bold;
-      text-align: center;
-      padding: 15px;
-      border-radius: 8px 8px 0 0;
-      font-size: 1.5em;
-      margin-top: 0;
-      margin-bottom: 20px;
-    }
+        /* NEW: Updated h1 style for a dark-red header box */
+        h1 {
+            background-color: #800000;
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px 8px 0 0;
+            font-size: 1.5em;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px; /* space between left section and right section */
-    }
-    .keypad {
-	position: absolute;
-      left: 415px;
-      top: 100px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-auto-rows: 60px;
-      gap: 10px;
-      max-width: 250px;
-      border-radius: 8px; /* Rounds the corners */
-      padding: 10px;
-      box-sizing: border-box;
-      margin-bottom: 15px;
-      background-color: #696969;
-    }
-    .key {
-      background-color: #eee;
-      border: 1px solid #ccc;
-      text-align: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      line-height: 60px;
-      cursor: pointer;
-      user-select: none;
-    }
-    .key:active {
-      background-color: #ddd;
-    }
-    .special-key {
-      background-color: #ff5858;
-      color: #fff;
-    }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px; /* space between left section and right section */
+        }
 
-    .panels-group {
-      display: flex;
-      flex-direction: column;
-      gap: 75px; /* bigger gap as in your current baseline code */
-    }
+        .keypad {
+            position: absolute;
+            left: 415px;
+            top: 225px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 60px;
+            gap: 10px;
+            max-width: 250px;
+            border: 4px solid black; /* Added black border */
+    	    border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            background-color: #696969;
+        }
 
-    .tbsa-panel {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .tbsa-label,
-    .tbsa-value {
-      height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      box-shadow: inset 1px 1px 2px #aaa;
-      border: 2px solid #ccc;
-      padding: 0 15px;
-    }
-    .tbsa-label {
-      background-color: #fff;
-      color: #000;
-    }
-    .tbsa-value {
-      background-color: #66CCFF; /* The first "blue" box */
-      color: #66CCFF
-    }
+        .key {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 60px;
+            cursor: pointer;
+            user-select: none;
+        }
 
-    .weight-panel {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .weight-label,
-    .weight-value {
-      height: 50px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      box-shadow: inset 1px 1px 2px #aaa;
-      border: 2px solid #ccc;
-      padding: 0 15px;
-    }
-    .weight-label {
-      background-color: #fff;
-      color: #000;
-    }
-    .weight-value {
-      background-color: #ffd699; /* The first "orange" box */
-      color: #FF9900;
-      width: 100px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      cursor: pointer;
-    }
-    .weight-value.selected-cell {
-      background-color: #ffd699;
-      border: 2px solid #ff6600;
- }
+        .key:active {
+            background-color: #ddd;
+        }
 
-    .calc-diagram {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border: 3px dashed #000;
-      padding: 10px;
-      background-color: #fafafa;
-    }
-    .calc-diagram .tinyBox {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 70px;
-      height: 40px;
-      color: #fff;
-      font-weight: bold;
-      box-shadow: inset 1px 1px 2px #aaa;
-      border: 2px solid #ccc;
-    }
+        .special-key {
+            background-color: #ff5858;
+            color: #fff;
+        }
 
-    /* The second "orange" box (#calcOrangeBox) and second "blue" box (#calcBlueBox)
-       are inside the calc-diagram */
-    .starting-rate-panel {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .starting-rate-box {
-      width: 138px;
-      height: 50px;
-      background-color: #FFEE66;
-      color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 1.2em;
-      box-shadow: inset 1px 1px 2px #aaa;
-      border: 2px solid #ccc;
-    
-  
-  }
-.calc-container {
-    position: absolute; /* Enables precise positioning */
-    left: 700px; /* Adjust horizontal position */
-    top: 120px; /* Adjust vertical position */
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background for visibility */
-    border: 2px solid #ccc; /* Optional border for clarity */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
-    border-radius: 8px; /* Rounds the corners */
-    display: flex;
-    flex-direction: column; /* Stacks panels vertically */
-    gap: 15px; /* Adds spacing between child elements */
-}
-.TBSA-container {
-    position: absolute; /* Enables precise positioning */
-    left: 0px; /* Adjust horizontal position */
-    top: 100px; /* Adjust vertical position */
-    padding: 20px;
-    background-color: #800000; /* Light background for visibility */
-    border: 2px solid #ccc; /* Optional border for clarity */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
-    border-radius: 8px; /* Rounds the corners */
-    display: flex;
-    flex-direction: column; /* Stacks panels vertically */
-    gap: 15px; /* Adds spacing between child elements */
-}
-  /* Styling for the diagram image */
-    .diagram-image img {
-      max-width: 200%; /* Ensures the image doesn't exceed the container width */
-      height: auto; /* Maintains aspect ratio */
-      border: 1px solid #ddd; /* Optional border for clarity */
-      border-radius: 8px; /* Rounded corners for the image */
-}
-    /* Styling for the table */
-    table {
-      width: 100%; /* Table spans the width of the container */
-      border-collapse: collapse; /* Remove gaps between table cells */
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-    }
-    th {
-      background-color: #f0f0f0;
-      text-align: left;
-    }
-    .body-part-label {
-      color: #333;
-      font-weight: bold;
-    }
-    .head-neck { background-color: #00FFFF; }
-    .r-arm     { background-color: #99FF99; }
-    .l-arm     { background-color: #99FF99; }
-    .trunk     { background-color: #FFCCCC; }
-    .groin     { background-color: #FFD9B3; }
-    .r-leg     { background-color: #FFFF99; }
-    .l-leg     { background-color: #FFFF99; }
-    .total     { background-color: #CCFFFF; }
+        .panels-group {
+            display: flex;
+            flex-direction: column;
+            gap: 75px; /* bigger gap as in your current baseline code */
+        }
 
-    .input-cell {
-      background-color: #fff;
-      text-align: center;
-      cursor: pointer;
-      user-select: none;
-    }
+        .tbsa-panel {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-    .selected-cell {
-      background-color: #eaf2ff;
-      border: 2px solid #3399ff;
-    }
+        .tbsa-label,
+        .tbsa-value {
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: inset 1px 1px 2px #aaa;
+            border: 2px solid #ccc;
+            padding: 0 15px;
+        }
 
-    /* CONTINUE button styling (red with white text).
-       margin-top: auto to push it to the bottom of the .panels-group column */
+        .tbsa-label {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .tbsa-value {
+            background-color: #66CCFF; /* The first "blue" box */
+            color: #66CCFF;
+        }
+
+        .weight-panel {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .weight-label,
+        .weight-value {
+            height: 50px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: inset 1px 1px 2px #aaa;
+            border: 2px solid #ccc;
+            padding: 0 15px;
+        }
+
+        .weight-label {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .weight-value {
+            background-color: #ffd699; /* The first "orange" box */
+            color: #FF9900;
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .weight-value.selected-cell {
+            background-color: #ffd699;
+            border: 2px solid #ff6600;
+        }
+
+        .calc-diagram {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 3px dashed #000;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+
+        .calc-diagram .tinyBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 40px;
+            color: #fff;
+            font-weight: bold;
+            box-shadow: inset 1px 1px 2px #aaa;
+            border: 2px solid #ccc;
+        }
+
+        /* The second "orange" box (#calcOrangeBox) and second "blue" box (#calcBlueBox)
+           are inside the calc-diagram */
+        .starting-rate-panel {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .starting-rate-box {
+            width: 138px;
+            height: 50px;
+            background-color: #FFEE66;
+            color: #000;
+            display: flex;
+          S align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: inset 1px 1px 2px #aaa;
+            border: 2px solid #ccc;
+        }
+
+        .calc-container {
+            position: absolute; /* Enables precise positioning */
+            left: 700px; /* Adjust horizontal position */
+            top: 190px; /* Adjust vertical position */
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background for visibility */
+            border: 2px solid #ccc; /* Optional border for clarity */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
+            border-radius: 8px; /* Rounds the corners */
+            display: flex;
+            flex-direction: column; /* Stacks panels vertically */
+            gap: 15px; /* Adds spacing between child elements */
+        }
+
+        .TBSA-container {
+            position: absolute; /* Enables precise positioning */
+            left: 0px; /* Adjust horizontal position */
+            top: 180px; /* Adjust vertical position */
+            padding: 20px;
+            background-color: #800000; /* Dark red background for visibility */
+            border: 2px solid #ccc; /* Optional border for clarity */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); /* Adds depth with shadow */
+            border-radius: 8px; /* Rounds the corners */
+            display: flex;
+            flex-direction: column; /* Stacks panels vertically */
+            gap: 15px; /* Adds spacing between child elements */
+        }
+
+        /* Styling for the diagram image */
+        .diagram-image img {
+            max-width: 200%; /* Ensures the image doesn't exceed the container width */
+            height: auto; /* Maintains aspect ratio */
+            border: 1px solid #ddd; /* Optional border for clarity */
+            border-radius: 8px; /* Rounded corners for the image */
+        }
+
+        /* Styling for the table */
+        table {
+            width: 100%; /* Table spans the width of the container */
+            border-collapse: collapse; /* Remove gaps between table cells */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            text-align: left;
+        }
+
+        .body-part-label {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .head-neck { background-color: #00FFFF; }
+        .r-arm     { background-color: #99FF99; }
+        .l-arm     { background-color: #99FF99; }
+        .trunk     { background-color: #FFCCCC; }
+        .groin     { background-color: #FFD9B3; }
+        .r-leg     { background-color: #FFFF99; }
+        .l-leg     { background-color: #FFFF99; }
+        .total     { background-color: #CCFFFF; }
+
+        .input-cell {
+            background-color: #fff;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .selected-cell {
+            background-color: #eaf2ff;
+            border: 2px solid #3399ff;
+        }
+
+        /* CONTINUE button styling (red with white text).
+           margin-top: auto to push it to the bottom of the .panels-group column */
     #continueButton {
-	position: absolute; /* Enables precise positioning */
-      left: 780px; /* Adjust horizontal position */
-      top: 700px; /* Adjust vertical position */
-      background-color: #b30000;
-      color: #fff;
-      font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      padding: 15px 30px;
-      font-size: 2.0em;
-      cursor: pointer;
-      margin-top: auto;
-    }
+    position: absolute; /* Enables precise positioning */
+    left: 780px; /* Adjust horizontal position */
+    top: 710px; /* Adjust vertical position */
+    background-color: #b30000;
+    color: #fff;
+    font-weight: bold;
+    border: none; /* Existing border removed */
+    border: 4px solid black; /* Added black border */
+    border-radius: 8px;
+    padding: 15px 30px;
+    font-size: 2.0em;
+    cursor: pointer;
+    margin-top: auto;
+}
 
-    #addresButton {
-	position: absolute; /* Enables precise positioning */
-      left: 200px; /* Adjust horizontal position */
-      top: 875px; /* Adjust vertical position */
-      background-color: #b30000;
-      color: #fff;
-font-weight: bold;
-      border: none;
-      border-radius: 4px;
-      padding: 15px 30px;
-      font-size: 1.2em;
-      cursor: pointer;
-      margin-top: auto;
- }
-/* Overlay for the popup */
+        #addresButton {
+            position: absolute; /* Enables precise positioning */
+            left: 145px; /* Adjust horizontal position */
+            top: 935px; /* Adjust vertical position */
+            background-color: #b30000;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+	    border: 4px solid black; /* Added black border */
+            border-radius: 8px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: auto;
+        }
+
+        /* Overlay for the popup */
         .popup-overlay {
-    display: none; /* Hide the popup overlay initially */
-    position: fixed; /* Positioned relative to the viewport */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
-    z-index: 1000; /* Makes sure the overlay is on top */
+            display: none; /* Hide the popup overlay initially */
+            position: fixed; /* Positioned relative to the viewport */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+            z-index: 1000; /* Makes sure the overlay is on top */
         }
 
         /* Popup box styling */
@@ -318,91 +343,93 @@ font-weight: bold;
         .close-btn:hover {
             background-color: #c9302c;
         }
- /* Keyframe definition */
-@keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
 
-/* #additional-resources styling */
-#additional-resources {
-  position: absolute;      /* Allows top/left positioning */
-  top: 800px;              /* Adjust vertical position */
-  left: 0px;               /* Adjust horizontal position */
-  width: 175px;            /* Set image width (pixels, %, etc.) */
-  height: auto;            /* Keeps aspect ratio */
-  border: 0px solid #000;  /* Optional border for clarity */
-  
-  /* Add the pulse animation */
-  animation: pulse 1s infinite ease-in-out;
-}
+        /* Keyframe definition */
+        @keyframes pulse {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
 
-/* #area-burned styling */
-#area-burned {
-  position: absolute;      /* Allows top/left positioning */
-  top: 500px;              /* Adjust vertical position */
-  left: 400px;             /* Adjust horizontal position */
-  width: 200px;            /* Set image width (pixels, %, etc.) */
-  height: auto;            /* Keeps aspect ratio */
-  border: 0px solid #000;  /* Optional border for clarity */
-  
-  /* Add the pulse animation */
-  animation: pulse 1s infinite ease-in-out;
-}
+        /* #additional-resources styling */
+        #additional-resources {
+            position: absolute;      /* Allows top/left positioning */
+            top: 880px;              /* Adjust vertical position */
+            left: 0px;               /* Adjust horizontal position */
+            width: 140px;            /* Set image width (pixels, %, etc.) */
+            height: auto;            /* Keeps aspect ratio */
+            border: 0px solid #000;  /* Optional border for clarity */
+            
+            /* Add the pulse animation */
+            animation: pulse 1s infinite ease-in-out;
+        }
 
-.parkland-container {
-    position: relative; /* Keeps the container relative for positioning child elements */
-    text-align: center;
-    width: 100%;
-    margin: 20px 0;
-}
+        /* #area-burned styling */
+        #area-burned {
+            position: absolute;      /* Allows top/left positioning */
+            top: 600px;              /* Adjust vertical position */
+            left: 450px;             /* Adjust horizontal position */
+            width: 200px;            /* Set image width (pixels, %, etc.) */
+            height: auto;            /* Keeps aspect ratio */
+            border: 0px solid #000;  /* Optional border for clarity */
+            
+            /* Add the pulse animation */
+            animation: pulse 1s infinite ease-in-out;
+        }
 
-.parkland-box {
-    font-family: 'Garamond', serif;
-    font-size: 27px; /* Adjust this for the desired size */
-    font-weight: bold;
-    color: #800000; /* Text color */
-    background-color: #fff; /* White background */
-    border: 2px solid #800000; /* Border color */
-    padding: 15px 25px; /* Space inside the box */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
-    display: inline-block; /* Adapts to content size */
-    box-sizing: border-box; /* Includes padding and border in dimensions */
-    width: auto; /* Dynamic width based on content */
-    height: auto; /* Dynamic height based on content */
+        .parkland-container {
+            position: relative; /* Keeps the container relative for positioning child elements */
+            text-align: center;
+            width: 100%;
+            margin: 20px 0;
+        }
 
-    /* Manual positioning */
-    position: absolute; /* Allows manual top and left control */
-    top: 0px; /* Set vertical position */
-    left: 700px; /* Set horizontal position */
-}
+        .parkland-box {
+            font-family: 'Garamond', serif;
+            font-size: 27px; /* Adjust this for the desired size */
+            font-weight: bold;
+            color: #800000; /* Text color */
+            background-color: #fff; /* White background */
+            border: 2px solid #800000; /* Border color */
+            padding: 15px 25px; /* Space inside the box */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+            display: inline-block; /* Adapts to content size */
+            box-sizing: border-box; /* Includes padding and border in dimensions */
 
-.ruleof9header-container {
-    position: relative; /* Keeps the container relative for positioning child elements */
-    text-align: center;
-    width: 100%;
-    margin: 20px 0;
-}
+            width: 20.5%; /* Dynamic width based on content */
+            height: auto; /* Dynamic height based on content */
 
-.ruleof9header-box {
-    font-family: 'Garamond', serif;
-    font-size: 23px; /* Adjust this for the desired size */
-    font-weight: bold;
-    color: #800000; /* Text color */
-    background-color: #fff; /* White background */
-    border: 2px solid #800000; /* Border color */
-    padding: 15px 25px; /* Space inside the box */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
-    display: inline-block; /* Adapts to content size */
-    box-sizing: border-box; /* Includes padding and border in dimensions */
-    width: auto; /* Dynamic width based on content */
-    height: auto; /* Dynamic height based on content */
+            /* Manual positioning */
+            position: absolute; /* Allows manual top and left control */
+            top: 0px; /* Set vertical position */
+            left: 700px; /* Set horizontal position */
+        }
 
-    /* Manual positioning */
-    position: absolute; /* Allows manual top and left control */
-    top: 0px; /* Set vertical position */
-    left: 3px; /* Set horizontal position */
-}
+        .ruleof9header-container {
+            position: relative; /* Keeps the container relative for positioning child elements */
+            text-align: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .ruleof9header-box {
+            font-family: 'Garamond', serif;
+            font-size: 23px; /* Adjust this for the desired size */
+            font-weight: bold;
+            color: #800000; /* Text color */
+            background-color: #fff; /* White background */
+            border: 2px solid #800000; /* Border color */
+            padding: 15px 25px; /* Space inside the box */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+            display: inline-block; /* Adapts to content size */
+            box-sizing: border-box; /* Includes padding and border in dimensions */
+            width: auto; /* Dynamic width based on content */
+            height: auto; /* Dynamic height based on content */
+
+            /* Manual positioning */
+            position: absolute; /* Allows manual top and left control */
+            top: 0px; /* Set vertical position */
+            left: 3px; /* Set horizontal position */
+        }
