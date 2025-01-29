@@ -11,7 +11,9 @@
       border: 6px solid #800000;
       border-radius: 8px;
       background-color: #fff;
-      width: 60%;
+      width: 80%;
+      max-width: 950px;
+      min-width: 650px;
       margin: 0 auto;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       padding: 20px;
