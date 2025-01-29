@@ -1,4 +1,4 @@
-  /* ============================= */
+/* ============================= */
         /* Base Body Styles             */
         /* ============================= */
         body {
@@ -397,13 +397,13 @@
             display: inline-block; /* Adapts to content size */
             box-sizing: border-box; /* Includes padding and border in dimensions */
 
-            width: 20.5%; /* Dynamic width based on content */
+            width: auto; /* Dynamic width based on content */
             height: auto; /* Dynamic height based on content */
 
             /* Manual positioning */
             position: absolute; /* Allows manual top and left control */
             top: 0px; /* Set vertical position */
-            left: 700px; /* Set horizontal position */
+            left: 708px; /* Set horizontal position */
         }
 
         .ruleof9header-container {
