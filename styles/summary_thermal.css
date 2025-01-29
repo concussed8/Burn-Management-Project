@@ -1,4 +1,352 @@
+/* Main Header styling */
+h1 {
+    background-color: #800000; /* Maroon */
+    color: #FFFFFF; /* White text */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 0px 8px 0 0; /* Rounded corners */
+    font-size: 2.5em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    position: absolute; /* Explicitly position this element */
+    top: 0; /* Position at the top of the viewport */
+    left: 0; /* Align to the left of the viewport */
+    width: 100%; /* Full width */
+    z-index: 1000; /* High z-index to ensure it is on top */
+}
 
+/* Styling for the summary nine image */
+.summary-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 225px;  /* Adjust the width as needed */
+    height: auto;
+}
+
+/* Styling for the percentage box */
+.value-box {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0066cc; /* Blue text */
+    background-color: #fff; /* White background */
+    border: 2px solid #000; /* Black border */
+    border-radius: 4px;
+    text-align: center;
+    position: absolute;
+    width: 36px;   /* Adjustable width */
+    height: 15px;  /* Adjustable height */
+}
+
+/* Total % box styling */
+.total-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #000000;
+    background-color: #00FFFF;
+    border: 5px solid #000000;
+    border-radius: 6px;
+    text-align: center;
+    position: absolute;
+    width: 110px;
+    height: 25px;
+}
+
+/* Group summary nine + percentage boxes styling */
+.summary-nine {
+    position: absolute;
+    left: 20px; /* Adjust this to move the entire group */
+    top: 150px; /* Adjust this to move the entire group */
+}
+
+/* Common container styles */
+.container {
+    position: absolute;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    background-color: #800000;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.5em;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+
+
+/* Ensure .highRiskContainer starts at the same position as .summaryContainer */
+.highRiskContainer {
+    position: absolute;
+    top: 100px; /* Same initial position as .summaryContainer */
+    left: 850px; /* Matches summary container's left position */
+    width: 750px; /* Matches summary container's width */
+    min-height: 300px; /* Ensures it has a base height */
+    border: 6px solid #800000; /* Maroon border */
+    background-color: #fff; /* White background */
+    box-sizing: border-box; /* Include border and padding in size calculations */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
+}
+
+
+
+/* Header inside the High Risk Container */
+.highRiskContainerheader {
+    background-color: #800000; /* Maroon background for the header */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text for emphasis */
+    text-align: center; /* Center-align the header text */
+    padding: 10px; /* Add padding inside the header */
+    border-radius: 8px 8px 0 0; /* Rounded corners for the top edges */
+    font-size: 1.2em; /* Slightly larger font size for prominence */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow for a raised effect */
+}
+
+/* Burn Checklist Container styles */
+/* Ensure dynamic expansion */
+.summaryContainer {
+    position: absolute;
+    top: 100px; 
+    left: 750px; 
+    width: 750px;
+    min-height: 300px;
+    border: 6px solid #800000;
+    background-color: #fff;
+    box-sizing: border-box;
+    overflow: visible; 
+}
+
+/* Header inside the Burn Checklist Container */
+.summaryContainerheader {
+    background-color: #800000; /* Maroon background for the header */
+    color: #fff; /* White text */
+    font-weight: bold; /* Bold text */
+    text-align: center; /* Center the text */
+    padding: 10px; /* Add padding inside the header */
+    border-radius: 8px 8px 0 0; /* Rounded top corners */
+    width: 100%; /* Full width */
+}
+
+/* Group the panels together */
+.panel-group {
+    display: flex;
+    flex-direction: column; /* Stacks all panels vertically */
+    gap: 10px; /* Space between each panel */
+    position: absolute; /* Allows us to position the group independently */
+    top: 450px; /* Adjust this to move the whole group vertically */
+    left: 275px; /* Adjust this to move the whole group horizontally */
+}
+
+/* Panels for Age, TBSA, Weight, and Starting Rate */
+.age-panel,
+.weight-panel,
+.tbsa-panel,
+.starting-rate-panel {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative; /* Allows for easy positioning within the group */
+}
+
+/* Labels for Age, TBSA, and Weight Panels */
+.age-label,
+.weight-label,
+.tbsa-label {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    background-color: #fff; /* White background */
+    color: #000; /* Black text */
+    box-shadow: inset 1px 1px 2px #aaa; /* Subtle shadow */
+    border: 2px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0 15px; /* Inner padding */
+}
+
+/* Value Boxes for Age, TBSA, Weight, and Starting Rate */
+.age-value,
+.weight-value,
+.tbsa-value,
+.starting-rate-box {
+    height: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-shadow: inset 1px 1px 2px #aaa; /* Subtle shadow */
+    border: 2px solid lightgrey; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 0 15px; /* Inner padding */
+    width: 100px; /* Standard width */
+}
+
+/* Specific Background Colors for Value Boxes */
+.age-value {
+    background-color: #FF0000; /* Red for Age */
+    color: #fff; /* White text */
+}
+
+.weight-value {
+    background-color: #FF9900; /* Orange for Weight */
+    color: #fff;
+}
+
+.tbsa-value {
+    background-color: #66CCFF; /* Blue for TBSA */
+    color: #fff;
+}
+
+.starting-rate-box {
+    background-color: #FFEE66; /* Yellow for Starting Rate */
+    color: #000;
+    width: 138px; /* Fixed width for consistency */
+}
+
+/* Adjusted Content Styling */
+.content {
+    margin-left: 268px;  /* Prevent overlap with the image */
+    margin-top: 150px; /* Control the vertical spacing */
+}
+
+/* Summary box */
+.summary-box {
+    position: absolute;
+    top: 190px; /* Adjust to position summary box */
+    left: 275px; /* Adjust to position summary box */
+    border: 6px solid #800000; /* Maroon border */
+    border-radius: 8px;
+    padding: 20px;
+    width: 350px; /* Width of the summary box */
+    background-color: #FFFFFF; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Title inside the summary box */
+.summary-box-title {
+    background-color: #800000;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+}
+
+/* Pulsing Box Styling */
+.pulsing-box {
+    position: relative; /* Set to relative to position children within it */
+    width: 600px; /* Adjusted width to fit within .summaryContainer */
+    height: 200px; /* Fixed height to always display at native size */
+    display: flex;
+    flex-direction: column; /* Stacks child elements vertically */
+    align-items: center;
+    justify-content: flex-start; /* Aligns children to the top */
+    border: 6px solid red;
+    border-radius: 15px;
+    animation: pulse 2s infinite;
+    overflow: hidden; /* Ensures the image and text do not overflow the box */
+    background-color: rgba(255, 255, 255, 0.8); /* Slight transparency */
+    font-family: Arial, sans-serif; /* Font style */
+    padding: 10px; /* Adds padding inside the box */
+    margin-bottom: 20px; /* Space below the pulsing box */
+margin: 0 auto;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Pulsing Box Image Styling */
+.pulsing-box img {
+    width: 70%; /* Adjusts image width to fill the box */
+    height: auto; /* Maintains aspect ratio */
+    /* Removed absolute positioning to keep image within flow */
+    opacity: 0.8; /* Reduced opacity to make the image more transparent */
+    margin-top: auto; /* Pushes the image to the bottom of the pulsing box */
+}
+
+/* Alert Text Styling */
+.alert-text {
+    /* Changed from absolute to relative positioning */
+    position: relative; /* Allows text to flow within the pulsing box */
+    width: 100%; /* Text box takes full width of the box to center text */
+    text-align: center; /* Centers text horizontally */
+    font-weight: bold; /* Makes the text bold */
+    color: #800000; /* Font color */
+    font-size: 18px; /* Font size */
+    z-index: 1; /* Ensures text is above the image */
+    margin-bottom: 5px; /* Spacing between texts */
+}
+
+/* Additional classes for individual positioning */
+.text-one {
+    /* Removed top positioning to allow natural flow */
+    /* Optionally, add margin or padding if needed */
+}
+
+.text-two {
+    /* Removed top positioning to allow natural flow */
+    /* Optionally, add margin or padding if needed */
+}
+
+/* Summary Initial Box Styling */
+.summaryinitial-box {
+    font-family: 'Garamond', serif;
+    font-size: 30px; /* Adjust this for the desired size */
+    font-weight: bold;
+    color: #800000; /* Text color */
+    background-color: #fff; /* White background */
+    border: 6px solid #800000; /* Border color */
+    padding: 15px 25px; /* Space inside the box */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5); /* Adds depth */
+    display: inline-block; /* Adapts to content size */
+    box-sizing: border-box; /* Includes padding and border in dimensions */
+    width: auto; /* Dynamic width based on content */
+    height: auto; /* Dynamic height based on content */
+
+    /* Manual positioning */
+    position: absolute; /* Allows manual top and left control */
+    top: 76px; /* Set vertical position */
+    left: 80px; /* Set horizontal position */
+}
         /* Main Header styling */
        h1 {
     background-color: #800000; /* Maroon */
