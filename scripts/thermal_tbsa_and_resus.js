@@ -1,4 +1,4 @@
-// Function to get query parameters from the URL
+  // Function to get query parameters from the URL
 function getQueryParameter(name) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(name);
@@ -220,3 +220,37 @@ window.addEventListener('load', () => {
         });
     }
 });
+
+// === Added Keyboard Input Handling Below ===
+
+// Listen for keyboard events
+document.addEventListener('keydown', function(event) {
+    if (!currentCell) return; // No cell selected
+
+    const key = event.key;
+
+    // Allow only specific keys: digits, '.', 'Backspace', 'Delete'
+    if (/\d/.test(key) || key === '.') {
+        event.preventDefault(); // Prevent default behavior
+
+        const isClear = false; // Not applicable for keyboard
+        const keyContent = key;
+
+        const oldValue = currentCell.textContent;
+        currentCell.textContent = oldValue + keyContent;
+
+        if (!validateCell(currentCell)) {
+            currentCell.textContent = oldValue; // Revert if invalid
+        }
+
+        debounce(updateTotal, 300); // Recalculate after input
+    } else if (key === 'Backspace' || key === 'Delete') {
+        event.preventDefault(); // Prevent default behavior
+
+        const oldValue = currentCell.textContent;
+        currentCell.textContent = oldValue.slice(0, -1); // Remove last character
+
+        debounce(updateTotal, 300); // Recalculate after deletion
+    }
+});
+
